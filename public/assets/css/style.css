@@ -1,0 +1,408 @@
+/* Home Page */
+	
+	.header.showHomepageBanner .mobileSecondaryMenu { top: 64px; }
+	
+	/********** Home Banner  **********/
+	
+	@keyframes ani-your_css_selector_here {
+		0% { --c-0: hsla(212, 0%, 0%, 1); --x-0: 93%; --y-0: 93%; --s-start-0: 14.489998991212337%; --s-end-0: 72%; --s-start-1: 0%; --s-end-1: 45%; --y-1: 9%; --c-1: hsla(212, 0%, 0%, 1); --x-1: 26%; --x-2: 15%; --c-2: hsla(161, 95%, 40%, 1); --y-2: 79%; --s-start-2: 2.9253667596993065%; --s-end-2: 22.388851682060018%; --c-3: hsla(161, 95%, 40%, 1); --x-3: 40%; --y-3: 104%; --s-start-3: 3.985353824694249%; --s-end-3: 47.580278608924694%; --y-4: 60%; --c-4: hsla(161, 95%, 40%, 1); --x-4: 0%; --s-start-4: 2.391200382592061%; --s-end-4: 29.307684556768592%; --s-start-5: 2.9253667596993065%; --s-end-5: 22.388851682060018%; --x-5: 92.51574198404948%; --c-5: hsla(161, 95%, 40%, 1); --y-5: 83.77870039506392%; --x-6: 73.39410146077473%; --c-6: hsla(161, 95%, 40%, 1); --y-6: 69.69252673062411%; --s-start-6: 13.173642363290591%; --s-end-6: 31.747336520355095%; --s-start-7: 1%; --s-end-7: 31%; --y-7: 81.36985085227273%; --x-7: 24.026145935058594%; --c-7: hsla(161, 95%, 40%, 1); --y-8: 80.99993619051847%; --c-8: hsla(161, 95%, 40%, 1); --x-8: 95.83876291910808%; --s-start-8: 3.985353824694249%; --s-end-8: 13.103042116379756%; --x-9: 62.50725666635789%; --c-9: hsla(161, 95%, 40%, 1); --y-9: 96.86907009686071%; --s-start-9: 18.597054544690312%; --s-end-9: 31%; }
+		100% { --c-0: hsla(306, 0%, 0%, 1); --x-0: 7%; --y-0: 9%; --s-start-0: 2.391200382592061%; --s-end-0: 43.902064173373226%; --s-start-1: 9%; --s-end-1: 54.805582404585024%; --y-1: 93%; --c-1: hsla(306, 0%, 0%, 1); --x-1: 96%; --x-2: -2%; --c-2: hsla(154, 100%, 43%, 0.7); --y-2: 103%; --s-start-2: 3%; --s-end-2: 26.722813338714598%; --c-3: hsla(154, 100%, 43%, 0.7); --x-3: 33%; --y-3: 82%; --s-start-3: 2.391200382592061%; --s-end-3: 32.0689540200964%; --y-4: 81%; --c-4: hsla(154, 100%, 43%, 0.7); --x-4: 37%; --s-start-4: 4.40642490323111%; --s-end-4: 37.23528104246256%; --s-start-5: 3%; --s-end-5: 32.537089799783296%; --x-5: 54%; --c-5: hsla(154, 100%, 43%, 0.7); --y-5: 99%; --x-6: 39.76235707600912%; --c-6: hsla(154, 100%, 43%, 0.7); --y-6: 65.91648795387961%; --s-start-6: 6%; --s-end-6: 42.501105312974815%; --s-start-7: 5%; --s-end-7: 13.10107024898374%; --y-7: 85.51531111871122%; --x-7: -50.86445167131731%; --c-7: hsla(154, 100%, 43%, 0.7); --y-8: 46.476971019398086%; --c-8: hsla(154, 100%, 43%, 0.7); --x-8: 41.27061208089193%; --s-start-8: 2.391200382592061%; --s-end-8: 27.141813016850573%; --x-9: 23.830833435058594%; --c-9: hsla(218, 0%, 0%, 0.59); --y-9: 89.5108309659091%; --s-start-9: 5%; --s-end-9: 21.32164536610654%; }
+	}
+	@property --c-0 { syntax: '<color>'; inherits: false; initial-value: hsla(212, 0%, 0%, 1); }
+	@property --x-0 { syntax: '<percentage>'; inherits: false; initial-value: 93%; }
+	@property --y-0 { syntax: '<percentage>'; inherits: false; initial-value: 93%; }
+	@property --s-start-0 { syntax: '<percentage>'; inherits: false; initial-value: 14.489998991212337%; }
+	@property --s-end-0 { syntax: '<percentage>'; inherits: false; initial-value: 72%; }
+	@property --s-start-1 { syntax: '<percentage>'; inherits: false; initial-value: 0%; }
+	@property --s-end-1 { syntax: '<percentage>'; inherits: false; initial-value: 45%; }
+	@property --y-1 { syntax: '<percentage>'; inherits: false; initial-value: 9%; }
+	@property --c-1 { syntax: '<color>'; inherits: false; initial-value: hsla(212, 0%, 0%, 1); }
+	@property --x-1 { syntax: '<percentage>'; inherits: false; initial-value: 26%; }
+	@property --x-2 { syntax: '<percentage>'; inherits: false; initial-value: 15%; }
+	@property --c-2 { syntax: '<color>'; inherits: false; initial-value: hsla(161, 95%, 40%, 1); }
+	@property --y-2 { syntax: '<percentage>'; inherits: false; initial-value: 79%; }
+	@property --s-start-2 { syntax: '<percentage>'; inherits: false; initial-value: 2.9253667596993065%; }
+	@property --s-end-2 { syntax: '<percentage>'; inherits: false; initial-value: 22.388851682060018%; }
+	@property --c-3 { syntax: '<color>'; inherits: false; initial-value: hsla(161, 95%, 40%, 1); }
+	@property --x-3 { syntax: '<percentage>'; inherits: false; initial-value: 40%; }
+	@property --y-3 { syntax: '<percentage>'; inherits: false; initial-value: 104%; }
+	@property --s-start-3 { syntax: '<percentage>'; inherits: false; initial-value: 3.985353824694249%; }
+	@property --s-end-3 { syntax: '<percentage>'; inherits: false; initial-value: 47.580278608924694%; }
+	@property --y-4 { syntax: '<percentage>'; inherits: false; initial-value: 60%; }
+	@property --c-4 { syntax: '<color>'; inherits: false; initial-value: hsla(161, 95%, 40%, 1); }
+	@property --x-4 { syntax: '<percentage>'; inherits: false; initial-value: 0%; }
+	@property --s-start-4 { syntax: '<percentage>'; inherits: false; initial-value: 2.391200382592061%; }
+	@property --s-end-4 { syntax: '<percentage>'; inherits: false; initial-value: 29.307684556768592%; }
+	@property --s-start-5 { syntax: '<percentage>'; inherits: false; initial-value: 2.9253667596993065%; }
+	@property --s-end-5 { syntax: '<percentage>'; inherits: false; initial-value: 22.388851682060018%; }
+	@property --x-5 { syntax: '<percentage>'; inherits: false; initial-value: 92.51574198404948%; }
+	@property --c-5 { syntax: '<color>'; inherits: false; initial-value: hsla(161, 95%, 40%, 1); }
+	@property --y-5 { syntax: '<percentage>'; inherits: false; initial-value: 83.77870039506392%; }
+	@property --x-6 { syntax: '<percentage>'; inherits: false; initial-value: 73.39410146077473%; }
+	@property --c-6 { syntax: '<color>'; inherits: false; initial-value: hsla(161, 95%, 40%, 1); }
+	@property --y-6 { syntax: '<percentage>'; inherits: false; initial-value: 69.69252673062411%; }
+	@property --s-start-6 { syntax: '<percentage>'; inherits: false; initial-value: 13.173642363290591%; }
+	@property --s-end-6 { syntax: '<percentage>'; inherits: false; initial-value: 31.747336520355095%; }
+	@property --s-start-7 { syntax: '<percentage>'; inherits: false; initial-value: 1%; }
+	@property --s-end-7 { syntax: '<percentage>'; inherits: false; initial-value: 31%; }
+	@property --y-7 { syntax: '<percentage>'; inherits: false; initial-value: 81.36985085227273%; }
+	@property --x-7 { syntax: '<percentage>'; inherits: false; initial-value: 24.026145935058594%; }
+	@property --c-7 { syntax: '<color>'; inherits: false; initial-value: hsla(161, 95%, 40%, 1); }
+	@property --y-8 { syntax: '<percentage>'; inherits: false; initial-value: 80.99993619051847%; }
+	@property --c-8 { syntax: '<color>'; inherits: false; initial-value: hsla(161, 95%, 40%, 1); }
+	@property --x-8 { syntax: '<percentage>'; inherits: false; initial-value: 95.83876291910808%; }
+	@property --s-start-8 { syntax: '<percentage>'; inherits: false; initial-value: 3.985353824694249%; }
+	@property --s-end-8 { syntax: '<percentage>'; inherits: false; initial-value: 13.103042116379756%; }
+	@property --x-9 { syntax: '<percentage>'; inherits: false; initial-value: 62.50725666635789%; }
+	@property --c-9 { syntax: '<color>'; inherits: false; initial-value: hsla(161, 95%, 40%, 1); }
+	@property --y-9 { syntax: '<percentage>'; inherits: false; initial-value: 96.86907009686071%; }
+	@property --s-start-9 { syntax: '<percentage>'; inherits: false; initial-value: 18.597054544690312%; }
+	@property --s-end-9 { syntax: '<percentage>'; inherits: false; initial-value: 31%; }
+
+	.wrapperRingBox {
+		--c-0: hsla(212, 0%, 0%, 1);
+		--x-0: 93%;
+		--y-0: 93%;
+		--y-1: 9%;
+		--c-1: hsla(212, 0%, 0%, 1);
+		--x-1: 26%;
+		--x-2: 15%;
+		--c-2: hsla(161, 95%, 40%, 1);
+		--y-2: 79%;
+		--c-3: hsla(161, 95%, 40%, 1);
+		--x-3: 40%;
+		--y-3: 104%;
+		--y-4: 60%;
+		--c-4: hsla(161, 95%, 40%, 1);
+		--x-4: 0%;
+		--x-5: 92.51574198404948%;
+		--c-5: hsla(161, 95%, 40%, 1);
+		--y-5: 83.77870039506392%;
+		--x-6: 73.39410146077473%;
+		--c-6: hsla(161, 95%, 40%, 1);
+		--y-6: 69.69252673062411%;
+		--y-7: 81.36985085227273%;
+		--x-7: 24.026145935058594%;
+		--c-7: hsla(161, 95%, 40%, 1);
+		--y-8: 80.99993619051847%;
+		--c-8: hsla(161, 95%, 40%, 1);
+		--x-8: 95.83876291910808%;
+		--x-9: 62.50725666635789%;
+		--c-9: hsla(161, 95%, 40%, 1);
+		--y-9: 96.86907009686071%;
+		background-color: hsla(305, 0%, 0%, 1);
+		background-image: radial-gradient(circle at var(--x-0) var(--y-0), var(--c-0) var(--s-start-0), transparent var(--s-end-0)), radial-gradient(circle at var(--x-1) var(--y-1), var(--c-1) var(--s-start-1), transparent var(--s-end-1)), radial-gradient(circle at var(--x-2) var(--y-2), var(--c-2) var(--s-start-2), transparent var(--s-end-2)), radial-gradient(circle at var(--x-3) var(--y-3), var(--c-3) var(--s-start-3), transparent var(--s-end-3)), radial-gradient(circle at var(--x-4) var(--y-4), var(--c-4) var(--s-start-4), transparent var(--s-end-4)), radial-gradient(circle at var(--x-5) var(--y-5), var(--c-5) var(--s-start-5), transparent var(--s-end-5)), radial-gradient(circle at var(--x-6) var(--y-6), var(--c-6) var(--s-start-6), transparent var(--s-end-6)), radial-gradient(circle at var(--x-7) var(--y-7), var(--c-7) var(--s-start-7), transparent var(--s-end-7)), radial-gradient(circle at var(--x-8) var(--y-8), var(--c-8) var(--s-start-8), transparent var(--s-end-8)), radial-gradient(circle at var(--x-9) var(--y-9), var(--c-9) var(--s-start-9), transparent var(--s-end-9));
+		animation: ani-your_css_selector_here 10s linear infinite alternate;
+		background-blend-mode: normal, normal, normal, normal, normal, normal, normal, normal, normal, normal;
+		will-change: transform, opacity;
+		contain: paint;
+	}
+	
+	@keyframes hoverBannerEffect {
+		0% { --y-0: 50.21148708815672%; --x-0: 52.574770602493075%; --c-0: hsla(161, 100%, 71%, 1); --s-start-0: 6%; --s-end-0: 23%; }
+		100% { --y-0: 50.126961821015136%; --x-0: 52.56845856417359%; --c-0: hsla(161, 95%, 40%, 1); --s-start-0: 0%; --s-end-0: 9%; } 
+	}
+	@property --y-0 { syntax: '<percentage>'; inherits: false; initial-value: 50.21148708815672%; }
+	@property --x-0 { syntax: '<percentage>'; inherits: false; initial-value: 52.574770602493075%; }
+	@property --c-0 { syntax: '<color>'; inherits: false; initial-value: hsla(161, 100%, 71%, 1); }
+	@property --s-start-0 { syntax: '<percentage>'; inherits: false; initial-value: 6%; }
+	@property --s-end-0 { syntax: '<percentage>'; inherits: false; initial-value: 23%; }
+	
+	@media (min-width: 992px){
+		.mouseGlowBox { border-radius: var(--border-radius-lg); overflow: hidden; background-color: transparent; top: 0; }
+		.mouseGlow { position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity 0.3s; background-image: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), hsla(161, 95%, 40%,0.55) 0%, transparent 35%); }
+		.mouseGlowBox:hover .mouseGlow { opacity: 1; }
+    }
+	
+	.introBtnActions .left .btn { min-width: 100px; }
+	.wrap_all .introPageBannerContainer .introPageBannerWrap { position: relative; z-index: 11; }
+	.wrap_all .introPageBannerContainer .introPageBannerWrap .container {  }
+	
+	
+	.wrap_all .introPageBannerContainer .introPageBannerWrap .wrapVideoBannerVideo { background-image: url("/assets/images/homepage-img-video.png"); background-size: cover; background-position: 44% center; position: relative; overflow: hidden; align-items: stretch; display: flex; }
+	
+	/*//// START Video \\\\\*/
+	
+	.introPagePlayBox { display: block; position: absolute; top: 50%; left: 50%; margin: -34px 0 0 -34px; }
+	.introPagePlayBox:hover { cursor: pointer; }
+	.introPagePlayBox .introPlay .playImg { width: 68px; height: 68px; position: relative; } 
+	.introPagePlayBox .introPagePlay, 
+	.introPagePlayBox .introPagePlay .playImg .playA, 
+	.introPagePlayBox .introPagePlay:hover .playImg .playB { height: 68px; width: 68px; }
+	.introPagePlayBox .introPagePlay .playImg .playA { background-color: #fff; border-radius: 50%; display: block; left: 0; opacity: 0.25; position: absolute; top: 0; z-index: 1; }
+	.introPagePlayBox .introPagePlay .playImg .playB { background-color: #fff; border-radius: 50%; display: block; left: 50%; position: absolute; top: 50%; z-index: 2; height: 60px; margin-left: -30px; margin-top: -30px; width: 60px; }
+	.introPagePlayBox .introPagePlay .playImg .playC { background-repeat: no-repeat; display: inline-block; left: 50%; position: absolute; top: 50%; z-index: 5; background-size: cover; height: 22px; margin-left: -8px; margin-top: -16px; width: 22px; border-left: 22px solid rgba(0, 0, 0, 0.8); border-bottom: 16px solid transparent; border-top: 16px solid transparent; }
+	.introPagePlayBox .introPagePlay:hover .playImg .playB { left: 0; margin-left: 0; margin-top: 0; top: 0; transition: all 0.3s ease 0s; -moz-transition: all 0.3s ease 0s; -webkit-transition: all 0.3s ease 0s; }
+	.introPagePlayBox .introPagePlay > a, .introPagePlayBox .introPagePlay a span { display: inline-block; font-family: var(--fontRegular); font-size: 20px; font-weight: 300; line-height: 20px; transition: all 0.2s ease 0s; -moz-transition: all 0.2s ease 0s; -webkit-transition: all 0.2s ease 0s; vertical-align: middle; }
+	.introPagePlayBox .introPagePlay > a:hover { color: transparent; }
+	.introPagePlayBox .introPagePlay > a { z-index: 10; }
+	
+	.videoWrap { margin: 0 auto; }
+	.videoWrap .openVideo { width: 100%; border-radius: 30px; }
+	
+	#video { position: fixed; top: 0; bottom: 0; left: 0; right: 0; -webkit-backdrop-filter: blur(40px); backdrop-filter: blur(40px); display: none; }
+	#video.active { display: block; }
+	#video .videoBox { position: absolute; top: 50%; left: 50%; background-color: var(--black); }
+	#video .videoBox iframe { width: 100%; }
+	
+	.videoWrap.active .openVideo, 
+	.videoWrap .openVideo .desktop { display: none; }
+	
+	.videoWrap .openVideo:before,
+	.videoWrap .openVideo:after { display: none; }
+	.videoWrap.load .openVideo { display: block; position: relative; z-index: 0; }
+	.videoWrap.load .openVideo:before { z-index: 1; content:""; display: block; position: absolute; top: -32px; bottom: -32px; right: -32px; left: -32px; background-color: rgba(255, 255, 255, 0.5); }
+	.videoWrap.load .openVideo:after { z-index: 2; content:""; display: block; width: 40px; height: 40px; position: absolute; top: 50%; left: 50%; margin-left: -20px; margin-top: -20px; background-image: url("/docs/en/landingpage/loading.gif"); background-repeat: no-repeat; background-size: cover; }
+	.videoWrap.load .introPagePlayBox { display: none; }
+	
+	@media (min-width: 320px) and (max-width: 479px) {
+		#video.active .videoBox { width: 290px; height: 440px; }
+		#video .videoBox { margin-left: -148px; margin-top: -193px; }
+		
+		.introPagePlayBox .introPagePlay, 
+		.introPagePlayBox .introPagePlay .playImg .playA, 
+		.introPagePlayBox .introPagePlay:hover .playImg .playB { height: 58px; width: 58px; }
+		
+		.introPagePlayBox .introPagePlay .playImg .playB { height: 46px; margin-left: -23px; margin-top: -23px; width: 46px; }
+		.introPagePlayBox .introPagePlay .playImg .playC { height: 16px; margin-left: -5px; margin-top: -10px; width: 16px; border-left: 14px solid rgba(0, 0, 0, 0.8); border-bottom: 10px solid transparent; border-top: 10px solid transparent; }
+	}
+	
+	@media (min-width: 320px) and (max-width: 768px) {
+		.wrap_all .introPageBannerContainer .introPageBannerWrap .wrapVideoBannerVideo { min-height: 200px; margin-top: 30px; max-width: 290px; }
+	}
+	
+	@media (min-width: 480px) and (max-width: 991px) {
+		#video.active iframe { width: 400px; height: 224px; }
+		#video .videoBox { margin-left: -232px; margin-top: -122px; }
+	}
+	
+	@media (min-width: 768px) and (max-width: 991px) {
+		.wrap_all .introPageBannerContainer .introPageBannerWrap .wrapVideoBannerVideo { min-height: 300px; margin-top: 30px; max-width: 500px; }
+	}
+	
+	@media (min-width: 992px) {
+		.wrap_all .introPageBannerContainer .introPageBannerWrap .container { display: flex; align-items: stretch; gap: 36px; }
+		
+		.wrap_all .introPageBannerContainer .introPageBannerWrap .introPageBannerBox,
+		.wrap_all .introPageBannerContainer .introPageBannerWrap .wrapVideoBannerVideo { width: 47%; align-items: stretch; }
+	}
+	
+	@media (min-width: 992px) and (max-width: 1199px) {
+		#video.active iframe { width: 566px; height: 318px; }
+		#video .videoBox { margin-left: -306px; margin-top: -159px; }
+	}
+	
+	@media (min-width: 1200px) {
+		#video.active iframe { width: 640px; height: 382px; }
+		#video .videoBox { margin-left: -340px; margin-top: -191px; }
+	}
+	
+	/*//// END Video \\\\\*/
+	
+	@media screen and (min-width: 320px) and (max-width: 991px) {
+		.mobileCenter { text-align: center; }
+	}
+	
+	@media (min-width: 320px) and (max-width: 991px) {
+		.mobileCenter { text-align: center; }
+	}
+	
+    @media screen and (min-width: 768px){
+        
+    }
+	
+	@media screen and (min-width: 992px){
+        .wrap_all .introPageBannerContainer .introBannerRightImage { display: block; }
+    }
+	
+	/********** END Home Banner  **********/
+	/********** START - COMMENT THIS WHEN WE DON'T HAVE HEADER RIBBON  **********/
+	
+	@media (min-width: 992px){
+		/* .underMenu { margin-top: -111px; } */
+		.underMenu > div { padding-top: 111px; }
+		.introPageBannerContainer .boxRotate:before { top: 72px; }
+		.wrap_all.homePage.showHomepageBanner .introPageBannerContainer .boxRotate:before { top: 120px; }
+	}
+	
+	/********** END - COMMENT THIS WHEN WE DON'T HAVE HEADER RIBBON  **********/
+	/********** Section1 **********/
+    
+	.section1 {  }
+	.section1 .clientsGrayBox { padding: 0; margin: 0; }
+	.section1 .clientsGrayBox .clientsGrayTitle { position: static; top: auto; left: auto; margin-top: 0; text-align: center; }
+	.section1 .clientsGrayBox .clientsGrayTitle br { display: none; }
+	.section1 .clientsGrayBox .clientsGray { max-width: initial; }
+	
+	.section1 .topics-header { max-width: 100%; margin: 0 auto; padding: 0 40px; text-align: center; }
+	.section1 .topics-header .section-tag { color: var(--mint); }
+	.section1 .marquee-row { overflow: hidden; padding: 6px 0; }
+	.section1 .marquee-row .marquee-track { display: flex; gap: 60px; width: max-content; animation: mq 28s linear infinite; }
+	.section1 .marquee-row .marquee-track.rev { animation: mq-r 22s linear infinite; }
+	
+	@keyframes mq { 
+		from { transform: translateX(0) }
+		to { transform: translateX(-50%); }
+	}
+	
+	@keyframes mq-r { 
+		from { transform: translateX(-50%); }
+		to { transform: translateX(0); }
+	}
+	
+	.section1 .marquee-row .marquee-track .pill { background: var(--black); border: 1px solid var(--borderDark); border-radius: 100px; padding: 4px 24px; font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.7); white-space: nowrap; display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+	.section1 .marquee-row .marquee-track .pill .pill-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--mint); opacity: .7; }
+    
+	@media (min-width: 768px) and (max-width: 991px) {
+		.section1 .marquee-row .marquee-track { gap: 100px; }
+	}
+	
+	@media (min-width: 992px) and (max-width: 1199px) {
+		.section1 .marquee-row .marquee-track { gap: 150px; }
+	}
+	
+	@media (min-width: 992px) {
+		.section1 .marquee-row .marquee-track { gap: 200px; }
+	}
+	
+	/********** END Section1 **********/
+    /********** Section2 **********/
+	
+	.section2 .productBoxSectionWrap { display: block; }
+	.section2 .productBoxSectionWrap .boxSectionBox .boxMenu .boxRight { background-image: url("/resources/en/site_pages/background_filled.jpg"); background-size: cover; padding: 15px; }
+	.wrap_all .homePageContent .introPageBannerContainer .introPageBannerWrap { background-color: transparent; }
+	
+	@media (min-width: 320px) and (max-width: 767px) {
+		.section2 .productBoxSectionWrap .boxSectionBox .boxMenu .boxRight { margin-top: 40px; }
+	}
+	
+	@media (min-width: 768px) {
+		.section2 .productBoxSectionWrap .boxSectionBox .boxMenu { display: flex; align-items: stretch; gap: 36px; }
+		.section2 .productBoxSectionWrap .boxSectionBox .boxMenu .boxRight { align-items: center; display: flex; }
+	}
+	
+	@media (min-width: 1200px) {
+		.section2 .productBoxSectionWrap .boxSectionBox .boxMenu .boxRight { padding-top: 0; }
+	}
+	
+    
+	/********** END Section2 **********/	
+	/********** Section3 **********/	
+	
+    .section3 br { display: block; }
+    .section3 .flexContainerBox .flexBox .flexBoxItem { min-width: 100%; }
+    
+	@media (min-width: 600px) {
+		.section3 .flexContainerBox .flexBox .flexBoxItem { min-width: 48%; }
+	}
+	
+	@media (min-width: 992px) {
+		.section3 .flexContainerBox .flexBox .flexBoxItem { min-width: 32%; }
+	}
+	
+	/********** END Section3 **********/	
+	/********** Section4 **********/
+	
+	@media (min-width: 320px) and (max-width: 991px) {
+		.section4 .imageContentContainer .imageContentBox .imageBoxAll.imageBox { height: 260px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+		.section4 .imageContentContainer .imageContentBox .imageBoxAll.imageBox img { width: 100%; height: auto; object-fit: cover; margin-top: -100px; }
+	}
+	
+	@media (min-width: 600px) {
+		.section4 .imageContentContainer .imageContentBox .imageBoxAll.imageBox { min-width: 38%; }
+		.section4 .imageContentContainer .imageContentBox .imageBoxAll.contentBox { min-width: 59%; }
+	}
+	
+	/********** END Section4 **********/	
+	/********** Section5 **********/
+	
+	.section5 .tabFlexBox { display: inline-flex; justify-content: center; align-items: stretch; gap: 36px; flex-wrap: wrap; }
+	.section5 .tabFlexBox .tabTitle { display: flex; flex: 1; align-items: center; line-height: 1.2; }
+	.section5 .tabFlexBox .tabContainer { padding: 36px 15px; }
+	.section5 .tabContainer .tabBox { gap: 14px; }
+	.section5 .tabContainer .tabBox .boxMenuItem { padding: 4px 10px; }
+	.section5 .tabContainer .tabContentBox .contentItem .contentTextDescription { min-height: 120px; }
+	
+	@media (min-width: 320px) and (max-width: 479px) {
+		.section5 .tabContainer .tabContentBox .contentItem .contentIcon { display: none; }
+	}
+	
+	@media (min-width: 480px) and (max-width: 560px) {
+		.section5 .tabContainer .tabContentBox .contentItem .contentTextDescription { min-height: 96px; }
+		.section5 .tabContainer .tabContentBox .contentItem .contentTextTitle { min-height: 48px; }
+	}
+	
+	@media (min-width: 560px) and (max-width: 767px) {
+		.section5 .tabContainer .tabContentBox .contentItem .contentTextDescription { min-height: 96px; }
+	}
+	
+	@media (min-width: 480px) and (max-width: 991px) {
+		.section5 .tabFlexBox .tabContainer { padding: 36px 30px; }
+	}
+	
+	@media (min-width: 768px) {
+		.section5 .tabContainer { width: 600px; }
+		.section5 .tabContainer .tabBox { gap: 16px; }
+		.section5 .tabContainer .tabContentBox .contentItem .contentTextDescription { min-height: 60px; }
+	}
+	
+	@media (min-width: 992px) and (max-width: 1199px) {
+		.section5 .tabFlexBox .tabTitle { width: 40%; }
+		.section5 .tabFlexBox .tabContainer { width: 60%; }
+		.section5 .tabFlexBox .tabTitle { font-size: 44px; }
+		.section5 .tabContainer .tabContentBox .contentItem .contentTextTitle { font-size: 24px; }
+		.section5 .tabContainer .tabContentBox .contentItem .contentTextDescription { margin-top: 15px; }
+	}
+	
+	@media (min-width: 1200px){
+		.section5 .tabContainer { width: 750px; }
+		.section5 .tabFlexBox .tabTitle { max-width:40% }
+		.section5 .tabFlexBox .tabContainer { padding: 36px 30px; }
+	}
+	
+	/********** END Section5 **********/
+	/********** Section6 **********/
+	
+	.section6 { background-position: center 130%; }
+	.section6 .wrapFlexContainerBox .flexContainerBox .flexBox .flexBoxItem.item1 { min-width: 65%; }
+	.section6 .wrapFlexContainerBox .flexContainerBox .flexBox .flexBoxItem.item2 { min-width: 32%; }
+	.section6 .wrapFlexContainerBox .flexContainerBox .flexBox .flexBoxItem .flexItemContent { display: flex; align-items: stretch; gap: 24px; flex: 1 0 0; }
+	.section6 .wrapFlexContainerBox .flexContainerBox .flexBox .flexBoxItem .flexItemContent .flexItem { display: flex; width: 50%; }
+	.section6 .wrapFlexContainerBox .flexContainerBox .flexBox .flexBoxItem .flexItemContent .flexItem.flexItemLeft { align-items: center; }
+	.section6 .wrapFlexContainerBox .flexContainerBox .flexBox .flexBoxItem .flexItemContent .flexItem.flexItemRight { flex-direction: column; }
+	
+	@media (min-width: 320px) and (max-width: 480px) {
+		.section6 .wrapFlexContainerBox .flexContainerBox .flexBox .flexBoxItem .flexItemContent { flex-wrap: wrap; }
+		.section6 .wrapFlexContainerBox .flexContainerBox .flexBox .flexBoxItem .flexItemContent .flexItem { width: 100%; }
+	}
+	
+	@media (min-width: 768px) {
+		.section6.wrapperContainer { padding-top: 80px; }
+	}
+	
+	@media (min-width: 992px) {
+		.section6 .wrapFlexContainerBox .flexContainerBox .flexBox .flexBoxItem:hover { background-color: var(--mint); }
+		.section6 .wrapFlexContainerBox .flexContainerBox .flexBox .flexBoxItem:hover .colorWhite,
+		.section6 .wrapFlexContainerBox .flexContainerBox .flexBox .flexBoxItem:hover .ctaLink.ctaWhite{ color: var(--black); }
+		.section6 .wrapFlexContainerBox .flexContainerBox .flexBox .flexBoxItem .ctaLink.ctaWhite:hover { color: var(--black); }
+		.section6 .wrapFlexContainerBox .flexContainerBox .flexBox .flexBoxItem:hover .ctaLink.ctaWhite .ctaLinkSVG .ctaLinkSVGExpand,
+		.section6 .wrapFlexContainerBox .flexContainerBox .flexBox .flexBoxItem .ctaLink.ctaWhite:hover .ctaLinkSVG .ctaLinkSVGExpand { fill: var(--black); }
+		.section6 .wrapFlexContainerBox .flexContainerBox .flexBox .flexBoxItem:hover .ctaLink.ctaWhite .ctaLinkSVG .ctaLinkSVGArrow,
+		.section6 .wrapFlexContainerBox .flexContainerBox .flexBox .flexBoxItem .ctaLink.ctaWhite:hover .ctaLinkSVG .ctaLinkSVGArrow { stroke: var(--white) !important; }
+	}
+	
+	/********** END Section6 **********/	
+	/********** Section7 **********/
+	
+	.section7 .flexContainerBox .flexBox .flexBoxItem .flexItemSingle .flexBoxIcon img { width: 72px; }
+
+	@media (min-width: 320px) and (max-width: 767px) {
+		.section7 .flexContainerBox .flexBox .flexBoxItem { min-width: 100%; }
+	}
+	
+	@media (min-width: 768px) {
+		.section7 .flexContainerBox .flexBox .flexBoxItem { min-width: 30%; }
+	}
+
+	/********** END Section7 **********/
+ 

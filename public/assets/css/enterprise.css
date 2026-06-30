@@ -1,0 +1,147 @@
+/* ==========================================================================
+   Sentrize — v2 enterprise layer: accessibility, page-type variants, components
+   Loaded after site.css. Inner pages only (landing unaffected).
+   ========================================================================== */
+
+/* ---- Accessibility ---- */
+.skip-link{position:absolute;left:-9999px;top:0;z-index:2000;background:var(--primary);color:#fff;
+  padding:12px 18px;border-radius:0 0 10px 0;font-weight:600}
+.skip-link:focus{left:0}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:4px}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;scroll-behavior:auto !important}
+  .reveal{opacity:1 !important;transform:none !important}
+}
+
+/* ---- Hero variants ---- */
+.hero--centered{text-align:center}
+.hero--centered .container{display:flex;flex-direction:column;align-items:center}
+.hero--centered h1{max-width:18ch}.hero--centered .lead{margin-left:auto;margin-right:auto}
+.hero--centered .btn-row{justify-content:center}
+.split--reverse > *:first-child{order:2}
+.hero--tight{padding:120px 0 48px}
+
+/* ---- Client logo strip / marquee ---- */
+.logos{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;list-style:none;padding:0;margin:0}
+.logo-chip{display:flex;align-items:center;gap:9px;padding:12px 20px;border:1px solid var(--line);
+  border-radius:12px;background:rgba(255,255,255,.03);color:#cdd4e0;font-weight:600;font-size:.96rem;transition:.2s ease}
+.logo-chip::before{content:"";width:22px;height:22px;border-radius:6px;background:var(--grad-soft);
+  border:1px solid rgba(0,212,255,.3)}
+.logo-chip:hover{border-color:rgba(0,212,255,.4);color:#fff}
+.marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marquee__track{display:flex;gap:14px;width:max-content;animation:marquee 38s linear infinite}
+.marquee:hover .marquee__track{animation-play-state:paused}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* ---- Awards / certifications ---- */
+.badges{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.badge{display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid var(--line);
+  border-radius:var(--radius);padding:20px 22px}
+.badge__mark{flex:none;width:46px;height:46px;border-radius:12px;background:var(--grad-soft);
+  border:1px solid rgba(0,212,255,.3);display:flex;align-items:center;justify-content:center;color:var(--cyan);font-weight:800;font-size:.72rem}
+.badge strong{color:#fff;display:block}.badge small{color:var(--muted-2)}
+
+/* ---- Overline numbering ---- */
+.overline{display:block;font-size:.78rem;font-weight:800;letter-spacing:.12em;color:var(--cyan);margin-bottom:8px}
+
+/* ---- Node diagram (CSS-only infra visual) ---- */
+.diagram{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:26px;
+  background:var(--card);border:1px solid var(--line-2);border-radius:var(--radius);box-shadow:var(--glow)}
+.node{border:1px solid var(--line-2);border-radius:12px;padding:14px 12px;text-align:center;font-size:.8rem;font-weight:600;
+  color:#cdd4e0;background:rgba(255,255,255,.03)}
+.node--hub{grid-column:1/-1;background:var(--grad-soft);border-color:rgba(0,212,255,.4);color:#fff}
+
+/* ---- Status panel ---- */
+.status-panel{background:var(--card);border:1px solid var(--line-2);border-radius:var(--radius);padding:24px;box-shadow:var(--glow)}
+.status-panel__row{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:11px 0;border-bottom:1px solid var(--line)}
+.status-panel__row:last-child{border-bottom:0}
+.status-panel__row span{color:#cdd4e0;font-size:.92rem}
+.bar{height:8px;border-radius:6px;background:rgba(255,255,255,.08);overflow:hidden;width:120px;flex:none}
+.bar > i{display:block;height:100%;background:var(--grad)}
+
+/* ---- Role rows (careers) ---- */
+.role-row{display:flex;align-items:center;justify-content:space-between;gap:18px;background:var(--card);
+  border:1px solid var(--line);border-radius:var(--radius);padding:20px 26px;transition:.2s ease;color:inherit}
+.role-row:hover{border-color:rgba(0,212,255,.4);transform:translateX(4px);text-decoration:none}
+.role-row h3{margin:0;color:#fff;font-size:1.1rem}
+.role-row .meta{color:var(--muted-2);font-size:.9rem;margin-top:4px}
+.role-row__right{display:flex;align-items:center;gap:12px;flex:none}
+.role-row__arrow{color:var(--cyan);font-size:1.3rem;font-weight:700}
+
+/* ---- Work / portfolio cards ---- */
+.work{position:relative;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--card);
+  transition:transform .18s ease,box-shadow .25s ease,border-color .25s ease;display:block;color:inherit}
+.work:hover{transform:translateY(-6px);border-color:rgba(0,212,255,.4);box-shadow:var(--glow);text-decoration:none}
+.work__media{aspect-ratio:16/10;overflow:hidden;background:var(--bg-3);position:relative}
+.work__media img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.work:hover .work__media img{transform:scale(1.07)}
+.work__tag{position:absolute;top:14px;left:14px}
+.work__body{padding:22px 24px}
+.work__body h3{color:#fff;margin-bottom:.3em}
+.work__industry{color:var(--muted-2);font-size:.85rem}
+.work__metric{margin-top:14px;font-weight:700;color:transparent;background:var(--grad);-webkit-background-clip:text;background-clip:text;display:inline-block}
+.work::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform .3s ease}
+.work:hover::after{transform:scaleX(1)}
+
+/* ---- Article (blog) meta ---- */
+.article__meta{display:flex;gap:14px;flex-wrap:wrap;color:var(--muted-2);font-size:.84rem;margin-top:10px}
+
+/* ---- Metric callout row (case studies) ---- */
+.metric-row{display:flex;gap:26px;flex-wrap:wrap;margin:4px 0 16px}
+.metric-row b{font-size:1.5rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;display:block;line-height:1.1}
+.metric-row small{color:var(--muted-2);font-size:.76rem}
+
+/* ---- Team portrait cards ---- */
+.person__media{aspect-ratio:1/1;border-radius:16px;overflow:hidden;margin-bottom:16px;background:var(--bg-3);border:1px solid var(--line)}
+.person__media img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+.card:hover .person__media img{transform:scale(1.05)}
+.person__role{color:transparent;background:var(--grad);-webkit-background-clip:text;background-clip:text;font-weight:700;margin-bottom:10px}
+
+/* ---- Error page ---- */
+.error{min-height:84vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden}
+.error__num{font-size:clamp(6rem,20vw,13rem);font-weight:800;line-height:.9;letter-spacing:-.04em;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.error::before{content:"";position:absolute;inset:0;z-index:0;
+  background:radial-gradient(700px 420px at 50% 32%,rgba(0,212,255,.18),transparent 60%);animation:drift 9s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate(5%,4%) scale(1.12)}}
+.error > .container{position:relative;z-index:1}
+
+/* ---- Forms: validation + states ---- */
+.field__error{color:#ff8585;font-size:.82rem;margin-top:6px;display:none}
+.field--error .input{border-color:#ff8585;box-shadow:0 0 0 3px rgba(255,133,133,.18)}
+.field--error .field__error{display:block}
+.form-note{font-size:.85rem;color:var(--muted-2);margin-top:12px}
+.form-success{display:none;background:rgba(5,201,140,.12);border:1px solid rgba(5,201,140,.4);color:#34e0a8;
+  padding:14px 18px;border-radius:12px;margin-bottom:16px}
+.is-submitting{opacity:.6;pointer-events:none}
+
+/* ---- Pricing billing toggle ---- */
+.toggle{display:inline-flex;align-items:center;gap:6px;background:var(--card);border:1px solid var(--line-2);
+  border-radius:999px;padding:6px}
+.toggle button{font-family:inherit;font-size:.9rem;font-weight:600;color:var(--muted-2);background:none;border:0;
+  padding:9px 18px;border-radius:999px;cursor:pointer;transition:.2s}
+.toggle button.active{background:var(--grad);color:#04121f}
+
+/* ---- Newsletter band ---- */
+.newsletter{background:linear-gradient(180deg,rgba(0,212,255,.06),transparent),var(--card);
+  border:1px solid var(--line-2);border-radius:var(--radius-lg);padding:48px;text-align:center}
+.newsletter form{display:flex;gap:12px;max-width:480px;margin:18px auto 0}
+.newsletter .input{flex:1}
+@media (max-width:560px){.newsletter form{flex-direction:column}}
+
+/* ---- FAQ search ---- */
+.faq-search{max-width:560px;margin:10px auto 0}
+.faq-cats{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+
+/* ---- Skeleton loading ---- */
+.skeleton{background:linear-gradient(90deg,rgba(255,255,255,.04),rgba(255,255,255,.09),rgba(255,255,255,.04));
+  background-size:200% 100%;animation:shimmer 1.3s infinite}
+@keyframes shimmer{to{background-position:-200% 0}}
+
+/* ---- Responsive ---- */
+@media (max-width:960px){ .badges{grid-template-columns:repeat(2,1fr)} .diagram{grid-template-columns:1fr 1fr} }
+@media (max-width:620px){ .badges,.diagram{grid-template-columns:1fr}
+  .role-row{flex-direction:column;align-items:flex-start} .newsletter{padding:32px 22px}
+  .metric-row{gap:18px} }

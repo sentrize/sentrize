@@ -1,0 +1,107 @@
+/* ==========================================================================
+   Sentrize — Shared site chrome (header + footer)
+   Self-contained & namespaced (.sh / .sf) so it can sit on BOTH the Verifone
+   landing page and the inner pages without class collisions.
+   Verifone design language: blue #004aef, Verifone Sans, mint #6effd2.
+   ========================================================================== */
+@font-face{font-family:'Verifone Sans';src:url("../fonts/VerifoneSans-Regular-Normal_400.woff") format('woff');font-weight:400;font-display:swap;}
+@font-face{font-family:'Verifone Sans';src:url("../fonts/VerifoneSans-Medium-Medium_500.woff") format('woff');font-weight:500;font-display:swap;}
+@font-face{font-family:'Verifone Sans';src:url("../fonts/VerifoneSans-SemiBold-Semi-Bold_600.woff") format('woff');font-weight:600;font-display:swap;}
+@font-face{font-family:'Verifone Sans';src:url("../fonts/VerifoneSans-Bold-Bold_700.woff") format('woff');font-weight:700;font-display:swap;}
+
+.sh,.sf{--c-blue:#004aef;--c-blue-d:#003ad0;--c-ink:#1c1c26;--c-ink-soft:#333;--c-mut:#5b5b6b;
+  --c-line:#e6e6ec;--c-soft:#f5f5f5;--c-dark:#1c1c26;--c-mint:#6effd2;
+  --c-font:'Verifone Sans','Verifone-Sans-Regular',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+
+/* ---------------- Header ---------------- */
+.sh{position:sticky;top:0;z-index:1000;background:rgba(11,11,18,.92);
+  backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid rgba(255,255,255,.10);
+  font-family:var(--c-font);box-sizing:border-box}
+.sh *,.sf *{box-sizing:border-box}
+.sh a{text-decoration:none}
+.sh__container{width:100%;max-width:1200px;margin:0 auto;padding:0 24px}
+.sh__nav{display:flex;align-items:center;gap:26px;height:76px}
+.sh__brand{font-weight:700;font-size:1.25rem;letter-spacing:-.02em;color:#fff;white-space:nowrap}
+.sh__brand span{color:var(--c-blue)}
+.sh__menu{display:flex;align-items:center;gap:2px;list-style:none;margin:0;padding:0}
+.sh__item{position:relative}
+.sh__link{display:flex;align-items:center;gap:5px;padding:10px 13px;border-radius:10px;color:#c7c9d4;
+  font-weight:500;font-size:.96rem;background:none;border:0;font-family:inherit;cursor:pointer;line-height:1}
+.sh__link:hover{color:#fff;background:rgba(255,255,255,.08)}
+.sh__item.has-mega>.sh__link::after{content:"";width:7px;height:7px;border-right:2px solid currentColor;
+  border-bottom:2px solid currentColor;transform:rotate(45deg);margin-top:-3px;opacity:.55}
+.sh__spacer{flex:1}
+.sh__cta{display:flex;align-items:center;gap:10px}
+.sh__btn{display:inline-flex;align-items:center;justify-content:center;font-family:inherit;font-size:.95rem;
+  font-weight:600;line-height:1;white-space:nowrap;cursor:pointer;padding:12px 22px;border-radius:999px;border:1.5px solid transparent;
+  transition:.15s ease}
+.sh__btn--primary{background:var(--c-blue);color:#fff}
+.sh__btn--primary:hover{background:var(--c-blue-d)}
+.sh__btn--ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.32)}
+.sh__btn--ghost:hover{border-color:#fff;color:#fff}
+.sh__mega{position:absolute;top:calc(100% + 8px);left:0;min-width:300px;background:#fff;border:1px solid var(--c-line);
+  border-radius:18px;box-shadow:0 30px 70px rgba(28,28,38,.16);padding:14px;opacity:0;visibility:hidden;
+  transform:translateY(6px);transition:.16s ease;display:grid;gap:2px}
+.sh__mega::before{content:"";position:absolute;left:0;right:0;top:-12px;height:14px}
+.sh__mega--wide{grid-template-columns:1fr 1fr;min-width:580px}
+.sh__item:hover .sh__mega,.sh__item:focus-within .sh__mega{opacity:1;visibility:visible;transform:translateY(0)}
+.sh__mega a{display:block;padding:11px 13px;border-radius:11px;color:var(--c-ink);font-weight:500;font-size:.95rem}
+.sh__mega a:hover{background:var(--c-soft);color:var(--c-blue)}
+.sh__mega a small{display:block;color:var(--c-mut);font-weight:400;font-size:.82rem;margin-top:2px}
+.sh__toggle{display:none;background:none;border:0;cursor:pointer;font-size:1.6rem;color:#fff;padding:6px}
+
+/* Overlay mode (landing): transparent over the dark hero at the top,
+   turns solid black + sticky on scroll (JS toggles .is-scrolled). */
+.sh.sh--overlay{position:fixed;left:0;right:0;background:transparent;border-bottom-color:transparent;backdrop-filter:none}
+.sh.sh--overlay.is-scrolled{background:rgba(11,11,18,.96);border-bottom:1px solid rgba(255,255,255,.10);
+  backdrop-filter:saturate(160%) blur(10px)}
+
+/* ---------------- Footer ---------------- */
+.sf{background:var(--c-dark);color:#9a9aad;padding:68px 0 28px;font-family:var(--c-font);font-size:16px;line-height:1.6}
+.sf a{color:#9a9aad;text-decoration:none}
+.sf a:hover{color:#fff}
+.sf__container{width:100%;max-width:1180px;margin:0 auto;padding:0 24px}
+.sf h4{color:#fff;font-size:.82rem;letter-spacing:.09em;text-transform:uppercase;margin:0 0 16px}
+.sf__grid{display:grid;grid-template-columns:1.6fr repeat(4,1fr);gap:32px}
+.sf ul{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.sf__brand{font-weight:700;font-size:1.25rem;color:#fff}
+.sf__brand span{color:var(--c-mint)}
+.sf__brand-text{color:#82829a;max-width:34ch;margin:14px 0 0}
+.sf__social{display:flex;gap:14px;margin-top:14px}
+.sf__bottom{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:48px;
+  padding-top:24px;border-top:1px solid #2e2e3c;color:#82829a;font-size:.9rem}
+
+/* ---------------- Responsive ---------------- */
+@media (max-width:980px){
+  .sf__grid{grid-template-columns:1fr 1fr}
+  .sh__menu,.sh__cta .sh__btn--ghost{display:none}
+  .sh__toggle{display:block}
+  .sh__nav[data-open="true"] .sh__menu{display:flex;position:absolute;top:76px;left:0;right:0;flex-direction:column;
+    align-items:stretch;background:#0b0b12;border-bottom:1px solid rgba(255,255,255,.10);padding:12px;gap:2px;
+    box-shadow:0 30px 70px rgba(0,0,0,.5)}
+  .sh__nav[data-open="true"] .sh__mega{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;
+    background:transparent;border:0;border-left:2px solid rgba(255,255,255,.14);border-radius:0;margin:0 0 6px 14px;padding:4px 8px}
+  .sh__nav[data-open="true"] .sh__mega a{color:#c7c9d4}
+  .sh__nav[data-open="true"] .sh__mega a:hover{background:rgba(255,255,255,.08);color:#fff}
+  .sh__nav[data-open="true"] .sh__mega a small{color:#8b8b9e}
+  .sh__mega--wide{grid-template-columns:1fr;min-width:0}
+}
+@media (max-width:620px){ .sf__grid{grid-template-columns:1fr} }
+
+/* ---------------- Landing-only fix ----------------
+   The Verifone "get started" band (.wrapGetContainer) used margin-bottom:-80px
+   to overlap the original footer; with the shared footer it covered the brand.
+   This element exists only on the landing, so neutralizing the overlap here is
+   safe for inner pages. */
+.wrapGetContainer{margin-bottom:80px !important}
+.sf{margin-top:0}
+
+
+/* ---- Skip link (defined here so it is hidden on EVERY page incl. the landing) ---- */
+.skip-link{position:absolute;left:-9999px;top:0;z-index:2000;background:#0A84FF;color:#fff;padding:12px 18px;border-radius:0 0 10px 0;font-weight:600}
+.skip-link:focus{left:0}
+/* ---- Force-close a mega-menu after a nav click (CSS :hover/:focus-within would otherwise keep it open across client-side navigation) ---- */
+.sh__item.is-closing > .sh__mega{opacity:0 !important;visibility:hidden !important;pointer-events:none !important}
+
+/* ---- No underline on header / mega-menu links (keep the hover background + colour change) ---- */
+.sh a,.sh a:hover,.sh a:focus,.sh__mega a,.sh__mega a:hover{text-decoration:none}

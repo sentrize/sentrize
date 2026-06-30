@@ -1,0 +1,4 @@
+/* Teal & Deep Navy — landing PAGE BODY only.
+   The header/footer (.sh/.sf chrome) are intentionally left at their original
+   colors so the nav stays as it was (blue), matching the inner pages. */
+:root{--blue:#0891b2;--mint:#22d3ee;}

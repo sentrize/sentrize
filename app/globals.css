@@ -1,0 +1,7 @@
+/* Sentrize — base globals.
+   The design system lives in /public/assets/css (chrome.css, site.css,
+   enterprise.css, and the Verifone landing CSS), loaded via <link> so the
+   Next.js site stays pixel-identical to the static build. Tailwind preflight is
+   intentionally NOT imported here — the design CSS owns the reset/typography. */
+
+html, body { padding: 0; margin: 0; }

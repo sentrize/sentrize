@@ -1,0 +1,534 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/2000/REC-xhtml1-200000126/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0052)https://go.2checkout.com/footer-newsletter-form.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="origin-trial" content="A7vZI3v+Gz7JfuRolKNM4Aff6zaGuT7X0mf3wtoZTnKv6497cVMnhy03KDqX7kBz/q/iidW7srW31oQbBt4VhgoAAACUeyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGUuY29tOjQ0MyIsImZlYXR1cmUiOiJEaXNhYmxlVGhpcmRQYXJ0eVN0b3JhZ2VQYXJ0aXRpb25pbmczIiwiZXhwaXJ5IjoxNzU3OTgwODAwLCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ==">	
+        
+		
+        <!--START SYSTEM CSS - DO NOT EDIT -->
+		
+        <link rel="stylesheet" type="text/css" media="screen" href="./mktLPSupport.css">
+        <style type="text/css">
+            #bodyId { background: transparent; font-family: Arial, sans-serif; font-size: 12px; text-align: center; margin: 0px; padding: 0px; }
+			div#outerWrapDiv { position: relative; height: 100% !important; width: 100%; }
+			div#innerWrapDiv { position: relative; background: transparent; padding: 0px; margin-left: auto; margin-right: auto; margin-top: 0px; margin-bottom: 0px; text-align: left; }
+        </style>
+
+		<!--END SYSTEM CSS - DO NOT EDIT -->
+        <!--START TEMPLATE CSS - EDIT THIS SECTION -->
+
+        <style>
+			/* Note: You can also change these in the specific Landing Pages*/
+
+			html { height: 100%; margin: 0; padding: 0; }
+			BODY#bodyId { margin: 0 auto; height: 100% !important; }
+			  
+			/* Width of Full Page */
+			div#innerWrapDiv { width: 100%; margin: 0 auto; }
+
+			/* Main Content Area - Controls height of page */
+			div#mktContent { background: transparent; position: relative; height: 100%; width: 100%; }
+
+			/* Thin Column in Content */
+
+			div#mktColumn { height: 100%; width: 200px; position: absolute; right: 0px; top: 0px; background: #dddddd; }
+			div#mktHeader { position: relative;  height: 100px;background: transparent; }
+			div#mktFooter { position: relative; height: 50px;background: transparent; }
+
+			/* Start fancy button */
+
+			div.buttonSubmit { position:relative; float:left; }
+			div.buttonSubmit input, div.buttonSubmit span { background-image:url(https://www.marketo.com/buttons/button-submit10.gif); /* change button and path to correct customer partition */ background-position:right 0px; background-repeat:no-repeat; border:0px none; color:#FFFFFF; cursor:pointer; float:left; font-weight:bold; height:36px; margin:0px; padding:0px 15px 2px; position:relative; z-index:5; }
+			div.buttonSubmit span { background-position:left -36px; left:0px; padding:0px; position:absolute; top:0px; width:4px; z-index:10; }
+			div.buttonSubmit input { width:auto; padding-left: 10px !important; padding-right: 10px !important; }
+			#mktFrmSubmit{ color: #FFFFFF !important; }
+			div.buttonSubmit:hover input { background-position: right -72px;}
+			div.buttonSubmit:hover span { background-position: left -108px;}
+			#mktFrmReset { display:none; }
+
+			/* end fancy button */
+        
+			.grecaptcha-badge { visibility: hidden; z-index: -1000; }
+			
+		</style>
+
+        <!--END TEMPLATE CSS - EDIT THIS SECTION -->
+        <!--START SYSTEM JAVASCRIPT - DO NOT EDIT -->
+		
+        <script type="text/javascript" async="" charset="utf-8" src="./recaptcha__en.js.download" crossorigin="anonymous" integrity="sha384-m1PC1ygjfLmGwsDY9jhFKKTk4uAMPEO34ag12kE5Ljsj7EXMzvB24pLZaON7S8Ds"></script><script type="text/javascript" async="" src="./munchkin.js.download"></script><script type="text/javascript">
+			function fieldValidate(field) {
+				/* call Mkto.setError(field, message) and return false to mark a field value invalid */
+				/* return 'skip' to bypass the built-in validations */
+				return true;
+			}
+			function getRequiredFieldMessage(domElement, label) {
+				return "This field is required";
+			}
+			function getTelephoneInvalidMessage(domElement, label) {
+				return "Please enter a valid telephone number";
+			}
+			function getEmailInvalidMessage(domElement, label) {
+				return "Please enter a valid email address";
+			}
+        </script>
+        
+      	<!--START jQuery CDN -->
+      
+        <script language="JavaScript" src="./jquery-latest.min.js.download" type="text/javascript"></script>
+		<script src="./jquery-3.6.0.min.js.download"></script>
+      	<script>
+          
+      		/**
+             * Escape HTML code when used inside JavaScript expressions
+             * that append it to DOM elements's content.
+             *
+             * @param  {String} text
+             * @return {String}
+             */
+            function escapeHtml(text) {
+                let tmpElem = document.createElement('div'),
+                    tmpElemContent = document.createTextNode(text);
+                    tmpElem.appendChild(tmpElemContent);
+                return $jQ(tmpElem).text();
+            }
+          
+          	/* Return cookie value by cookie name */
+            function getCookie(cname) {
+                let name = cname + "=";
+                let ca = document.cookie.split(';');
+                for(var i=0; i<ca.length; i++) {
+                    var c = ca[i].trim();
+                    if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+                }
+                return "";
+            }
+      	</script>
+      
+		<!--END jQuery CDN -->
+        <!-- Jquery for fancy things!-->
+
+        <script language="JavaScript" src="./jquery-latest.min.js.download" type="text/javascript"></script>
+        <script>
+            // to make fancy buttons.  Uses noConflict just in case
+            let $jQ = jQuery.noConflict();
+            let last_click_input = 'Lead_Traffic_Last_Click__c';
+
+            // Use jQuery via $j(...)
+            $jQ(document).ready(function(){
+                $jQ("#outerWrapDiv").scrollTop(0);
+                $jQ("#mktFrmSubmit").wrap("<div class='buttonSubmit'></div>");
+                $jQ(".buttonSubmit").prepend("<span></span>");
+            });
+
+            $jQ(window).load(function(){
+            	// Extract __reff
+                let reffCode = escapeHtml(getCookie("__reff"));
+
+                // check if cookie "__reff" exist
+                if (reffCode.length != 0) {
+                	let last_click = decodeURIComponent(document.cookie.split('__reff=')[1].split(';')[0].split('|').pop());
+                	$jQ('input[name="'+last_click_input+'"]').val(last_click);
+              	}
+              
+            });
+        </script>
+        
+        <!--END SYSTEM INCLUDES - DO NOT EDIT -->
+		
+        <link rel="stylesheet" type="text/css" media="screen" href="./mktLPSupport.css">
+<link rel="shortcut icon" href="https://go.2checkout.com/favicon.ico" type="image/x-icon">
+<link rel="icon" href="https://go.2checkout.com/favicon.ico" type="image/x-icon">
+<style type="text/css">
+BODY#bodyId{background-color: transparent; background-image: none; width: 100%; }
+DIV#mktContent{background-color: transparent; width: 100%; }</style><meta name="robots" content="index, nofollow">
+<script>
+document.domain = "2checkout.com";
+var doNotRedirectForm = true;
+</script>
+<style type="text/css"> div#lpeCDiv_69400 {position: absolute; z-index: 15; left: 0; top: 0; width: 100%; }
+   div#lpeCDiv_69400 span.lpContentsItem { filter: alpha(opacity=100); -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=100)";zoom: 1; opacity: 1; }
+
+</style>
+<style type="text/css"> .marketoContent {position: relative;} </style>
+
+		
+    <link id="mktoForms2BaseStyle" rel="stylesheet" type="text/css" href="./forms2.css" nonce=""><link id="mktoForms2ThemeStyle" rel="stylesheet" type="text/css" href="./forms2-theme-inset.css" nonce=""><style>*, :after, :before { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+body { margin: 0; }
+h1 { font-size: 30px; line-height: 30px; color: #293443 !important; font-weight: 100; font-family: 'Monserrat', sans-serif; }
+.mktoForm,.mktoForm *{ 
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    padding: 0;
+}
+.mktoForm { width: 290px !important; height: 40px; overflow: hidden; } 
+.mktoForm h1, .mktoForm h1+p { text-align: center; }
+.mktoForm .mktoGutter,
+.mktoForm .mktoOffset { display:none; }
+.mktoForm .mktoFormCol .mktoLabel { text-align: left; width: 100%; }
+.mktoForm .mktoFormCol { float: none; }
+.mktoForm .mktoFieldWrap { float: none; }
+.mktoForm > div:nth-of-type(1) { padding-bottom: 20px; }
+.mktoForm fieldset { padding: 0 10px; }
+.mktoForm input[type=url], .mktoForm input[type=text], .mktoForm input[type=date], .mktoForm input[type=tel], .mktoForm input[type=email], .mktoForm input[type=number], .mktoForm textarea.mktoField, .mktoForm select.mktoField { 
+    width: 100%; 
+    height: 1.5em; 
+    line-height: 1.5em; 
+    font-size: 18px; 
+}
+.mktoForm select.mktoField { height: auto; padding: 0; }
+.mktoForm select.mktoField option { padding: 0; }
+.mktoForm .mktoFormRow .mktoFormCol { clear: both; margin-bottom: 0 !important; }
+.mktoForm .mktoRadioList, .mktoForm .mktoCheckboxList { width: 100%; }
+.mktoForm .mktoFormRow .mktoRequiredField .mktoAsterix { 
+    float: left; 
+    padding-left: 0; 
+    padding-right: 5px; 
+    color: #ec5050; 
+}
+.mktoModal .mktoModalContent { padding: 10px 0; }
+.mktoModal .mktoModalClose { right: 0; }
+.mktoForm .cf_widget_socialsignon { display: block; }
+.mktoForm .cf_widget_socialsignon .cf_sign_on { width: 100%; }
+.mktoForm .cf_widget_socialsignon .cf_sign_on_button { width: auto; }
+
+/* Custom CSS */
+.mktoForm input[type=text], .mktoForm input[type=url], .mktoForm input[type=email], .mktoForm input[type=tel], .mktoForm input[type=number], .mktoForm input[type=date], .mktoForm select.mktoField, .mktoForm textarea.mktoField { 
+    -webkit-appearance: none; 
+    background-color: #ffffff; 
+    color: #293443; 
+    width: 100%; 
+    font-size:12px; 
+    box-shadow: none;
+}
+.mktoForm input[type=text]:focus, .mktoForm input[type=url]:focus, .mktoForm input[type=email]:focus, .mktoForm input[type=tel]:focus, .mktoForm input[type=number]:focus, .mktoForm input[type=date]:focus, .mktoForm textarea.mktoField:focus, .mktoForm select.mktoField:focus { 
+    border: 1px solid #fff; 
+    box-shadow: none; 
+}
+.mktoForm input[type=text], .mktoForm input[type=url], .mktoForm input[type=email], .mktoForm input[type=tel], .mktoForm input[type=number], .mktoForm input[type=date], .mktoForm textarea.mktoField { 
+    padding: 4px; 
+}
+.mktoForm .mktoAsterix { color: #ff0000 !important; }
+.mktoLabel { color: #293443 !important; }
+.mktoButtonWrap .mktoButton a.hover { opacity: 0.6; }
+.mktoForm .mktoCheckboxList > label { color: #293443; }
+a.button a:hover{ background: #99cc00; }
+.mktoForm input.mktoField.mktoInvalid, .mktoForm select.mktoField.mktoInvalid, .mktoForm textarea.mktoField.mktoInvalid, .mktoForm div.mktoLogicalField.mktoInvalid { 
+    border: 1px solid rgba(41, 52, 67, 0.4);
+    background-color: rgba(236, 80, 80, 0.4);
+}
+.mktoForm .mktoFormRow { float: left; width: 254px; clear: none; display: none; }
+.mktoForm .mktoFormRow:nth-child(5) { display: block; }
+.mktoForm .mktoButtonRow { width: 36px; text-align: center; float: left;}
+.mktoForm .mktoButtonWrap { margin: 0 auto !important; }
+.mktoButtonWrap .mktoButton, .mktoForm .mktoButtonWrap.mktoInset button.mktoButton, .mktoForm .mktoButtonWrap.mktoInset button.mktoButton:active, .mktoForm .mktoButtonWrap.mktoInset button.mktoButton:focus, .mktoForm .mktoButtonWrap.mktoInset button.mktoButton:hover, .mktoForm button.mktoButton {
+    display: block;
+    background-image: none;
+    background: #3474ff;
+    color: #transparent;
+	text-indent: -9999px;
+    border: none;
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: 500;
+    margin: 0 auto;
+    text-align: center;
+    vertical-align: middle;
+    font-family: 'Monserrat', sans-serif;
+    overflow: hidden;
+    padding: 11px 10px;
+    z-index: 2;
+    text-shadow: none;
+    border-radius: 0 3px 3px 0;
+    -moz-border-radius: 0 3px 3px 0;
+    -webkit-border-radius: 0 3px 3px 0;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    width: 100%;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    position: relative;
+}
+
+.mktoButton:before {
+    content: "";
+    position: absolute;
+    border-bottom: 2px solid #fff;
+    border-right: 2px solid #fff;
+    display: block;
+    width: 10px;
+    height: 10px;
+    top: 50%;
+    margin-top: -5px;
+    left: 50%;
+    margin-left: -7px;
+    transform: rotate(-45deg);
+}
+div#outerWrapDiv { overflow-y: auto !important; }
+div#innerWrapDiv { width: 100% !important; }
+div.Contact_Us_Form { width: 100% !important; }
+.mktoForm .mktoRequiredField label.mktoLabel, .mktoForm .mktoFormCol .mktoLabel {
+    display: none;
+    font-weight: normal;
+    float: none;
+    width: 130px !important;
+    padding: 0;
+    vertical-align: middle;
+}
+.mktoForm .mktoFormRow .mktoField {
+    display: inline-block;
+    float: none;
+    width: 100% !important;
+    height: 36px;
+    padding: 10px 12px;
+    font-size: 14px;
+    line-height: 14px;
+    color: #293443;
+    background-color: #fff;
+    vertical-align: middle;
+    border: 1px solid rgba(41, 52, 67, 0.4);
+    border-radius: 0;
+    border-radius: 3px 0 0 3px;
+    -mox-border-radius: 3px 0 0 3px;
+    -webkit-border-radius: 3px 0 0 3px;
+}
+.mktoForm .mktoFormRow .mktoField:focus {
+    border-color: rgba(41, 52, 67, 0.4);
+    outline: 0;
+}
+.mktoForm .mktoFormRow .mktoField[multiple="multiple"] {
+    height: auto;
+    background-image: none;
+}
+.mktoForm .mktoFormRow textarea.mktoField {
+    height: auto;
+    min-height: 70px;
+}
+.mktoHtmlText { width: auto !important; }
+.mktoHtmlText p { margin-bottom: 20px; }
+.mktoHtmlText h1 { margin-top: 0; padding: 10px 0; }
+
+</style><script src="./api.js.download"></script></head>
+    <body id="bodyId" class="mktEditable" align="center">
+        
+		<!-- Google Tag Manager (noscript) -->
+        
+		<noscript>
+            <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P9H5CX" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
+        </noscript>
+        
+		<!-- End Google Tag Manager (noscript) -->
+        
+        <div id="outerWrapDiv" class="mktEditable">
+			<div id="innerWrapDiv">
+		
+				<div id="lpeCDiv_69400" class="lpeCElement Sign-up_Newsletter_Form"><span class="lpContentsItem formSpan">
+<script src="./forms2.min.js.download"></script>
+<form class="mktoForm mktoHasWidth mktoLayoutLeft" id="mktoForm_1772" novalidate="novalidate" style="font-family: Helvetica, Arial, sans-serif; font-size: 13px; color: rgb(51, 51, 51);">
+<style type="text/css" nonce="">.mktoForm .mktoButtonWrap.mktoInset .mktoButton {
+color:#000;
+background:#fff;
+border:1px solid #aeb0b6;
+padding:0.4em 1em;
+font-size:1em;
+box-shadow: 1px 1px 6px 1px #ccc;
+background-color:#f5f5f5;
+background-image: -webkit-gradient(linear, left top, left bottom, from(#f5f5f5), to(#dfdfdf));
+background-image: -webkit-linear-gradient(top, #f5f5f5, #dfdfdf);
+background-image: -moz-linear-gradient(top, #f5f5f5, #dfdfdf);
+background-image: linear-gradient(to bottom, #f5f5f5, #dfdfdf);
+}
+.mktoForm .mktoButtonWrap.mktoInset .mktoButton:hover {
+border:1px solid #999;
+}
+.mktoForm .mktoButtonWrap.mktoInset .mktoButton:focus {
+outline:none;
+border:1px solid #999;
+}
+.mktoForm .mktoButtonWrap.mktoInset .mktoButton:active{
+box-shadow:inset 1px 1px 6px 1px #ccc;
+background-color:#dfdfdf;
+background-image: -webkit-gradient(linear, left top, left bottom, from(#dfdfdf), to(#f5f5f5));
+background-image: -webkit-linear-gradient(top, #dfdfdf, #f5f5f5);
+background-image: -moz-linear-gradient(top, #dfdfdf, #f5f5f5);
+background-image: linear-gradient(to bottom, #dfdfdf, #f5f5f5);
+}
+</style><div class="mktoFormRow"><input type="hidden" name="LeadSource" class="mktoField mktoFieldDescriptor mktoFormCol" value="Website" style="margin-bottom: 10px;"><div class="mktoClear"></div></div><div class="mktoFormRow"><input type="hidden" name="avg8cPanelVendor" class="mktoField mktoFieldDescriptor mktoFormCol" value="" style="margin-bottom: 10px;"><div class="mktoClear"></div></div><div class="mktoFormRow"><input type="hidden" name="Secondary_Lead_Source__c" class="mktoField mktoFieldDescriptor mktoFormCol" value="Newsletter Sign-up" style="margin-bottom: 10px;"><div class="mktoClear"></div></div><div class="mktoFormRow"><div class="mktoFieldDescriptor mktoFormCol" style="margin-bottom: 10px;"><div class="mktoOffset" style="width: 10px;"></div><div class="mktoFieldWrap mktoRequiredField"><label for="Email" id="LblEmail" class="mktoLabel mktoHasWidth" style=""><div class="mktoAsterix">*</div></label><div class="mktoGutter mktoHasWidth" style=""></div><input id="Email" name="Email" placeholder="Your Email (to subscribe)" maxlength="255" aria-labelledby="LblEmail InstructEmail" type="email" class="mktoField mktoEmailField mktoHasWidth mktoRequired" aria-required="true" style=""><span id="InstructEmail" tabindex="-1" class="mktoInstruction"></span><div class="mktoClear"></div></div><div class="mktoClear"></div></div><div class="mktoClear"></div></div><div class="mktoFormRow"><input type="hidden" name="Campaign_Attribution__c" class="mktoField mktoFieldDescriptor mktoFormCol" value="" style="margin-bottom: 10px;"><div class="mktoClear"></div></div><div class="mktoFormRow"><input type="hidden" name="utm_source__c" class="mktoField mktoFieldDescriptor mktoFormCol" value="" style="margin-bottom: 10px;"><div class="mktoClear"></div></div><div class="mktoFormRow"><input type="hidden" name="utm_campaign__c" class="mktoField mktoFieldDescriptor mktoFormCol" value="" style="margin-bottom: 10px;"><div class="mktoClear"></div></div><div class="mktoFormRow"><input type="hidden" name="utm_content__c" class="mktoField mktoFieldDescriptor mktoFormCol" value="" style="margin-bottom: 10px;"><div class="mktoClear"></div></div><div class="mktoFormRow"><input type="hidden" name="utm_keyword__c" class="mktoField mktoFieldDescriptor mktoFormCol" value="" style="margin-bottom: 10px;"><div class="mktoClear"></div></div><div class="mktoFormRow"><input type="hidden" name="utm_medium__c" class="mktoField mktoFieldDescriptor mktoFormCol" value="" style="margin-bottom: 10px;"><div class="mktoClear"></div></div><div class="mktoFormRow"><input type="hidden" name="utm_expid__c" class="mktoField mktoFieldDescriptor mktoFormCol" value="" style="margin-bottom: 10px;"><div class="mktoClear"></div></div><div class="mktoFormRow"><input type="hidden" name="gclid__c" class="mktoField mktoFieldDescriptor mktoFormCol" value="" style="margin-bottom: 10px;"><div class="mktoClear"></div></div><div class="mktoFormRow"><input type="hidden" name="Lead_Traffic_All_Clicks__c" class="mktoField mktoFieldDescriptor mktoFormCol" value="www.google.com&amp;1781537859174.1781661578149.14" style="margin-bottom: 10px;"><div class="mktoClear"></div></div><div class="mktoFormRow"><input type="hidden" name="Lead_Traffic_Last_Click__c" class="mktoField mktoFieldDescriptor mktoFormCol" value="" style="margin-bottom: 10px;"><div class="mktoClear"></div></div><div class="mktoFormRow"><input type="hidden" name="vID__c" class="mktoField mktoFieldDescriptor mktoFormCol" value="" style="margin-bottom: 10px;"><div class="mktoClear"></div></div><div class="mktoFormRow"><input type="hidden" name="Lead_Channel__c" class="mktoField mktoFieldDescriptor mktoFormCol" value="" style="margin-bottom: 10px;"><div class="mktoClear"></div></div><div class="mktoFormRow"><input type="hidden" name="Source__c" class="mktoField mktoFieldDescriptor mktoFormCol" value="" style="margin-bottom: 10px;"><div class="mktoClear"></div></div><div class="mktoFormRow"><input type="hidden" name="Medium__c" class="mktoField mktoFieldDescriptor mktoFormCol" value="" style="margin-bottom: 10px;"><div class="mktoClear"></div></div><div class="mktoFormRow"><input type="hidden" name="CampaignTerm__c" class="mktoField mktoFieldDescriptor mktoFormCol" value="" style="margin-bottom: 10px;"><div class="mktoClear"></div></div><div class="mktoFormRow"><input type="hidden" name="CampaignContent__c" class="mktoField mktoFieldDescriptor mktoFormCol" value="" style="margin-bottom: 10px;"><div class="mktoClear"></div></div><div class="mktoFormRow"><input type="hidden" name="CampaignName__c" class="mktoField mktoFieldDescriptor mktoFormCol" value="" style="margin-bottom: 10px;"><div class="mktoClear"></div></div><div class="mktoButtonRow"><span class="mktoButtonWrap mktoInset" style="margin-left: 18px;"><button type="submit" class="mktoButton">&gt;</button></span></div><input type="hidden" name="formid" class="mktoField mktoFieldDescriptor" value="1772"><input type="hidden" name="lpId" class="mktoField mktoFieldDescriptor" value="6945"><input type="hidden" name="subId" class="mktoField mktoFieldDescriptor" value="83"><input type="hidden" name="munchkinId" class="mktoField mktoFieldDescriptor" value="600-CNF-632"><input type="hidden" name="lpurl" class="mktoField mktoFieldDescriptor" value="//go.2checkout.com/footer-newsletter-form.html?cr={creative}&amp;kw={keyword}"><input type="hidden" name="followupLpId" class="mktoField mktoFieldDescriptor" value="6943"><input type="hidden" name="cr" class="mktoField mktoFieldDescriptor" value=""><input type="hidden" name="kw" class="mktoField mktoFieldDescriptor" value=""><input type="hidden" name="q" class="mktoField mktoFieldDescriptor" value=""></form>
+<script>
+  (function (){
+    var formDescriptor = {"Id":1772,"Vid":1772,"Status":"approved","Name":"2checkout Footer Newsletter Sign-up","Description":"","Layout":"left","GutterWidth":10,"OffsetWidth":10,"HasTwoButtons":true,"SubmitLabel":"\u003E","ResetLabel":"Clear","ButtonLocation":"18","LabelWidth":100,"FieldWidth":150,"ToolTipType":"none","FontFamily":"Helvetica, Arial, sans-serif","FontSize":"13px","FontColor":"#333","FontUrl":null,"LineMargin":10,"ProcessorVersion":2,"CreatedByUserid":3738,"ProcessOptions":{"language":"English","locale":"en_US","profiling":{"isEnabled":false,"numberOfProfilingFields":1,"alwaysShowFields":[]},"socialSignOn":{"isEnabled":false,"enabledNetworks":[],"cfId":null,"codeSnippet":null},"knownLead":{"type":"form","template":""}},"EnableDeferredMode":0,"EnableCaptcha":0,"EnableGlobalFormValidationRule":1,"ButtonType":null,"ButtonImageUrl":null,"ButtonText":null,"ButtonSubmissionText":"","ButtonStyle":{"id":15,"className":"mktoInset","css":".mktoForm .mktoButtonWrap.mktoInset .mktoButton {\ncolor:#000;\nbackground:#fff;\nborder:1px solid #aeb0b6;\npadding:0.4em 1em;\nfont-size:1em;\nbox-shadow: 1px 1px 6px 1px #ccc;\nbackground-color:#f5f5f5;\nbackground-image: -webkit-gradient(linear, left top, left bottom, from(#f5f5f5), to(#dfdfdf));\nbackground-image: -webkit-linear-gradient(top, #f5f5f5, #dfdfdf);\nbackground-image: -moz-linear-gradient(top, #f5f5f5, #dfdfdf);\nbackground-image: linear-gradient(to bottom, #f5f5f5, #dfdfdf);\n}\n.mktoForm .mktoButtonWrap.mktoInset .mktoButton:hover {\nborder:1px solid #999;\n}\n.mktoForm .mktoButtonWrap.mktoInset .mktoButton:focus {\noutline:none;\nborder:1px solid #999;\n}\n.mktoForm .mktoButtonWrap.mktoInset .mktoButton:active{\nbox-shadow:inset 1px 1px 6px 1px #ccc;\nbackground-color:#dfdfdf;\nbackground-image: -webkit-gradient(linear, left top, left bottom, from(#dfdfdf), to(#f5f5f5));\nbackground-image: -webkit-linear-gradient(top, #dfdfdf, #f5f5f5);\nbackground-image: -moz-linear-gradient(top, #dfdfdf, #f5f5f5);\nbackground-image: linear-gradient(to bottom, #dfdfdf, #f5f5f5);\n}\n","buttonColor":null},"ThemeStyle":{"id":4,"displayOrder":2,"name":"Inset","backgroundColor":"#FFF","layout":"left","fontFamily":"Helvetica, Arial, sans-serif","fontSize":"13px","fontColor":"#333","offsetWidth":10,"gutterWidth":10,"labelWidth":100,"fieldWidth":150,"lineMargin":10,"useBackgroundColorOnPreview":false,"css":"","href":"css\/forms2-theme-inset.css","buttonStyleId":15},"ThemeStyleOverride":"*, :after, :before { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }\nbody { margin: 0; }\nh1 { font-size: 30px; line-height: 30px; color: #293443 !important; font-weight: 100; font-family: 'Monserrat', sans-serif; }\n.mktoForm,.mktoForm *{ \n    -webkit-box-sizing: border-box;\n    -moz-box-sizing: border-box;\n    box-sizing: border-box;\n    -moz-box-sizing: border-box;\n    padding: 0;\n}\n.mktoForm { width: 290px !important; height: 40px; overflow: hidden; } \n.mktoForm h1, .mktoForm h1+p { text-align: center; }\n.mktoForm .mktoGutter,\n.mktoForm .mktoOffset { display:none; }\n.mktoForm .mktoFormCol .mktoLabel { text-align: left; width: 100%; }\n.mktoForm .mktoFormCol { float: none; }\n.mktoForm .mktoFieldWrap { float: none; }\n.mktoForm \u003E div:nth-of-type(1) { padding-bottom: 20px; }\n.mktoForm fieldset { padding: 0 10px; }\n.mktoForm input[type=url], .mktoForm input[type=text], .mktoForm input[type=date], .mktoForm input[type=tel], .mktoForm input[type=email], .mktoForm input[type=number], .mktoForm textarea.mktoField, .mktoForm select.mktoField { \n    width: 100%; \n    height: 1.5em; \n    line-height: 1.5em; \n    font-size: 18px; \n}\n.mktoForm select.mktoField { height: auto; padding: 0; }\n.mktoForm select.mktoField option { padding: 0; }\n.mktoForm .mktoFormRow .mktoFormCol { clear: both; margin-bottom: 0 !important; }\n.mktoForm .mktoRadioList, .mktoForm .mktoCheckboxList { width: 100%; }\n.mktoForm .mktoFormRow .mktoRequiredField .mktoAsterix { \n    float: left; \n    padding-left: 0; \n    padding-right: 5px; \n    color: #ec5050; \n}\n.mktoModal .mktoModalContent { padding: 10px 0; }\n.mktoModal .mktoModalClose { right: 0; }\n.mktoForm .cf_widget_socialsignon { display: block; }\n.mktoForm .cf_widget_socialsignon .cf_sign_on { width: 100%; }\n.mktoForm .cf_widget_socialsignon .cf_sign_on_button { width: auto; }\n\n\/* Custom CSS *\/\n.mktoForm input[type=text], .mktoForm input[type=url], .mktoForm input[type=email], .mktoForm input[type=tel], .mktoForm input[type=number], .mktoForm input[type=date], .mktoForm select.mktoField, .mktoForm textarea.mktoField { \n    -webkit-appearance: none; \n    background-color: #ffffff; \n    color: #293443; \n    width: 100%; \n    font-size:12px; \n    box-shadow: none;\n}\n.mktoForm input[type=text]:focus, .mktoForm input[type=url]:focus, .mktoForm input[type=email]:focus, .mktoForm input[type=tel]:focus, .mktoForm input[type=number]:focus, .mktoForm input[type=date]:focus, .mktoForm textarea.mktoField:focus, .mktoForm select.mktoField:focus { \n    border: 1px solid #fff; \n    box-shadow: none; \n}\n.mktoForm input[type=text], .mktoForm input[type=url], .mktoForm input[type=email], .mktoForm input[type=tel], .mktoForm input[type=number], .mktoForm input[type=date], .mktoForm textarea.mktoField { \n    padding: 4px; \n}\n.mktoForm .mktoAsterix { color: #ff0000 !important; }\n.mktoLabel { color: #293443 !important; }\n.mktoButtonWrap .mktoButton a.hover { opacity: 0.6; }\n.mktoForm .mktoCheckboxList \u003E label { color: #293443; }\na.button a:hover{ background: #99cc00; }\n.mktoForm input.mktoField.mktoInvalid, .mktoForm select.mktoField.mktoInvalid, .mktoForm textarea.mktoField.mktoInvalid, .mktoForm div.mktoLogicalField.mktoInvalid { \n    border: 1px solid rgba(41, 52, 67, 0.4);\n    background-color: rgba(236, 80, 80, 0.4);\n}\n.mktoForm .mktoFormRow { float: left; width: 254px; clear: none; display: none; }\n.mktoForm .mktoFormRow:nth-child(5) { display: block; }\n.mktoForm .mktoButtonRow { width: 36px; text-align: center; float: left;}\n.mktoForm .mktoButtonWrap { margin: 0 auto !important; }\n.mktoButtonWrap .mktoButton, .mktoForm .mktoButtonWrap.mktoInset button.mktoButton, .mktoForm .mktoButtonWrap.mktoInset button.mktoButton:active, .mktoForm .mktoButtonWrap.mktoInset button.mktoButton:focus, .mktoForm .mktoButtonWrap.mktoInset button.mktoButton:hover, .mktoForm button.mktoButton {\n    display: block;\n    background-image: none;\n    background: #3474ff;\n    color: #transparent;\n\ttext-indent: -9999px;\n    border: none;\n    font-size: 14px;\n    line-height: 14px;\n    font-weight: 500;\n    margin: 0 auto;\n    text-align: center;\n    vertical-align: middle;\n    font-family: 'Monserrat', sans-serif;\n    overflow: hidden;\n    padding: 11px 10px;\n    z-index: 2;\n    text-shadow: none;\n    border-radius: 0 3px 3px 0;\n    -moz-border-radius: 0 3px 3px 0;\n    -webkit-border-radius: 0 3px 3px 0;\n    box-shadow: none;\n    -moz-box-shadow: none;\n    -webkit-box-shadow: none;\n    font-weight: 700;\n    text-transform: uppercase;\n    width: 100%;\n    width: 36px;\n    height: 36px;\n    line-height: 36px;\n    position: relative;\n}\n\n.mktoButton:before {\n    content: \"\";\n    position: absolute;\n    border-bottom: 2px solid #fff;\n    border-right: 2px solid #fff;\n    display: block;\n    width: 10px;\n    height: 10px;\n    top: 50%;\n    margin-top: -5px;\n    left: 50%;\n    margin-left: -7px;\n    transform: rotate(-45deg);\n}\ndiv#outerWrapDiv { overflow-y: auto !important; }\ndiv#innerWrapDiv { width: 100% !important; }\ndiv.Contact_Us_Form { width: 100% !important; }\n.mktoForm .mktoRequiredField label.mktoLabel, .mktoForm .mktoFormCol .mktoLabel {\n    display: none;\n    font-weight: normal;\n    float: none;\n    width: 130px !important;\n    padding: 0;\n    vertical-align: middle;\n}\n.mktoForm .mktoFormRow .mktoField {\n    display: inline-block;\n    float: none;\n    width: 100% !important;\n    height: 36px;\n    padding: 10px 12px;\n    font-size: 14px;\n    line-height: 14px;\n    color: #293443;\n    background-color: #fff;\n    vertical-align: middle;\n    border: 1px solid rgba(41, 52, 67, 0.4);\n    border-radius: 0;\n    border-radius: 3px 0 0 3px;\n    -mox-border-radius: 3px 0 0 3px;\n    -webkit-border-radius: 3px 0 0 3px;\n}\n.mktoForm .mktoFormRow .mktoField:focus {\n    border-color: rgba(41, 52, 67, 0.4);\n    outline: 0;\n}\n.mktoForm .mktoFormRow .mktoField[multiple=\"multiple\"] {\n    height: auto;\n    background-image: none;\n}\n.mktoForm .mktoFormRow textarea.mktoField {\n    height: auto;\n    min-height: 70px;\n}\n.mktoHtmlText { width: auto !important; }\n.mktoHtmlText p { margin-bottom: 20px; }\n.mktoHtmlText h1 { margin-top: 0; padding: 10px 0; }\n\n","FormFollowup":"\/\/go.2checkout.com\/2checkoutFooterNewsletterSign-up_Sign-upNewsletterThankYouPage.html","LiveStreamSettings":null,"rows":[[{"Id":24222,"Name":"LeadSource","Datatype":"hidden","Maxlength":255,"InputLabel":"Lead Source:","InputInitialValue":"Website","InputSourceChannel":"url","InputSourceSelector":"src","ProfilingFieldNumber":0,"DisablePrefill":true}],[{"Id":24223,"Name":"avg8cPanelVendor","Datatype":"hidden","Maxlength":255,"InputLabel":"avg8_cPanelVendor:","InputInitialValue":"","InputSourceChannel":"cookie","InputSourceSelector":"avg8_cPanelVendor","ProfilingFieldNumber":0,"DisablePrefill":true}],[{"Id":24225,"Name":"Secondary_Lead_Source__c","Datatype":"hidden","Maxlength":50,"InputLabel":"Secondary Lead Source:","InputInitialValue":"Newsletter Sign-up","InputSourceChannel":"url","InputSourceSelector":"src","ProfilingFieldNumber":0,"DisablePrefill":true}],[{"Id":24221,"Name":"Email","IsRequired":true,"Datatype":"email","Maxlength":255,"InputLabel":"","InputInitialValue":"","InputSourceChannel":"constant","LabelWidth":0,"PlaceholderText":"Your Email (to subscribe)","ValidationMessage":"Must be valid email. \u003Cspan class='mktoErrorDetail'\u003Eexample@yourdomain.com\u003C\/span\u003E","DisablePrefill":true}],[{"Id":24226,"Name":"Campaign_Attribution__c","Datatype":"hidden","Maxlength":255,"InputLabel":"Campaign Attribution:","InputInitialValue":"","InputSourceChannel":"url","InputSourceSelector":"catt","ProfilingFieldNumber":0,"DisablePrefill":true}],[{"Id":24227,"Name":"utm_source__c","Datatype":"hidden","Maxlength":100,"InputLabel":"utm_source:","InputInitialValue":"","InputSourceChannel":"url","InputSourceSelector":"utm_source","ProfilingFieldNumber":0,"DisablePrefill":true}],[{"Id":24228,"Name":"utm_campaign__c","Datatype":"hidden","Maxlength":100,"InputLabel":"utm_campaign:","InputInitialValue":"","InputSourceChannel":"url","InputSourceSelector":"utm_campaign","ProfilingFieldNumber":0,"DisablePrefill":true}],[{"Id":24229,"Name":"utm_content__c","Datatype":"hidden","Maxlength":100,"InputLabel":"utm_content:","InputInitialValue":"","InputSourceChannel":"url","InputSourceSelector":"utm_content","ProfilingFieldNumber":0,"DisablePrefill":true}],[{"Id":24230,"Name":"utm_keyword__c","Datatype":"hidden","Maxlength":100,"InputLabel":"utm_keyword:","InputInitialValue":"","InputSourceChannel":"url","InputSourceSelector":"utm_keyword","ProfilingFieldNumber":0,"DisablePrefill":true}],[{"Id":24231,"Name":"utm_medium__c","Datatype":"hidden","Maxlength":100,"InputLabel":"utm_medium:","InputInitialValue":"","InputSourceChannel":"url","InputSourceSelector":"utm_medium","ProfilingFieldNumber":0,"DisablePrefill":true}],[{"Id":24232,"Name":"utm_expid__c","Datatype":"hidden","Maxlength":100,"InputLabel":"utm_expid:","InputInitialValue":"","InputSourceChannel":"url","InputSourceSelector":"utm_expid","ProfilingFieldNumber":0,"DisablePrefill":true}],[{"Id":24233,"Name":"gclid__c","Datatype":"hidden","Maxlength":100,"InputLabel":"gclid:","InputInitialValue":"","InputSourceChannel":"url","InputSourceSelector":"gclid","ProfilingFieldNumber":0,"DisablePrefill":true}],[{"Id":24234,"Name":"Lead_Traffic_All_Clicks__c","Datatype":"hidden","Maxlength":32768,"InputLabel":"Lead Traffic All Clicks:","InputInitialValue":"","InputSourceChannel":"cookie","InputSourceSelector":"__reff","ProfilingFieldNumber":0,"DisablePrefill":true}],[{"Id":24235,"Name":"Lead_Traffic_Last_Click__c","Datatype":"hidden","Maxlength":32768,"InputLabel":"Lead Traffic Last Click:","InputInitialValue":"","InputSourceChannel":"constant","ProfilingFieldNumber":0,"DisablePrefill":true}],[{"Id":24236,"Name":"vID__c","Datatype":"hidden","Maxlength":255,"InputLabel":"vID:","InputInitialValue":"","InputSourceChannel":"url","InputSourceSelector":"vid","ProfilingFieldNumber":0,"DisablePrefill":true}],[{"Id":24237,"Name":"Lead_Channel__c","Datatype":"hidden","Maxlength":255,"InputLabel":"Lead Channel:","InputInitialValue":"","InputSourceChannel":"url","InputSourceSelector":"lead_channel","VisibleRows":4,"ProfilingFieldNumber":0,"DisablePrefill":true}],[{"Id":24238,"Name":"Source__c","Datatype":"hidden","Maxlength":255,"InputLabel":"Source:","InputInitialValue":"","InputSourceChannel":"url","InputSourceSelector":"ga_source","ProfilingFieldNumber":0,"DisablePrefill":true}],[{"Id":24239,"Name":"Medium__c","Datatype":"hidden","Maxlength":255,"InputLabel":"Medium:","InputInitialValue":"","InputSourceChannel":"url","InputSourceSelector":"ga_medium","ProfilingFieldNumber":0,"DisablePrefill":true}],[{"Id":24240,"Name":"CampaignTerm__c","Datatype":"hidden","Maxlength":255,"InputLabel":"CampaignTerm:","InputInitialValue":"","InputSourceChannel":"url","InputSourceSelector":"ga_term","ProfilingFieldNumber":0,"DisablePrefill":true}],[{"Id":24241,"Name":"CampaignContent__c","Datatype":"hidden","Maxlength":255,"InputLabel":"CampaignContent:","InputInitialValue":"","InputSourceChannel":"url","InputSourceSelector":"ga_content","ProfilingFieldNumber":0,"DisablePrefill":true}],[{"Id":24242,"Name":"CampaignName__c","Datatype":"hidden","Maxlength":255,"InputLabel":"CampaignName:","InputInitialValue":"","InputSourceChannel":"url","InputSourceSelector":"ga_campaign","ProfilingFieldNumber":0,"DisablePrefill":true}],[{"Id":24224,"Name":"Profiling","Datatype":"profiling","InputInitialValue":"","ProfilingFieldNumber":0,"IsLabelToLeft":true}]],"fieldsetRows":[],"action":"\/index.php\/leadCapture\/save2","munchkinId":"600-CNF-632","dcJsUrl":"","invalidInputMsg":"Invalid Input","formSubmitFailedMsg":"Submission failed, please try again later.","isPreview":null};
+    MktoForms2.setOptions({baseUrl:"/js/forms2/"});
+    var isDev = false;
+    if(isDev && window.console && window.JSON){
+      console.log(JSON.stringify(formDescriptor, null, "  "));
+    }
+    formDescriptor.lpId = 6945;
+    var form = MktoForms2.newForm(formDescriptor, function (form){
+      var lpFields = {"lpId":6945,"subId":83,"munchkinId":"600-CNF-632","lpurl":"\/\/go.2checkout.com\/footer-newsletter-form.html?cr={creative}&kw={keyword}","followupLpId":6943};
+      var pageFields = MktoForms2.getPageFields();
+      form.addHiddenFields(lpFields);
+      form.addHiddenFields(pageFields);
+      if(window.mktoPreFillFields){
+        form.setValuesCoerced(mktoPreFillFields);
+      }
+      if(!form.EnableDeferredMode){
+        form.render();
+      }
+    });     
+  })()
+</script>
+
+<noscript>
+  <form class='mktoForm mktoNoJS'>
+      <input type="hidden" name="formid" value="1772" />
+  </form>
+  <p>Please enable Javascript to view this form.</p>
+</noscript>
+
+</span></div>
+
+				
+				<!-- START TEMPLATE HTML - EDIT THIS SECTION -->
+
+				<div id="mktContent" class="mktEditable">
+					<!-- Base of Landing Page Content -->
+				</div>
+				
+				<!-- END TEMPLATE HTML -->
+
+				<!-- SYSTEM FOOTER - DO NOT EDIT -->
+			
+            </div>
+        </div>
+		
+        <script type="text/javascript" src="./munchkin(2).js.download"></script><script>Munchkin.init('600-CNF-632', {customName: 'footer-newsletter-form', wsInfo: 'j1RR'});</script>
+        
+		<!--START Page Functions -->
+		
+        <script> 
+			
+            if (window != top) {
+				MktoForms2.whenReady(function(mktoForm) {
+					
+					//Google Recaptcha config
+					let userConfig = {
+						apiKeys : {
+							recaptcha : "6Lf4v3gUAAAAAKZCyhVvXkLesrNRsoPRBhX96Jo2"
+						},
+						fields : {
+							recaptchaFinger : "lastReCAPTCHAUserFingerprint"
+						},
+						actions : {
+							formSubmit : "form"
+						}
+					};
+					
+					/* --- NO NEED TO TOUCH BELOW THIS LINE --- */
+
+					let formEl = mktoForm.getFormElem()[0],
+						submitButtonEl = formEl.querySelector("button[type='submit']"),
+						recaptchaLib = document.createElement("script");
+
+					/* pending widget ready */
+					submitButtonEl.disabled = true;
+
+					/* pending verify */
+					mktoForm.submittable(false);
+					mktoForm.locked = false;  
+
+					let recaptchaListeners = {
+						ready : function() {
+							submitButtonEl.disabled = false;
+						}
+					};
+					
+					Object.keys(recaptchaListeners).forEach(function globalize(fnName){
+						window["grecaptchaListeners_" + fnName] = recaptchaListeners[fnName];
+					});
+
+					mktoForm.onValidate(function(native) {
+						if (!native) return;
+
+						grecaptcha.ready(function() {
+							grecaptcha.execute(userConfig.apiKeys.recaptcha, {
+								action: userConfig.actions.formSubmit
+							}).then(function(recaptchaFinger) {
+								let mktoFields = {};
+								if (mktoForm.locked == false) {
+									//console.log("primary recaptcha response resolved");
+									mktoForm.locked = true;  
+									mktoFields[userConfig.fields.recaptchaFinger] = recaptchaFinger;
+									mktoForm.addHiddenFields(mktoFields);        
+									mktoForm.submittable(true);
+									mktoForm.submit();
+								} else {
+									//console.log("secondary recaptcha response resolved");
+								}
+							});
+						});
+					});
+
+					/* inject the reCAPTCHA library */  	
+					recaptchaLib.src = "https://www.google.com/recaptcha/api.js?render=" + userConfig.apiKeys.recaptcha + "&onload=grecaptchaListeners_ready";
+					document.head.appendChild(recaptchaLib);
+					
+					// Listener to show thank you page in parent window
+					mktoForm.onSuccess(function(values, url) {
+						if (typeof doNotRedirectForm === "undefined") {
+							window.top.location.href = url;
+						} else {
+							window.location.href = url;
+						}
+						return false;
+					});
+					
+					
+                    function sendHeight() {
+                        let height = document.body.scrollHeight;
+                        let $mForm = mktoForm.getFormElem();
+                        let formHeight = 0;
+						formHeight = $mForm.height();
+                        window.parent.postMessage({
+                            'iframeHeight': formHeight,
+                            'iframeId': 'iframe_form'
+                        }, 'https://www.2checkout.com');
+                    }
+
+                    // Trimite înălțimea inițială
+                    sendHeight();
+
+                    // O opțiune pentru a trimite înălțimea la schimbarea dimensiunii conținutului
+                    // Poți ajusta acest cod în funcție de cum se schimbă conținutul iframe-ului tău
+                    window.addEventListener('load', sendHeight);
+                    document.addEventListener('DOMContentLoaded', sendHeight);
+					
+					
+				});
+              
+                try {
+                    if (typeof window.top.resetcBoxIframeHeight === "function") {
+                        window.top.resetcBoxIframeHeight();
+                    }
+                } catch(err) {}
+            }
+        </script>  
+  		
+		<!--END Page Functions -->
+		
+        <!-- GOOGLE ANALYTICS.  ENTER YOUR CODE and UNCOMMENT block -->
+        <!--
+        <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+        </script>
+            <script type="text/javascript">
+            _uacct = "YOURCODE";
+            urchinTracker();
+        </script>
+        -->
+
+    <script type="text/javascript" src="./stripmkttok.js.download"></script>
+
+
+<div id="mktoStyleLoaded" style="display: none; border-top-color: rgb(18, 52, 86);"></div><form class="mktoForm mktoHasWidth mktoLayoutLeft" novalidate="novalidate" style="font-family: Helvetica, Arial, sans-serif; font-size: 13px; color: rgb(51, 51, 51); visibility: hidden; position: absolute; top: -500px; left: -1000px; width: 300px;"></form><div><div class="grecaptcha-badge" data-style="bottomright" style="width: 256px; height: 60px; display: block; transition: right 0.3s; position: fixed; bottom: 14px; right: -186px; box-shadow: gray 0px 0px 5px; border-radius: 2px; overflow: hidden;"><div class="grecaptcha-logo"><iframe title="reCAPTCHA" width="256" height="60" role="presentation" name="a-x74ihtfulep7" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox allow-storage-access-by-user-activation" src="./anchor.html"></iframe></div><div class="grecaptcha-error"></div><textarea id="g-recaptcha-response-100000" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div></div></body></html>
