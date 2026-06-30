@@ -105,3 +105,9 @@
 
 /* ---- No underline on header / mega-menu links (keep the hover background + colour change) ---- */
 .sh a,.sh a:hover,.sh a:focus,.sh__mega a,.sh__mega a:hover{text-decoration:none}
+
+/* ---- Logo image in header/footer brand links ---- */
+.sh__brand{display:inline-flex;align-items:center;gap:0}
+.sh__brand img{height:30px;width:auto;display:block}
+.sf__brand{display:inline-flex;align-items:center}
+.sf__brand img{height:34px;width:auto;display:block}

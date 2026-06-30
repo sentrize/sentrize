@@ -10,15 +10,16 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
-// The landing keeps the bespoke (Verifone-based) design verbatim for 100%
-// fidelity — its header/footer chrome is already in the markup, links are
-// rewritten to clean routes, and trackers/2Checkout refs are stripped.
-const landingHtml = fs.readFileSync(
-  path.join(process.cwd(), "app", "_landing.html"),
-  "utf8"
-);
-
 export default function Home() {
+  // The landing keeps the bespoke (Verifone-based) design verbatim for 100%
+  // fidelity — its header/footer chrome is already in the markup, links are
+  // rewritten to clean routes, and trackers/2Checkout refs are stripped.
+  // Read at render time (not module scope) so `next dev` reflects edits to
+  // _landing.html; the page is still statically prerendered in production.
+  const landingHtml = fs.readFileSync(
+    path.join(process.cwd(), "app", "_landing.html"),
+    "utf8"
+  );
   return (
     <>
       <link rel="stylesheet" href="/assets/css/en0000000000000812.css" />

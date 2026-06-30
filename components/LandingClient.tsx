@@ -107,7 +107,38 @@ export default function LandingClient({ html }: { html: string }) {
       });
     }
 
-    // 5) Default active tab marker
+    // 5) "Built for ambitious technology teams" tabs (switch content panel)
+    const tabBox = root.querySelector<HTMLElement>(".tabBox");
+    const tabContent = root.querySelector<HTMLElement>(".tabContentBox");
+    if (tabBox && tabContent) {
+      tabBox.querySelectorAll<HTMLElement>(".boxMenuItem[data-item]").forEach((item) => {
+        on(item, "click", () => {
+          const n = item.getAttribute("data-item");
+          tabBox.querySelectorAll(".boxMenuItem").forEach((b) => b.classList.remove("active"));
+          item.classList.add("active");
+          tabContent.querySelectorAll(".contentItem").forEach((c) => c.classList.remove("active"));
+          tabContent.querySelector(".contentItem.item" + n)?.classList.add("active");
+        });
+        (item as HTMLElement).style.cursor = "pointer";
+      });
+    }
+
+    // 6) Capabilities accordion (Custom software / Web & mobile apps / ...) — single open
+    const boxLeft = root.querySelector<HTMLElement>(".boxLeft");
+    if (boxLeft) {
+      boxLeft.querySelectorAll<HTMLElement>(".boxMenuItem").forEach((header) => {
+        on(header, "click", () => {
+          const wrap = header.closest<HTMLElement>(".mobileItemAll");
+          if (!wrap) return;
+          const wasOpen = wrap.classList.contains("active");
+          boxLeft.querySelectorAll(".mobileItemAll").forEach((w) => w.classList.remove("active"));
+          if (!wasOpen) wrap.classList.add("active");
+        });
+        (header as HTMLElement).style.cursor = "pointer";
+      });
+    }
+
+    // 7) Default active tab marker
     root.querySelector(".mobileItem1")?.classList.add("active");
 
     return () => cleanups.forEach((fn) => fn());

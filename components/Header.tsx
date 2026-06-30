@@ -6,9 +6,9 @@ export default function Header({ overlay = false }: { overlay?: boolean }) {
     <header className={overlay ? "sh sh--overlay" : "sh"}>
       <div className="sh__container">
         <nav className="sh__nav" aria-label="Primary">
-          <Link className="sh__brand" href="/">
-            {BRAND}
-            <span>.</span>
+          <Link className="sh__brand" href="/" aria-label={BRAND}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/branding/logo.png" alt={BRAND} width={113} height={30} />
           </Link>
           <button className="sh__toggle" aria-label="Menu" aria-expanded="false">
             {"☰"}
