@@ -1,0 +1,332 @@
+<style>
+  :root {
+    --paper: #E9EBEE;
+    --card: #FFFFFF;
+    --ink: #14171C;
+    --muted: #565D66;
+    --faint: #8A929B;
+    --rule: #D3D8DE;
+    --rule-strong: #B8C0C8;
+    --navy: #1B3A5B;        /* structural accent */
+    --navy-soft: #E4EAF0;
+    --crit: #B42318;        /* severity: critical */
+    --high: #B65409;        /* severity: high */
+    --med:  #8A6A12;        /* severity: medium */
+    --low:  #566370;        /* severity: low */
+    --good: #2F6B4F;
+    --mono: ui-monospace, "Cascadia Code", "SF Mono", "Segoe UI Mono", Consolas, Menlo, monospace;
+    --sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --serif: Georgia, "Iowan Old Style", "Times New Roman", serif;
+  }
+
+  * { box-sizing: border-box; }
+
+  .doc {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.6;
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+    padding: clamp(20px, 5vw, 64px) clamp(16px, 5vw, 40px) 80px;
+  }
+  .wrap { max-width: 940px; margin: 0 auto; }
+
+  .mono { font-family: var(--mono); }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--navy);
+    font-weight: 600;
+  }
+
+  /* ---------- Masthead ---------- */
+  .mast {
+    border-top: 4px solid var(--navy);
+    padding-top: 22px;
+    margin-bottom: 40px;
+  }
+  .mast .meta-row {
+    display: flex; flex-wrap: wrap; gap: 12px 28px;
+    justify-content: space-between; align-items: baseline;
+    margin-bottom: 26px;
+  }
+  .mast .filed { font-family: var(--mono); font-size: 12px; color: var(--faint); letter-spacing: 0.04em; }
+  h1 {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: clamp(30px, 5.4vw, 52px);
+    line-height: 1.08;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+    margin: 0 0 20px;
+  }
+  h1 .em { color: var(--crit); font-style: italic; }
+  .subject {
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--muted);
+    border: 1px solid var(--rule-strong);
+    border-radius: 2px;
+    padding: 8px 12px;
+    display: inline-block;
+    background: #fff;
+  }
+  .subject .u { color: var(--navy); font-weight: 600; }
+
+  /* ---------- stat strip ---------- */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border: 1px solid var(--rule-strong);
+    background: var(--card);
+    margin: 30px 0 44px;
+  }
+  .stats > div { padding: 18px 20px; border-right: 1px solid var(--rule); }
+  .stats > div:last-child { border-right: none; }
+  .stats .n { font-family: var(--serif); font-size: 34px; font-weight: 700; line-height: 1; color: var(--navy); }
+  .stats .l { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-top: 8px; }
+  @media (max-width: 620px){ .stats { grid-template-columns: 1fr; } .stats > div { border-right: none; border-bottom: 1px solid var(--rule); } .stats > div:last-child{border-bottom:none;} }
+
+  /* ---------- section scaffolding ---------- */
+  section { margin: 0 0 52px; }
+  .sec-head { display: flex; align-items: baseline; gap: 14px; border-bottom: 2px solid var(--ink); padding-bottom: 10px; margin-bottom: 24px; }
+  .sec-head .no { font-family: var(--mono); font-size: 13px; color: var(--navy); font-weight: 600; }
+  h2 { font-family: var(--serif); font-weight: 700; font-size: clamp(22px, 3.2vw, 30px); letter-spacing: -0.01em; margin: 0; }
+
+  p { margin: 0 0 16px; max-width: 68ch; }
+  strong { font-weight: 700; }
+
+  /* ---------- verdict ---------- */
+  .verdict { background: var(--ink); color: #EEF0F2; border-radius: 3px; padding: clamp(22px, 4vw, 36px); }
+  .verdict .eyebrow { color: #E7A23B; }
+  .verdict h2 { color: #fff; margin: 10px 0 18px; }
+  .verdict p { color: #C9CDD3; max-width: 72ch; }
+  .verdict .two { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 22px; }
+  @media (max-width: 680px){ .verdict .two { grid-template-columns: 1fr; } }
+  .verdict .two > div { border-left: 3px solid var(--crit); padding-left: 16px; }
+  .verdict .two h3 { font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #E7A23B; margin: 0 0 8px; font-weight: 600; }
+  .verdict .two p { font-size: 15px; margin: 0; color: #D5D9DE; }
+
+  /* ---------- severity chip ---------- */
+  .chip { font-family: var(--mono); font-size: 10.5px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; color: #fff; white-space: nowrap; }
+  .chip.c { background: var(--crit); }
+  .chip.h { background: var(--high); }
+  .chip.m { background: var(--med); }
+  .chip.l { background: var(--low); }
+
+  /* severity legend bar */
+  .legend { display: flex; flex-wrap: wrap; gap: 10px 18px; margin: 4px 0 28px; align-items: center; }
+  .legend .item { display: flex; align-items: center; gap: 7px; font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .legend .sw { width: 12px; height: 12px; border-radius: 2px; display: inline-block; }
+
+  /* ---------- tells ---------- */
+  .tell { background: var(--card); border: 1px solid var(--rule-strong); border-left: 4px solid var(--crit); border-radius: 2px; padding: 20px 22px; margin-bottom: 16px; }
+  .tell.h { border-left-color: var(--high); }
+  .tell .top { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+  .tell .rank { font-family: var(--serif); font-size: 26px; font-weight: 700; color: var(--rule-strong); line-height: 1; }
+  .tell h3 { font-family: var(--sans); font-size: 18px; font-weight: 700; margin: 0; flex: 1; min-width: 200px; letter-spacing: -0.01em; }
+  .tell p { font-size: 15px; margin: 0; color: var(--muted); max-width: none; }
+  .evidence { font-family: var(--mono); font-size: 12.5px; line-height: 1.5; background: #F4F6F8; border: 1px solid var(--rule); border-radius: 2px; padding: 10px 12px; margin: 12px 0; color: #2A2E34; overflow-x: auto; }
+  .evidence .k { color: var(--crit); font-weight: 600; }
+  .evidence .tag { color: var(--faint); }
+  .evidence .v { color: var(--navy); }
+
+  /* ---------- before/after ---------- */
+  .ba { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--rule-strong); border-radius: 2px; overflow: hidden; margin-bottom: 14px; background: var(--card); }
+  @media (max-width: 640px){ .ba { grid-template-columns: 1fr; } }
+  .ba > div { padding: 16px 18px; }
+  .ba .now { background: #FBEDEC; border-right: 1px solid var(--rule); }
+  @media (max-width: 640px){ .ba .now { border-right: none; border-bottom: 1px solid var(--rule); } }
+  .ba .lab { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; font-weight: 700; }
+  .ba .now .lab { color: var(--crit); }
+  .ba .fix .lab { color: var(--good); }
+  .ba p { font-size: 14.5px; margin: 0; color: var(--ink); max-width: none; }
+  .ba .now p { color: #7A2820; }
+
+  /* ---------- plan ---------- */
+  .phase { margin-bottom: 22px; }
+  .phase .ph-head { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .phase .tag2 { font-family: var(--mono); font-weight: 700; font-size: 12px; letter-spacing: 0.08em; padding: 4px 9px; border-radius: 2px; color: #fff; }
+  .phase .ph-title { font-family: var(--sans); font-weight: 700; font-size: 16px; }
+  .phase .ph-sub { font-family: var(--mono); font-size: 12px; color: var(--faint); }
+  ul.checks { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+  ul.checks li { display: flex; gap: 12px; padding: 11px 4px; border-bottom: 1px solid var(--rule); font-size: 15px; align-items: baseline; }
+  ul.checks li::before { content: "▢"; color: var(--navy); font-family: var(--mono); font-size: 14px; flex: none; }
+  ul.checks li b { font-weight: 700; }
+
+  .callout { border: 1px solid var(--crit); background: #FBEDEC; border-radius: 2px; padding: 16px 18px; margin: 22px 0; }
+  .callout .lab { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--crit); font-weight: 700; margin-bottom: 6px; }
+  .callout p { font-size: 14.5px; margin: 0; color: #6E2019; max-width: none; }
+
+  footer { border-top: 2px solid var(--ink); margin-top: 60px; padding-top: 20px; font-family: var(--mono); font-size: 12px; color: var(--muted); line-height: 1.7; }
+  footer .path { color: var(--navy); }
+  a { color: var(--navy); }
+</style>
+
+<div class="doc">
+<div class="wrap">
+
+  <div class="mast">
+    <div class="meta-row">
+      <span class="eyebrow">Design &amp; Credibility Audit</span>
+      <span class="filed">FILED 2026·07·01 / METHOD: SCREENSHOTS + SOURCE INSPECTION + 9-AGENT REVIEW</span>
+    </div>
+    <h1>Yes — it reads as fake. And the reason <span class="em">isn't the colors.</span></h1>
+    <span class="subject">TARGET&nbsp;&nbsp;<span class="u">http://sentrize.com/</span>&nbsp;&nbsp;·&nbsp;&nbsp;software &amp; cloud engineering agency</span>
+  </div>
+
+  <div class="stats">
+    <div><div class="n">79</div><div class="l">Findings logged</div></div>
+    <div><div class="n">9</div><div class="l">Review dimensions</div></div>
+    <div><div class="n">6</div><div class="l">Root causes</div></div>
+  </div>
+
+  <section>
+    <div class="verdict">
+      <span class="eyebrow">The blunt verdict</span>
+      <h2>Two hard problems make it read as "not a real company"</h2>
+      <p>Everything else — the clashing colors, the thin type, the three taglines — reinforces the impression. But no amount of visual polish fixes these two. Fix them first.</p>
+      <div class="two">
+        <div>
+          <h3>01 · It's a cloned template</h3>
+          <p>The entire front-end is a lifted <b>Verifone.com</b> (payments-terminal company) theme — Verifone's font, stylesheets, payment-terminal icons, even a leftover audio widget. A firm selling <em>custom software</em> shipped a cloned website. Any engineer sees it in DevTools in 10 seconds.</p>
+        </div>
+        <div>
+          <h3>02 · The proof is fabricated</h3>
+          <p>Stock-photo "team," testimonial authors whose names change between pages, your CEO also quoted as a customer, borrowed Cisco/Bitdefender logos with no matching case study, and a movie-reserved fake phone number. 90 seconds of checking exposes all of it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="no">§1</span><h2>The six tells, ranked by damage</h2></div>
+    <div class="legend">
+      <span class="item"><span class="sw" style="background:var(--crit)"></span>Critical</span>
+      <span class="item"><span class="sw" style="background:var(--high)"></span>High</span>
+      <span class="item"><span class="sw" style="background:var(--med)"></span>Medium</span>
+      <span class="item"><span class="sw" style="background:var(--low)"></span>Low</span>
+    </div>
+
+    <div class="tell">
+      <div class="top"><span class="rank">1</span><h3>Lifted Verifone payments template</h3><span class="chip c">Critical</span></div>
+      <div class="evidence"><span class="k">font-family</span>: <span class="v">"Verifone-Sans-Regular"</span> <span class="tag">/* used 550× */</span><br>css: chrome.css · enterprise.css · <span class="k">en0000000000000812.css</span> · theme-teal.css<br>icons: data-iconname=<span class="v">"TERMINAL_ENCRYPTION"</span> "HARDWARE_HEALTH" "ESTATE_MANAGEMENT"<br>leftover: beyond-payments-image.png · #volume-booster-visus<span class="k">a</span>lizer · <span class="tag">typo → OTHER_POLCICIES</span></div>
+      <p>Proves the site was cloned, not built — fatal for a company selling engineering &amp; UI/UX, plus a trademark/font-licensing exposure. The baked-in typos prove nobody read what they copied.</p>
+    </div>
+
+    <div class="tell">
+      <div class="top"><span class="rank">2</span><h3>Fabricated proof (team, testimonials, logos, phone)</h3><span class="chip c">Critical</span></div>
+      <div class="evidence">team headshots → <span class="k">images.unsplash.com</span> stock portraits<br>"Sofia Marchetti" = <span class="v">CEO</span> &nbsp;AND&nbsp; <span class="v">testimonial author "VP Engineering, Payments"</span><br>"Priya <span class="k">Venkataraman</span>" (testimonials) vs "Priya <span class="k">Venkatesan</span>" (case-studies)<br>phone: <span class="k">+1 (628) 555-0137</span> <span class="tag">/* 555-01xx = reserved for fiction */</span></div>
+      <p>Enterprise procurement fails instantly. Real legal risk: false advertising, trademark misuse (Cisco/Bitdefender logos), and misrepresenting SOC 2 / ISO 27001 / HIPAA you don't hold.</p>
+    </div>
+
+    <div class="tell">
+      <div class="top"><span class="rank">3</span><h3>No single positioning — 3–4 taglines at once</h3><span class="chip c">Critical</span></div>
+      <div class="evidence"><span class="tag">&lt;title&gt;</span> "Build &amp; Scale Your Software With Confidence"<br><span class="tag">og:title</span> "Engineering That Scales Your Business"<br><span class="tag">og:image:alt</span> "Intelligent Software. Limitless Impact."<br><span class="tag">&lt;h1&gt;</span> "We build the software and cloud platforms your business runs on"</div>
+      <p>Your browser tab, Google result, and LinkedIn preview each promise something different. A real brand repeats <em>one</em> line everywhere — this reads as copy generated in separate passes with nobody owning it.</p>
+    </div>
+
+    <div class="tell h">
+      <div class="top"><span class="rank">4</span><h3>Unverifiable round-number stats</h3><span class="chip h">High</span></div>
+      <div class="evidence"><span class="k">500+</span> projects &nbsp;·&nbsp; <span class="k">120+</span> engineers &nbsp;·&nbsp; <span class="k">40+</span> countries &nbsp;·&nbsp; <span class="k">99.99%</span> uptime &nbsp;·&nbsp; <span class="k">98%</span> retention &nbsp;·&nbsp; <span class="k">4.9/5</span><br><span class="tag">/* repeated verbatim on 6 pages · zero named clients · no status page */</span></div>
+      <p>Every figure is a suspiciously clean round number — the exact output an LLM gives when asked to "sound impressive." With no proof beneath them, they read as invented, which is worse than claiming nothing.</p>
+    </div>
+
+    <div class="tell h">
+      <div class="top"><span class="rank">5</span><h3>Palette chaos — four accents fighting</h3><span class="chip h">High</span></div>
+      <div class="evidence">green hero <span class="v">#03c37e→#04c783</span> &nbsp;vs&nbsp; teal <span class="v">#22d3ee / #0891b2</span> &nbsp;vs&nbsp; blues <span class="v">#0a84ff · #004aef · #3474ff</span><br><span class="tag">/* identical "Start a project" button is BLUE in header, CYAN in hero */</span><br><span class="tag">/* white text on #22d3ee band = 1.81:1 contrast — fails WCAG */</span></div>
+      <p>Three unrelated accent families across a 63° hue arc plus ~9 background flips. The signature of a template whose theme was half-recolored and never reconciled.</p>
+    </div>
+
+    <div class="tell h">
+      <div class="top"><span class="rank">6</span><h3>Thin, tokenless design system</h3><span class="chip h">High</span></div>
+      <div class="evidence">every heading → <span class="k">font-weight: 300</span> <span class="tag">(incl. 52px H1 with class "fontBold")</span><br>font-sizes → <span class="k">13.12px</span> (×53) · 15.36px · 15.2px · 14.4px <span class="tag">/* inherited rem math */</span><br>border-radius → <span class="k">11 different values</span> (11,32,16,10,18,30,23,999px,50%…)</div>
+      <p>Hairline-thin everything ("thin = premium" is a template default), fractional font sizes no designer picks, and 11 corner radii = no design tokens = stitched together.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="no">§2</span><h2>Fast fixes, before → after</h2></div>
+
+    <div class="ba">
+      <div class="now"><div class="lab">Now</div><p>Verifone's proprietary font, silently failing to load for most visitors.</p></div>
+      <div class="fix"><div class="lab">Change to</div><p>Self-host one licensed face — Inter or IBM Plex Sans (free, engineering-credible). Delete every <span class="mono">Verifone-Sans</span> reference.</p></div>
+    </div>
+
+    <div class="ba">
+      <div class="now"><div class="lab">Now</div><p>Green + cyan + three blues; the same button in two colors.</p></div>
+      <div class="fix"><div class="lab">Change to</div><p>One accent — commit to teal <span class="mono">#0891b2</span>, define it as a CSS variable, delete the greens and blues.</p></div>
+    </div>
+
+    <div class="ba">
+      <div class="now"><div class="lab">Now</div><p>Six execs with reverse-searchable Unsplash stock headshots.</p></div>
+      <div class="fix"><div class="lab">Change to</div><p>Real photos of your 2–3 actual founders with LinkedIn links — or no team grid at all. Honest &gt; fabricated.</p></div>
+    </div>
+
+    <div class="ba">
+      <div class="now"><div class="lab">Now</div><p>Cisco / Bitdefender / ViewSonic logos with no case study naming them.</p></div>
+      <div class="fix"><div class="lab">Change to</div><p>Only logos you can prove, each paired with a named, metric-backed case study. Otherwise remove the strip.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="no">§3</span><h2>Do it in this order</h2></div>
+
+    <div class="callout">
+      <div class="lab">⚖ Legal note</div>
+      <p>Displaying client logos and SOC 2 / ISO 27001 / HIPAA claims you can't substantiate — and a Sydney HQ with no ABN — is trademark &amp; false-advertising exposure (incl. Australian Consumer Law). The P0 items below are risk, not just optics.</p>
+    </div>
+
+    <div class="phase">
+      <div class="ph-head"><span class="tag2" style="background:var(--crit)">P0</span><span class="ph-title">Trust &amp; legal</span><span class="ph-sub">this week</span></div>
+      <ul class="checks">
+        <li><b>Remove all third-party client logos</b> until each has permission + a matching named case study.</li>
+        <li><b>Delete fabricated testimonials and the stock-photo team page.</b> Ship real people or none.</li>
+        <li><b>Remove unverifiable certs &amp; awards</b> until you hold them and can link the verification.</li>
+        <li><b>Replace the fake phone number</b>; add your registered entity + ABN/ACN to the footer.</li>
+        <li><b>Cut the stats</b> to only what you can source and defend.</li>
+      </ul>
+    </div>
+
+    <div class="phase">
+      <div class="ph-head"><span class="tag2" style="background:var(--high)">P1</span><span class="ph-title">De-Verifone the build</span><span class="ph-sub">removes the "cloned" tell</span></div>
+      <ul class="checks">
+        <li><b>Grep to zero:</b> <span class="mono">verifone · sh__ · chrome.css · enterprise.css · en0000000000000812 · theme-teal · beyond-payments · blink-icon · colorbox · volume-booster</span></li>
+        <li><b>Self-host a licensed font</b>; delete all Verifone-Sans references.</li>
+        <li><b>Swap the payment-terminal icons</b> for one consistent software/cloud icon set.</li>
+      </ul>
+    </div>
+
+    <div class="phase">
+      <div class="ph-head"><span class="tag2" style="background:var(--med)">P2</span><span class="ph-title">Brand &amp; design system</span><span class="ph-sub">the "looks generated" polish</span></div>
+      <ul class="checks">
+        <li><b>Pick one tagline</b> — use it verbatim in title, og:title, twitter:title, and h1.</li>
+        <li><b>Pick one accent color</b> as a CSS variable; collapse backgrounds to white + one neutral + one dark.</li>
+        <li><b>Heading weights 600–700</b>, body 400; whole-pixel type scale; darken muted text to pass WCAG AA.</li>
+        <li><b>Three-value radius scale</b> (10 / 16 / 999px); replace stock imagery with real work.</li>
+      </ul>
+    </div>
+
+    <div class="phase">
+      <div class="ph-head"><span class="tag2" style="background:var(--low)">P3</span><span class="ph-title">Copy, IA &amp; technical</span><span class="ph-sub">finish the job</span></div>
+      <ul class="checks">
+        <li><b>Rewrite copy with specifics</b> — kill "with confidence," "partner not a vendor," and the CTA duplicated on 4 pages.</li>
+        <li><b>Cut nav to ~5 items;</b> fix the Pricing menu whose 5 links all go to one page.</li>
+        <li><b>Serve over HTTPS,</b> redirect apex→canonical, add HSTS &amp; JSON-LD.</li>
+        <li><b>Fix accessibility:</b> real <span class="mono">&lt;main&gt;</span>, a working mobile menu, heading structure, unique link text, focus rings, lazy images.</li>
+      </ul>
+    </div>
+  </section>
+
+  <p style="font-family:var(--serif); font-size:19px; font-style:italic; color:var(--navy); border-left:3px solid var(--navy); padding-left:18px; max-width:70ch;">A smaller, truthful site — one positioning line, 2–3 real people, one or two genuinely named case studies, one accent color — will out-convert this every time. The offering isn't the problem; the borrowed shell and invented proof are.</p>
+
+  <footer>
+    METHOD — full-page desktop &amp; mobile capture · raw HTML of homepage + 9 sub-pages · computed design-token dump · 9 specialist review agents (color, type, layout, copy/IA, trust, technical/SEO, accessibility, AI-tells, competitor benchmark).<br>
+    EVIDENCE — screenshots &amp; source in <span class="path">/sentrize-website-report/assets</span> · full report <span class="path">REPORT.md</span> · all 79 findings <span class="path">findings-raw.json</span>
+  </footer>
+
+</div>
+</div>

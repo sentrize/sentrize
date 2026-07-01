@@ -1,0 +1,832 @@
+{
+  "summary": "Multi-agent professional/enterprise design review of sentrize.com from captured assets",
+  "agentCount": 9,
+  "logs": [
+    "Completed 9/9 reviewers; total findings: 79"
+  ],
+  "result": [
+    {
+      "dimension": "Color & Palette",
+      "overall_verdict": "This is not a palette — it is three unrelated theme colors bolted onto a lifted Verifone.com template, plus a black/white/gray substrate that switches on almost every section. Pixel-sampling the screenshots confirms accent hues spanning a 63-degree arc across THREE distinct families: emerald green (H158-159, the hero gradient #03c37e-#04c783), cyan/teal (H188-192, #22d3ee and #0891b2), and electric blue (H210-221, #0a84ff / #004aef / #3474ff). No single hue is used consistently enough to register as \"the brand color.\" A confident enterprise brand commits to one accent (Stripe purple, Vercel black, Datadog purple) and repeats it everywhere; here the hero says green, the mid-page hero-block says cyan, the buttons and logo say blue, and the footer goes navy. The result reads exactly as reported — AI-assembled and non-enterprise — because the color system has no author. It has the fingerprints of a template whose original blue theme (Verifone) was partially overpainted with teal (theme-teal.css) and a green hero, none of which were reconciled. Compounding this, several color pairings fail WCAG contrast, which no shipped enterprise design system would allow.",
+      "findings": [
+        {
+          "title": "Three competing accent hue families in one page (green vs cyan/teal vs blue), spanning a 63-degree hue arc",
+          "severity": "critical",
+          "evidence": "Pixel-sampled from the screenshots and design-tokens.json, the accents cluster into three unrelated families by HSL hue: (1) EMERALD GREEN hero gradient #03c37e / #04c783 (H158-159, S~97%); (2) CYAN/TEAL blocks #22d3ee (H188, the 'Built for ambitious technology teams' block and CTA band) and #0891b2 (H192, used as both background x3 and text-color x7); (3) BLUE #0a84ff (H210, skip-link), #004aef (H221, logo/nav region) and #3474ff (H221, body link text). Hue spread = 158 to 221 degrees. design-tokens.json lists #0891b2, #22d3ee, #0a84ff, #004aef AND #3474ff as separate committed values — the green gradient does not even appear in the token list because it is an ad-hoc CSS gradient, meaning it is a fourth un-tokenized accent.",
+          "why_it_reads_amateur_or_ai": "Real brands own ONE accent hue. Three saturated primaries with no shared relationship is the visual signature of a lifted template (Verifone's blue) partially re-skinned with a teal theme file (theme-teal.css) and a green hero, with nobody reconciling them. It looks generated because each section was evidently themed in isolation — the exact 'plausible in isolation, incoherent in aggregate' pattern of AI/template assembly.",
+          "recommendation": "Pick ONE accent family and delete the other two from the codebase. Given the 'engineering/cloud' positioning and the teal-named CSS, commit to a single teal — e.g. #0891b2 as the primary with #22d3ee reserved only as a hover/active tint of that same hue — and remove the green hero gradient and all three blues (#0a84ff, #004aef, #3474ff) entirely. Replace every blue button/link with the chosen teal. Enforce it as CSS custom properties (--accent, --accent-hover) so no section can drift."
+        },
+        {
+          "title": "Section-background whiplash: 9 background changes cascading dark to light to dark to color",
+          "severity": "high",
+          "evidence": "A top-to-bottom pixel scan of desktop-full.png (6215px tall) shows the background flips through: #000000 black (nav, 0-3%) -> #04c07e green hero (6-9%) -> #ffffff white (12%) -> #ececec light gray (21%) -> #000000 black (27%) -> #1a1a1a near-black (33%) -> #ffffff / #f5f5f5 (39-48%) -> #22d3ee cyan block (51%) -> #000000 (57%) -> #333333 gray (60%) -> #e6e6e6 gray (75-82%) -> #22d3ee cyan CTA (87%) -> #1c1c26 navy footer (93%). That is roughly nine distinct background regimes, alternating light and dark with two full-bleed saturated-cyan interruptions. The backgrounds token histogram confirms the fragmentation: #ffffff(11), #000000(8), #e6e6e6(6), #ececec(5), #1a1a1a(4), #333333(4), #0891b2(3), #22d3ee(3), plus #0a84ff, #004aef, #f5f5f5, #1c1c26.",
+          "why_it_reads_amateur_or_ai": "Enterprise pages use a restrained rhythm — typically 2 to 3 background tones (e.g. white, one light gray, one dark) alternating predictably. Nine regimes with two neon-cyan full-bleed bands feels like a stack of unrelated template sections pasted together, which is precisely how a lifted/AI-assembled page is built. The eye never settles, and the two cyan bands read as 'demo blocks' rather than an intentional brand moment.",
+          "recommendation": "Collapse to a 3-tone system: white (#ffffff) as default, ONE neutral (pick #f5f5f5 OR #ececec OR #e6e6e6 — currently all three exist), and ONE dark (pick #000000 OR #1a1a1a OR #1c1c26 — currently all three exist). Use the single accent (teal) only for small elements, never as a full-bleed section background; convert the two #22d3ee bands to white/dark with teal accents. Establish a fixed alternation (e.g. white, dark, white) so section transitions feel authored."
+        },
+        {
+          "title": "Redundant near-duplicate neutrals reveal no design-token discipline",
+          "severity": "high",
+          "evidence": "The palette carries THREE light grays that are visually near-identical — #e6e6e6, #ececec, #f5f5f5 — used as separate section backgrounds, and THREE dark tones — #000000, #1a1a1a, #1c1c26 — used interchangeably for dark sections/footer. On the text side there are four low-chroma grays doing the same job: #5b5b6b (49 uses), #9a9aad (31), #c7c9d4 (7), #82829a (2). #1c1c26 and #82829a/#9a9aad carry a faint purple cast (H240 / desaturated) that does not match the neutral #333333 grays elsewhere, so even the 'neutrals' are from two different source systems.",
+          "why_it_reads_amateur_or_ai": "A hand-built design system has ONE gray ramp with deliberate steps. Three interchangeable light grays and three interchangeable darks is what you get when multiple template fragments (each with its own gray) are concatenated without a token pass. The mixed-temperature grays (cool-purple #9a9aad vs neutral #333333) are a tell that colors came from different origins — a hallmark of stitched-together / AI output.",
+          "recommendation": "Define one neutral ramp of ~5 steps (e.g. #ffffff, #f5f5f5, #6b7280 text-muted, #333333, #0d0d0d) and map every existing near-duplicate onto it. Kill #e6e6e6+#ececec (keep one), kill #1a1a1a+#1c1c26 (keep #000 or one dark), and standardize body text on a single muted gray. Remove the purple-tinted grays so the neutrals stay temperature-consistent."
+        },
+        {
+          "title": "White text on the #22d3ee cyan blocks fails WCAG contrast (1.81:1)",
+          "severity": "high",
+          "evidence": "The full-bleed #22d3ee cyan blocks (mid-page 'Built for ambitious technology teams' at y~51%, and the CTA 'Ready to build your next product with confidence?' band at y~87%) carry white text. White (#ffffff) on #22d3ee measures 1.81:1 — far below the 4.5:1 AA threshold and even below the 3:1 large-text floor. Black on that same cyan would be 11.62:1. The design-tokens buttons also show a 'Skip to content' control at #0a84ff which is fine, but the cyan-band body copy is the problem.",
+          "why_it_reads_amateur_or_ai": "Shipping white-on-light-cyan is a mistake a mature design system's contrast linting would never pass. It signals the cyan was dropped in as a decorative template block without checking legibility — an amateur/automated move. It also visually 'glows' and vibrates, reinforcing the cheap feel.",
+          "recommendation": "On any #22d3ee surface, switch text to near-black (#0d0d0d gives 11.6:1). Better, per finding #1, stop using #22d3ee as a full-bleed background entirely; if a colored CTA band is wanted, use a dark surface with teal accents, which keeps white text legible and looks more enterprise."
+        },
+        {
+          "title": "Muted body/label text below contrast minimums (#9a9aad at 2.76:1)",
+          "severity": "medium",
+          "evidence": "#9a9aad is the second-most-used text color (31 instances) and on white measures only 2.76:1 — fails AA (4.5:1) and fails even the 3:1 large-text bar. Additionally #0891b2 used as text on white (7 instances) is 3.68:1 (large-text only, fails for body), and body link #3474ff on white is 4.13:1 (just short of 4.5:1 AA). The primary body gray #5b5b6b (49 uses) is fine at 6.66:1, so the failures are the secondary/muted tiers.",
+          "why_it_reads_amateur_or_ai": "Using a too-light gray for secondary copy is a classic 'looks elegant in the mockup, illegible in production' error that automated/template layouts inherit. Enterprise sites tune muted text to clear AA. The cyan and blue used AS text (rather than as fills) at sub-4.5:1 is another sign the accent colors were chosen for looks, not tested for function.",
+          "recommendation": "Darken muted text to at least #6b6b7a (~4.6:1) or preferably a single muted token around #595966. Never use #0891b2 or #3474ff as small/body text on white — reserve accent hues for fills, icons, and large headings only, where they clear the 3:1 large-text bar."
+        },
+        {
+          "title": "The hero alone collides two of the three accent families, undercutting first impression",
+          "severity": "medium",
+          "evidence": "Sweeping the hero gradient left-to-right at mid-height: it starts emerald #03c37e (H158) on the left, and by ~20% across the sampled band the pixels read #0891b2 (H192) — the gradient literally blends green into cyan within the same hero panel. Simultaneously the nav/logo region samples #004aef electric blue (H221). So within the single first viewport the visitor sees green, cyan, AND blue at once, over an Unsplash stock photo of a person at a laptop.",
+          "why_it_reads_amateur_or_ai": "The hero is the one place a brand must state its color identity unambiguously. A green-to-cyan gradient sitting next to a blue logo says the brand has not decided what color it is. Combined with stock photography, it reads as a generic AI/template hero rather than a considered enterprise brand statement.",
+          "recommendation": "Make the hero monochromatic in the chosen accent: a single-hue teal gradient (e.g. #0891b2 to a darker #075e78) or a solid dark surface with one teal accent. Recolor the logo/nav to the same family so nothing in the first viewport contradicts the brand hue. Replace the stock hero image or desaturate/overlay it in-brand so the photo does not introduce yet another color temperature."
+        }
+      ],
+      "_label": "color-palette"
+    },
+    {
+      "dimension": "Typography & Hierarchy",
+      "overall_verdict": "This type system reads unmistakably as a lifted template with the labels filed off, not an original enterprise brand. The single most damning fact is verifiable in design-tokens.json: the entire site renders in Verifone-Sans (Verifone-Sans-Regular alone is used 550 times, plus -Medium/-SemiBold/-Bold and a \"Verifone Sans\" stack) — the proprietary corporate typeface of Verifone, a publicly-traded payments company. An agency shipping a competitor's licensed brand font is both a legal/licensing liability and a dead giveaway that the page is a reskinned Verifone.com template. On top of that, every single heading (all 7, from the 52px H1 down) is set at font-weight 300 (light), so the page has no typographic \"voice\" — the biggest words on the screen are the thinnest, which is the opposite of how confident enterprise brands set display type. The size scale is a tell too: the four fractional sizes (13.12, 15.36, 15.2, 14.4px) are rem-to-pixel conversions inherited wholesale from the source template rather than chosen, and the overall ramp (13.12→14→15.2→15.36→16→20→24→28→30→32→44→52) has ~9 clustered small sizes doing barely-distinguishable jobs. Finally, headings carry literal hard line breaks (\\n plus indentation) baked into the text, a hand-tuning hack that breaks the moment the viewport changes. The net effect is thin, generic, and templated — exactly the \"AI-generated, non-enterprise\" impression the owner was warned about.",
+      "findings": [
+        {
+          "title": "Entire site is set in Verifone-Sans — a payments company's proprietary, licensed brand font",
+          "severity": "critical",
+          "evidence": "design-tokens.json fontFamilies: \"Verifone-Sans-Regular, sans-serif\" (550 occurrences), \"\\\"Verifone Sans\\\", Verifone-Sans-Regular, system-ui...\" (23), \"Verifone-Sans-Medium, sans-serif\" (7), \"Verifone-Sans-SemiBold\" (2), \"Verifone-Sans-Bold\" (1). Verifone-Sans is the corporate typeface of Verifone (the payment-terminal company); it is not a Google/open font. This matches the already-noted lifted assets (chrome.css/enterprise.css, sh__nav classes).",
+          "why_it_reads_amateur_or_ai": "Shipping another (competitor-adjacent) corporation's proprietary brand font is the single clearest proof the page is a reskinned Verifone.com template rather than an original design. Verifone-Sans is not licensed for third-party redistribution, so it will 404 for many visitors and silently fall back to plain sans-serif — meaning the 'brand' typeface isn't even reliably rendering. A real engineering agency owns its type choice; borrowing a payments firm's font is an amateur/AI-assembly signature and a licensing exposure.",
+          "recommendation": "Rip out every Verifone-Sans reference and self-host a properly-licensed typeface that signals engineering credibility — e.g. Inter, IBM Plex Sans, or a geometric grotesque like Söhne/Neue Montreal (paid) — with real weight files (400/500/600/700). Replace the font-family stacks in the CSS with a single named token (e.g. --font-brand) and delete the Verifone fallbacks so the intended font actually loads for all users."
+        },
+        {
+          "title": "All headings are font-weight 300 (light), including the 52px H1 — no weight hierarchy anywhere",
+          "severity": "critical",
+          "evidence": "In design-tokens.json every heading object has \"weight\": \"300\": H1 52px/300 (\"We build the software...\"), the three 44px H2s/300 (\"Choose the engagement model...\", \"Why teams keep building with us\", \"Power your roadmap...\"), H3 32px/300, and the 30px CTA H2/300. The rendered hero (desktop-hero.png) and the 'Choose the engagement model' / 'Built for ambitious technology teams' headings visibly show hairline strokes at large sizes.",
+          "why_it_reads_amateur_or_ai": "Weight 300 is a display weight for editorial/fashion brands, not for a B2B engineering agency that wants to look solid and authoritative. Setting the single largest element on the page (52px H1) in the thinnest available weight makes the headline feel fragile and generic, and it collapses the primary contrast dimension typography has: there is no bold anchor anywhere, so nothing feels load-bearing. This uniform thinness is a classic default-template / AI-generated look.",
+          "recommendation": "Establish real weight contrast: set H1/H2 display headings to 600–700 (SemiBold/Bold), sub-heads to 500–600, and reserve 300/400 only for large lead paragraphs if desired. Keep letter-spacing slightly negative (-0.01 to -0.02em) on 44px+ headings so the heavier weight stays refined. The hero H1 in particular should be the boldest, most confident type on the page."
+        },
+        {
+          "title": "The hero statistics (500+, 120+, 99.99%) render in light weight — the numbers meant to impress look weak",
+          "severity": "high",
+          "evidence": "In the stats band (desktop-full.png ~y3780) '500+' above 'PROJECTS DELIVERED', and '99.99%' above 'Enterprise reliability', are rendered with visibly thin strokes at large size, consistent with the site-wide weight-300 heading treatment. These are the trust-building claims (500+ projects, 120+ engineers, 99.99% uptime, 40+ countries).",
+          "why_it_reads_amateur_or_ai": "Big-number stat blocks are supposed to hit hard — they are the visual proof of scale. Setting them in a hairline weight undercuts the exact message ('we are big and reliable') they exist to convey, so the section reads as decorative filler rather than evidence. Combined with the unverifiable-looking round numbers, thin figures make the claims feel even more like placeholder AI copy.",
+          "recommendation": "Set the stat figures at 700+ weight (or a dedicated tabular/display cut), enlarge them relative to their labels, and give the uppercase labels (e.g. 'PROJECTS DELIVERED') a consistent smaller size with measured letter-spacing. Numbers are the one place on this page that must feel heavy."
+        },
+        {
+          "title": "Fractional font sizes (13.12, 15.36, 15.2, 14.4px) are inherited rem conversions, not deliberate choices",
+          "severity": "high",
+          "evidence": "design-tokens.json fontSizes includes \"13.12px\" (53 uses — the second-most-common size on the page), \"15.36px\" (7), \"15.2px\" (2), \"14.4px\" (1). These map to 0.82rem (13.12), 0.96rem (15.36), 0.95rem (15.2) and 0.9rem (14.4) at a 16px root — values carried over verbatim from the Verifone template's rem-based scale. The nav buttons use 15.36px, the mega-menu items 15.2px.",
+          "why_it_reads_amateur_or_ai": "No designer hand-picks 13.12px or 15.36px; these oddities only appear when rem values from someone else's system are computed against a 16px root. Their presence is a fingerprint that the type scale was inherited rather than authored. Using 13.12px for 53 elements (the workhorse body/UI size) means most of the page's text sits at a non-round, template-derived size.",
+          "recommendation": "Define a clean, intentional scale in round px or a consistent rem step and apply it everywhere: e.g. 13 / 14 / 16 / 18 / 20 / 24 / 32 / 44 / 56. Collapse 13.12→13 or 14 and 15.2/15.36→15 or 16. Publish it as design tokens so no stray computed values survive."
+        },
+        {
+          "title": "Nine clustered small/mid sizes doing overlapping jobs — the scale lacks coherent steps",
+          "severity": "medium",
+          "evidence": "The full size ramp in design-tokens.json is 13.12, 14, 14.4, 15.2, 15.36, 16, 20, 24, 28, 30, 32, 44, 52. Between 13 and 16px there are five nearly-indistinguishable sizes (13.12/14/14.4/15.2/15.36/16), and two near-duplicate headline tiers (44px H2 vs 52px H1, and 30px vs 32px). The 30px CTA H2 ('Ready to build your next product with confidence?') and the 32px H3 ('Beyond delivery...') are only 2px apart yet are different heading levels.",
+          "why_it_reads_amateur_or_ai": "A coherent type system has a small number of clearly-separated steps (typically a ~1.2–1.25 ratio). Here the mid-range is a smear of six sizes within 3px of each other, so the reader gets no clear sense of hierarchy — everything is 'medium'. Near-duplicate tiers (30 vs 32, 44 vs 52) signal sizes accreted from multiple copied components rather than one designed ramp, a hallmark of stitched-together/AI output.",
+          "recommendation": "Consolidate to ~6 roles: caption 13, body 16, lead 20, H3 28, H2 36, H1 52 (adjust to taste but keep clear gaps). Merge 13.12/14/14.4/15.2/15.36 into at most two body sizes; merge the 30px CTA heading into the 32px H3 tier or push it up so it reads as a distinct level."
+        },
+        {
+          "title": "Headings contain hard-coded manual line breaks baked into the copy",
+          "severity": "medium",
+          "evidence": "design-tokens.json headings show literal newlines and indentation inside the text: H1 = \"We build the software\\n                    \\n                    and cloud platfor...\"; H2 = \"Choose the engagement model\\n        \\n        that fits your team\"; H2 = \"Power your roadmap with the\\n        \\n        Sentrize engineering team\". The whitespace runs indicate the breaks were typed into the markup/JSX rather than controlled by CSS.",
+          "why_it_reads_amateur_or_ai": "Hand-inserting <br>/newlines to force a headline to wrap a certain way is a fragile hack: it only looks right at one viewport width and breaks (orphans, awkward mid-phrase wraps) at every other size. Enterprise design systems control wrapping with max-width/measure and balanced-wrap, not literal line breaks. Baked-in breaks with trailing indentation whitespace are also a tell of copy pasted into a template by hand or by an AI.",
+          "recommendation": "Remove all manual line breaks from heading text. Constrain heading width with a max-width (e.g. ~18–24ch for the H1) and use text-wrap: balance (with a pretty/balance fallback) so wrapping adapts responsively. Let the layout, not hard breaks, decide the line count."
+        },
+        {
+          "title": "Body and muted text lean on two low-contrast greys that read thin and washed-out",
+          "severity": "medium",
+          "evidence": "design-tokens.json textColors: the most-used text color is \"#5b5b6b\" (49 uses) and \"#9a9aad\" (31 uses), with \"#c7c9d4\" (7) and \"#82829a\" (2). Much of this sits on near-black backgrounds (#000000, #1a1a1a, #1c1c26). In the crops, supporting copy like 'Production systems shipped across 40+ countries' and 'SLA-backed uptime with 24/7 monitoring' renders in a dim grey.",
+          "why_it_reads_amateur_or_ai": "#5b5b6b on #1a1a1a is very low contrast (well under WCAG AA for body text), so paragraphs feel faint and the light-weight font compounds the thinness. Defaulting large amounts of copy to muted grey-on-dark is a common template/AI aesthetic that prioritizes 'sleek' over legibility and makes the page feel insubstantial rather than authoritative.",
+          "recommendation": "Raise body text on dark sections to at least #c7c9d4 / #d4d6e0 (≥4.5:1) and reserve #5b5b6b/#9a9aad only for true de-emphasized captions. Pair the contrast bump with a heavier body weight (400 minimum) so paragraphs read solid. Verify AA contrast for every text/background pair."
+        },
+        {
+          "title": "Letter-spaced uppercase eyebrows and wordmark are Verifone-template mannerisms, not an owned style",
+          "severity": "low",
+          "evidence": "The 'SENTRIZE' wordmark (nav and footer, desktop-hero.png / footer crop) is set as tracked-out uppercase, and section eyebrows like 'FLEXIBLE WAYS TO WORK WITH US' (above the 44px H2) and 'PROJECTS DELIVERED' use the same small letter-spaced caps treatment seen throughout Verifone's marketing template.",
+          "why_it_reads_amateur_or_ai": "The tracked-caps eyebrow over a thin light-weight headline is the exact rhythm of the source Verifone layout. Reusing that mannerism while also carrying the Verifone font makes the brand feel like a costume rather than an identity — recognizable to anyone who has seen the original template, and generic to everyone else.",
+          "recommendation": "Once the font is replaced, define eyebrow style intentionally (e.g. 12–13px, 500–600 weight, +0.08em tracking, in the teal accent #0891b2 for brand tie-in) and give the wordmark a deliberate, spacing/weight treatment distinct from the body font so the identity feels authored rather than inherited."
+        }
+      ],
+      "_label": "typography"
+    },
+    {
+      "dimension": "Layout, Spacing, Grid & Visual Cohesion",
+      "overall_verdict": "This reads as a bolted-together lift of the Verifone.com template, not a cohesive original design. The strongest tells are systemic, not cosmetic: two competing accent-color systems coexist on the same page (a blue #0a84ff/gradient logo system inherited from the source template vs. a cyan #22d3ee/#0891b2 system layered on top), so the identical button label \"Start a project\" renders BLUE in the header and CYAN in the hero — a mistake no in-house design team makes. The section rhythm is a mechanical A/B/A/B stack of full-bleed white → black → white → cyan bands with no connective tissue, and each band uses a different card treatment (pure-black #000 cards, dark-gray #1a1a1a cards, light-gray #e6e6e6 cards) and a different corner radius, so the eye reads it as several templates spliced together. The design-token export confirms zero radius discipline (11 distinct corner values). The icon set is the giveaway detail: the engagement-model and benefit cards are illustrated with payment-terminal / POS card-reader glyphs from the Verifone product library, which have nothing to do with a software-engineering agency. Net: it looks amateur/AI-assembled because the parts were never reconciled into one system.",
+      "findings": [
+        {
+          "title": "Two competing accent-color systems — identical 'Start a project' button is blue in the header, cyan in the hero",
+          "severity": "critical",
+          "evidence": "design-tokens.json buttons array shows the header 'Skip to content'/CTA using bg #0a84ff, and the site logo (header + footer) is a blue→purple gradient S-mark. But the hero 'Start a project' button, the 'Most popular' badge, the active 'SaaS & Software' pill, the 'Built for ambitious technology teams' block, and the final CTA band are all cyan/teal (backgrounds list #22d3ee ×3, #0891b2 ×3; textColors list #0891b2 ×7). The verbatim label 'Start a project' appears twice: header crop renders it solid BLUE (#0a84ff), hero crop renders it CYAN (#0891b2). Same word, two colors, one viewport.",
+          "why_it_reads_amateur_or_ai": "A single brand ships one primary accent. Having two — where the leftover blue is clearly the Verifone source-template color and the cyan is the new paint job — proves the theme was re-skinned by find-replace without unifying the button/logo tokens. The duplicated-label color split is the single most obvious 'this is a lifted template' tell on the page.",
+          "recommendation": "Pick ONE accent. Since the body is cyan, recolor the logo, header CTA (#0a84ff → #0891b2), and 'Skip to content' link to the cyan ramp, or vice-versa. Delete #0a84ff, #004aef, #3474ff from the palette entirely. There should be exactly one 'primary button' style, not a blue one and a cyan one."
+        },
+        {
+          "title": "Border-radius chaos — 11 different corner radii with no scale",
+          "severity": "high",
+          "evidence": "design-tokens.json borderRadii: 11px (×49), 32px (×19), 16px (×14), 10px (×7), 18px (×7), 30px (×5), 23px (×5), 999px (×2), 50% (×2), plus 0px 0px 10px and 0px 0px 10px 10px. Nav dropdown items use 11px, top-level nav buttons use 10px, cards use 16px/32px, pills use 999px, and stray 18px/23px/30px appear with no pattern. 11px and 10px and 18px are visually indistinguishable yet coexist.",
+          "why_it_reads_amateur_or_ai": "A disciplined system exposes 2–3 radii (e.g. 8px control / 16px card / 999px pill). Eleven ad-hoc values — including bizarre 23px and 11px — is the fingerprint of merging multiple template fragments, each carrying its own hard-coded radius, with no shared token. Humans building a system don't type '23px'.",
+          "recommendation": "Collapse to a 3-step radius token set: --r-sm: 10px (controls/nav), --r-lg: 16px (cards), --r-pill: 999px (chips/badges). Remove 11px, 18px, 23px, 30px, 32px, 50% and the two box-shadow-shaped 'radius' values. Apply via CSS variables so it can't drift again."
+        },
+        {
+          "title": "Section rhythm is a mechanical full-bleed color-band stack of mismatched blocks",
+          "severity": "high",
+          "evidence": "Vertical scan of desktop-full.png (6215px tall): white hero-intro → BLACK 'Choose the engagement model' band → white 'Beyond delivery' → CYAN 'Built for ambitious teams' block sitting inside a BLACK band → BLACK 'Why teams keep building with us' stat grid → light-gray (#e6e6e6/#ececec) 'Power your roadmap' grid → CYAN final CTA → dark #1c1c26 footer. Each band uses a different card fill: engagement cards are near-black on black; stat cards are #1a1a1a on #000; roadmap cards are #e6e6e6 on light gray.",
+          "why_it_reads_amateur_or_ai": "Cohesive pages carry a consistent surface language and use spacing/typography — not just background flips — to separate sections. Alternating white/black/cyan slabs with three different card fill colors reads as separately-authored sections pasted end to end. It's the visual equivalent of changing fonts every paragraph.",
+          "recommendation": "Reduce to two surfaces max (e.g. light and one dark) and let whitespace + a consistent card style carry section separation. If you keep a dark band, keep its card fill identical to the other dark band (unify #1a1a1a vs near-#000). Don't introduce the #e6e6e6 gray card family at all — it belongs to a different template."
+        },
+        {
+          "title": "Card families are inconsistent across sections — three different fills, and the stat grid has two different internal layouts",
+          "severity": "high",
+          "evidence": "backgrounds token counts: #000000 ×8, #1a1a1a ×4, #333333 ×4, #e6e6e6 ×6, #ececec ×5. In the 'Why teams keep building with us' 2×2 grid, the left cards ('500+ / PROJECTS DELIVERED', 'Real-time / OBSERVABILITY') place a huge left-aligned number in its own column with the heading offset to the right, while the right cards ('99.99% Enterprise reliability', '100% code ownership') stack number-on-top-of-heading in a single left column. Two layouts, one grid.",
+          "why_it_reads_amateur_or_ai": "Cards in one grid must share one internal template. Mixing a two-column 'stat + description' layout with a stacked 'stat/heading/description' layout inside the same 2×2 block is a classic AI/templating artifact — the generator filled slots without enforcing a shared card component.",
+          "recommendation": "Define ONE stat-card component (icon or number, heading, body, link) and use it for all four. Unify the number typographic treatment ('500+', 'Real-time', '99.99%', '100%' currently vary in size/weight relationship to their label). Pick one card surface color for the whole page's card system."
+        },
+        {
+          "title": "Card icons are payment-terminal / POS glyphs from the Verifone source library — wrong domain",
+          "severity": "high",
+          "evidence": "In the 'Choose the engagement model' cards, 'Fixed-scope projects' and 'Managed services' use card-reader/POS-terminal line icons; 'Dedicated teams' uses three linked POS terminals. In 'Power your roadmap', 'Reduce technical debt' repeats the three-POS-terminals icon and 'Accelerate time to market' uses a device+calendar glyph. These are hardware-payment-device icons, not software/cloud icons.",
+          "why_it_reads_amateur_or_ai": "The iconography literally depicts credit-card terminals on a page selling React/Node/AWS engineering. It's direct residue of the lifted Verifone (payments company) template that nobody swapped out — the most concrete proof the design isn't original, and it silently undermines every credibility claim.",
+          "recommendation": "Replace the entire icon set with software/cloud-appropriate line icons (server, container, pipeline, shield, code brackets, cloud) from a single consistent icon family at one stroke weight and one grid size. The lone '</>' code-bracket icon in the 'Built for ambitious teams' block is the only on-brand icon and should set the style for the rest."
+        },
+        {
+          "title": "Client-logo strip is under-populated and unevenly spaced — heavy right-side dead space",
+          "severity": "medium",
+          "evidence": "Hero logo band (logos crop) shows only Bitdefender, 123 Form Builder, EaseUS, and Mondly. The Cisco and ViewSonic logos named in the metadata/claims are absent. The four present logos are pushed left/center with a large empty gap occupying roughly the right third of the full-bleed band, on a green gradient that also clashes with the cyan brand accent.",
+          "why_it_reads_amateur_or_ai": "A four-logo 'trusted by' row stretched across a 1440px full-bleed with a third of it empty looks unbalanced and thin, and the green gradient background is yet another color not in the brand system. The mismatch between claimed logos and shown logos reads as hastily assembled placeholder content.",
+          "recommendation": "Either show a full, evenly-distributed logo set (justify-content with equal gaps, all logos optically sized to one height) or constrain the row to a centered max-width so there's no dead space. Drop the green gradient — put the logos on the same dark surface as the rest of the hero, or a neutral tint of the cyan brand."
+        },
+        {
+          "title": "'Beyond delivery' section pairs generic suit-and-tie stock photography with a full-bleed white gap",
+          "severity": "medium",
+          "evidence": "The 'Beyond delivery - engineering as a long-term partnership' block uses an Unsplash-style photo of four people in business attire reviewing printed bar-chart paper in a glass-walled office. The 'Custom software' accordion section (top) and the engagement-image tile leave large white/empty right-hand regions (visible in d3/d4 crops), and the hero itself uses stock photography of a woman at a laptop.",
+          "why_it_reads_amateur_or_ai": "Printed-chart-in-blazers stock imagery is the visual cliché of AI-generated/template corporate sites and is tonally wrong for a developer agency (engineers don't review printed bar charts in suits). Combined with the ragged whitespace balance, the section feels padded rather than composed.",
+          "recommendation": "Swap stock imagery for authentic product/engineering visuals (real dashboards, architecture diagrams, code, the actual team) or purpose-shot photography. Tighten the asymmetric layouts so image and text columns share a defined grid rather than leaving one side blank."
+        },
+        {
+          "title": "Nav-control radius and padding drift — 10px vs 11px, dropdown items subtly misaligned",
+          "severity": "low",
+          "evidence": "design-tokens.json: top-level nav items ('Products','Solutions','Company') use radius 10px, padding 10px 13px, fontSize 15.36px; every dropdown item ('Software Development…','SaaS Development…', etc.) uses radius 11px, padding 11px 13px, fontSize 15.2px. So the parent and its children differ by 1px in radius, 1px in vertical padding, and 0.16px in font size.",
+          "why_it_reads_amateur_or_ai": "Sub-pixel and 1px deltas between a menu and its own dropdown items (10px vs 11px, 15.36 vs 15.2) are exactly what you get from stitching two component sources rather than one token set. No human hand-picks 15.36px and 15.2px for the same menu.",
+          "recommendation": "Normalize all nav/menu controls to one radius (10px), one padding, and one font size (round the odd 15.36/15.2/15.2px values to a single 15px or 16px token). These fractional px sizes throughout (13.12px ×53, 14.4px, 15.2px) should be rounded to a real type scale."
+        }
+      ],
+      "_label": "layout-spacing"
+    },
+    {
+      "dimension": "Copy, Messaging, Labeling & Information Architecture",
+      "overall_verdict": "The copy is grammatically clean and, sentence by sentence, more competent than most agency sites — but it reads as AI-generated and non-enterprise for three structural reasons. First, there is no single owned positioning: the metadata layer alone carries THREE different taglines (\"Build & Scale Your Software With Confidence\" in the homepage title, \"Engineering That Scales Your Business\" in every og:title, \"Intelligent Software. Limitless Impact.\" in every og:image:alt), and the on-page hero adds a fourth promise (\"the software and cloud platforms your business runs on\"). A real brand ships one line everywhere; this reads like three model outputs that were never reconciled. Second, the copy leans on the exact cliché stack that signals LLM authorship in B2B — \"with confidence\" (used in the homepage title, a homepage card heading \"Scale with confidence,\" and the identical CTA \"Ready to build your next product with confidence?\" repeated verbatim on the homepage, pricing, about, and software-development pages), plus \"engineering partner, not a vendor,\" \"long-term partnership,\" and \"built to scale.\" Third, almost nothing is falsifiable or specific to Sentrize: the value props (\"systems that keep performing as you grow,\" \"an asset rather than becoming technical debt\") are things any competitor could and does say. The information architecture actively undermines the enterprise claim: a 7-item top nav with mega-menus containing 7, 12, 8, 5, 6, 6, and 5 links (49 destinations) mislabeled as \"Products\" (services) and \"Solutions\" (also services), where the entire Pricing mega-menu's five items all point to the single /pricing URL. The strongest, most human copy on the site — the About \"Our story\" and the software-dev testimonial with concrete numbers (\"40 minutes to deploy,\" \"multiple times a day on Kubernetes\") — proves the team CAN write specifically; the rest hasn't been held to that bar.",
+      "findings": [
+        {
+          "title": "Three conflicting taglines in metadata plus a fourth on-page — no owned positioning",
+          "severity": "critical",
+          "evidence": "Homepage <title>: \"Build & Scale Your Software With Confidence | Sentrize\". og:title on ALL five pages: \"Sentrize | Engineering That Scales Your Business\". og:image:alt on ALL five pages: \"Sentrize — Intelligent Software. Limitless Impact.\" The on-page hero H1 says a fourth thing: \"We build the software and cloud platforms your business runs on.\" Four distinct value promises, none repeated as the canonical line.",
+          "why_it_reads_amateur_or_ai": "A company with real positioning uses ONE tagline consistently across title, OG, and hero — it is the single most-repeated string on a professional site. Carrying three different taglines in the machine-readable layer (which the founders likely never looked at) is the fingerprint of copy generated in separate passes and pasted without a style owner reconciling them. \"Intelligent Software. Limitless Impact.\" in particular is generic AI-brochure phrasing that means nothing and matches nothing else on the site.",
+          "recommendation": "Pick ONE positioning and propagate it to title, og:title, og:image:alt, and hero. Of the four, \"We build the software and cloud platforms your business runs on\" is the strongest — it is concrete, has a point of view (mission-critical systems), and is the hardest for a competitor to copy. Kill \"Intelligent Software. Limitless Impact.\" entirely. Set every og:title to \"Sentrize — the software and cloud platforms your business runs on\" and make page <title> tags page-specific + brand (\"Custom Software Development | Sentrize\") which is already correct on the sub-pages; only the homepage title needs to change from the third variant to the chosen line."
+        },
+        {
+          "title": "\"With confidence\" cliché repeated across the site, including a verbatim-duplicated CTA on four pages",
+          "severity": "high",
+          "evidence": "\"...With Confidence\" (homepage title); homepage Section 7 card heading \"Scale with confidence\"; and the identical closing CTA \"Ready to build your next product with confidence?\" appears verbatim on homepage (h2 class=\"black buffer0 h1_52\"), pricing, about, and software-development. Its sub-line is near-duplicated too: homepage says \"...we'll show you the fastest reliable path to production\" while pricing/about/software-dev say \"...we'll map the fastest reliable path to production.\"",
+          "why_it_reads_amateur_or_ai": "\"With confidence\" is one of the top tells of LLM-written B2B copy — it adds emotional reassurance while committing to nothing measurable. Repeating the same CTA sentence on four pages (with a one-word map/show variation that itself betrays a generation seam) reads as a template filled by a model, not written by a team that reviews each page. Enterprise buyers register the repetition as thin.",
+          "recommendation": "Replace each closing CTA with a page-specific, outcome-anchored line. Software-dev page: \"Ready to replace the system that breaks under load? Tell us your stack and we'll scope a rebuild.\" Pricing: \"See a real estimate before you commit — book a scoping call.\" Homepage: \"Tell us what you're shipping. We'll map the path to production and what it costs.\" Delete \"with confidence\" everywhere; rename the homepage card \"Scale with confidence\" to something falsifiable like \"Auto-scaling that survives traffic peaks.\""
+        },
+        {
+          "title": "Nav mislabeling: \"Products\" and \"Solutions\" both list services; \"Pricing\" mega-menu is five links to one URL",
+          "severity": "high",
+          "evidence": "Top nav has 7 mega-menus. \"Products\" (href=/services) lists Software Development, SaaS Development, Web Applications, Mobile Applications, API Development, AI & Automation, UI/UX Design — these are services, not products. \"Solutions\" (href=/solutions) lists DevOps, Cloud Infrastructure, AWS Consulting, Kubernetes, CI/CD, etc. — also services. The \"Pricing\" mega-menu's five entries (Development Plans, DevOps Plans, Managed Cloud, Dedicated Team, Enterprise) every one hrefs to \"/pricing\". \"Company\" is the visible label but the mega opens with \"About Us\".",
+          "why_it_reads_amateur_or_ai": "An agency that sells services calling its services \"Products\" is a category error a real B2B marketer would never make — it signals the IA was scaffolded by a model reaching for generic SaaS nav labels. Five sub-menu items that all resolve to the same page is a classic AI-generated-site artifact: it manufactures the appearance of depth (\"Enterprise\", \"Managed Cloud\") behind pages that don't exist. Buyers who click and land on the same pricing page repeatedly lose trust fast.",
+          "recommendation": "Rename \"Products\" to \"Services\" (or \"What we build\") and \"Solutions\" to \"Cloud & DevOps\" or \"How we help\" so the two menus are clearly differentiated by domain, not by an invented product/solution split. Either build the five distinct pricing sub-pages or collapse the Pricing mega-menu to a single link — a menu of identical destinations is worse than no menu."
+        },
+        {
+          "title": "Nav bloat: 49 destinations across 7 mega-menus, many pointing to pages that read as stubs",
+          "severity": "medium",
+          "evidence": "Seven top-level mega-menus with 7, 12, 8, 5, 6, 6, and 5 items = 49 links. \"Solutions\" alone has 12 (DevOps, Cloud Infrastructure, AWS Consulting, Kubernetes, CI/CD, Managed Hosting, Infrastructure Monitoring, Security & Compliance, Cloud Migration, Docker Containerization, Infrastructure as Code, Managed DevOps). \"Support\" offers Help Center, Open a Ticket, Service Status, SLA Policy, Customer Portal, Contact Support; \"Partners\" appears both as its own top-level menu AND inside \"Company\".",
+          "why_it_reads_amateur_or_ai": "A ~120-person agency does not need a 49-link IA with a Customer Portal, Reseller Program, White Papers, and API Docs — this is the surface area of a large SaaS platform, not a services firm. Over-scaffolded navigation with duplicate entries (Partners in two places) is a hallmark of AI generation optimizing for apparent completeness. It signals to enterprise buyers that the site is a facade with more menu than substance.",
+          "recommendation": "Cut to 4-5 top-level items: Services, Cloud & DevOps, Work (portfolio/case studies), Pricing, Company. Fold Support and Partners into the footer until those programs genuinely exist. Every nav link should resolve to a page with unique, substantive content; remove any that would land on a stub."
+        },
+        {
+          "title": "Value propositions are generic — nothing a competitor couldn't claim verbatim",
+          "severity": "high",
+          "evidence": "Section 2 h2: \"An engineering partner built to scale your digital products.\" Section 4: \"AN ENGINEERING PARTNER, NOT A VENDOR\" / \"Beyond delivery - engineering as a long-term partnership\" / \"We don't just ship code and walk away.\" Software-dev overview: software \"stays an asset rather than becoming technical debt\"; hero: \"engineered to outlast its first release... instead of being rewritten in two years.\" About values are single generic nouns: \"Engineering Rigor, Radical Ownership, Transparent Partnership, Security by Default, Pragmatic Innovation, Continuous Improvement.\"",
+          "why_it_reads_amateur_or_ai": "\"Partner not a vendor,\" \"we don't just ship code and walk away,\" \"built to scale,\" and \"long-term partnership\" are the four most common phrases in AI-written dev-agency copy — swappable onto any competitor's site with zero edits. The About \"values\" are the canonical LLM six-noun grid. None of it contains a proof point, a named client outcome, or a claim a rival couldn't equally assert, which is exactly why it reads as machine-filler rather than a real firm's voice.",
+          "recommendation": "Replace each abstract claim with a specific, verifiable one drawn from actual work. The site already proves this is possible: the software-dev testimonial (\"a monolith that took 40 minutes to deploy... Eighteen months later we ship multiple times a day on Kubernetes with zero downtime\") is concrete and credible. Rewrite the value props in that register — e.g., replace \"Radical Ownership: Engineers own outcomes end to end\" with a one-line story that shows it. If a sentence would be equally true on a competitor's site, cut or rewrite it."
+        },
+        {
+          "title": "Section headings are vague and interchangeable rather than specific",
+          "severity": "medium",
+          "evidence": "Software-dev page section headings: \"What we deliver,\" \"What is included,\" \"How we work,\" \"Technology stack,\" \"Related services.\" Homepage: \"Why teams keep building with us,\" \"Built for ambitious technology teams,\" \"Power your roadmap with the Sentrize engineering team,\" \"Choose the engagement model that fits your team.\" About: \"Principles we engineer by,\" \"Our journey,\" \"Small senior pods that own the whole system.\"",
+          "why_it_reads_amateur_or_ai": "\"What we deliver / What is included / How we work\" is the default LLM section skeleton for a service page — generic labels that carry no information and could headline any service on any agency site. They make the page feel templated. (Note the About headings are notably better — \"Small senior pods that own the whole system\" is specific and human — showing the bar exists but isn't applied consistently.)",
+          "recommendation": "Make headings assert something. \"What we deliver\" → \"Software modeled on your domain, not a template.\" \"How we work\" → \"Reviewable increments, tested on every commit.\" \"Why teams keep building with us\" → lead with the proof: \"500+ systems shipped, 99.99% uptime.\" A heading should be readable as a standalone claim, not a table-of-contents label."
+        },
+        {
+          "title": "Em-dash / stylistic tells and unverifiable stat stack signal AI authorship",
+          "severity": "medium",
+          "evidence": "Heavy em-dash and en-dash use in body copy: hero intro \"pairing modern engineering practices with senior teams who stay for the long haul\" follows an em-dash; software-dev \"a generic template forced into shape\" and \"stays an asset rather than becoming technical debt\" both hinge on em-dashes; About story \"most software problems are really engineering-discipline problems.\" The About page stacks eight round-number stats (500+, 99.99%, 98%, 120+, 40+, 4.9/5, 12+, 24/7) and a suspiciously tidy timeline (2014→2026, ISO 27001 + SOC 2 Type II in 2019, AWS Advanced Tier 2022). Contact budget bands use en-dashes ($25k–$75k).",
+          "why_it_reads_amateur_or_ai": "Frequent em-dashes mid-sentence to append a reassuring qualifier is one of the most recognizable LLM prose rhythms. Combined with a wall of perfectly round, unsourced metrics (99.99% uptime AND 98% retention AND 4.9/5 rating AND 500+ projects) and named awards from generic-sounding bodies (\"Asia-Pacific Cloud Excellence Awards,\" \"Global IT Services Council\"), the effect is a site that asserts credibility numerically instead of demonstrating it — the pattern buyers now associate with generated content.",
+          "recommendation": "Cut the stat grid from eight to the three you can actually defend and would survive due diligence, and attribute them (\"99.99% uptime across managed-cloud clients, 2024-2025\"). Break up the em-dash cadence — convert half of them to full stops so the prose stops sounding uniform. Drop award lines you can't link to a verifiable source; a single Clutch profile link beats five unlinkable trophies."
+        },
+        {
+          "title": "Reused/lifted template chrome contradicts the 'custom engineering' claim",
+          "severity": "medium",
+          "evidence": "Homepage carries Verifone-template class names and copy scaffolding: hero uses \"introPageBannerTitle,\" \"modernCommerce,\" \"introMobilDigital,\" \"introMobileRetail\" (retail/commerce IDs irrelevant to a dev agency), a \"beyond-payments-image.png\" asset in the 'partner not a vendor' section, and CSS files chrome.css / enterprise.css / en0000000000000812.css / theme-teal.css. Client logo marquee shows Cisco/Bitdefender/ViewSonic/EaseUS/Mondly/123FormBuilder linking to /success-stories; hero images are Unsplash stock (photo-1461749280684, photo-1498050108023).",
+          "why_it_reads_amateur_or_ai": "A firm whose core pitch is \"custom software engineered to outlast its first release\" and \"not a generic template forced into shape\" (its own software-dev copy) is itself running on a visibly lifted Verifone commerce template with leftover retail IDs and a payments image. That contradiction is the single most damaging trust signal on the site — it tells a technical buyer the company doesn't practice what it sells. Stock Unsplash hero imagery and logo walls of companies with no visible case study compound the impression.",
+          "recommendation": "This is a build issue as much as copy: rename/replace the lifted class names and remove commerce-specific artifacts (beyond-payments-image.png, introMobileRetail). More urgently for messaging — either back the client logos with real, clickable case studies at /success-stories or remove them (unsubstantiated enterprise logos are a legal and credibility risk), and replace Unsplash stock with screenshots of actual delivered work. A custom-software firm's own site is its primary portfolio piece."
+        }
+      ],
+      "_label": "copy-ia"
+    },
+    {
+      "dimension": "Trust & Proof",
+      "overall_verdict": "This site reads as amateur and AI-generated on the trust dimension, and it carries real legal exposure. The \"Trusted by\" strip on the homepage displays six genuine, recognizable third-party brand logos (Cisco, Bitdefender, ViewSonic, EaseUS, Mondly, 123 FormBuilder) — every one of them linking to /success-stories — yet the success-stories page never once mentions any of those companies; its case studies are anonymized fictional products (ClaimFlow, Loyalo, VitalLink). That is a textbook lifted \"trusted-by\" logo wall: the logos assert client relationships the site's own content cannot substantiate, and using competitors'/vendors' marks (Cisco, Bitdefender are security firms; ViewSonic/EaseUS/Mondly/123FormBuilder are consumer-software vendors — an implausible client roster for a no-footprint agency) to imply endorsement is trademark misuse and false advertising. Meanwhile the site's OWN invented proof is internally contradictory: the identical testimonial author appears under two different surnames on different pages, the company's CEO is also quoted as an external client, all 12 testimonials and 6 team members use no verifiable identity (stock Unsplash faces, no company names, no LinkedIn), every stat is an unsourced round number, awards and certifications (ISO 27001, SOC 2 Type II, AWS Advanced Tier, \"Partner of the Year\") are text-only with no certificate/verification link, and the contact page lists three prestige office addresses with a fake-reserved phone number and no company registration. A due-diligence buyer who spends 90 seconds cross-referencing pages will conclude the proof is fabricated.",
+      "findings": [
+        {
+          "title": "Real third-party brand logos (Cisco, Bitdefender, ViewSonic, EaseUS, Mondly, 123 FormBuilder) presented as clients with zero corroboration — legal risk",
+          "severity": "critical",
+          "evidence": "homepage.html lines 97-131: a marquee of <img alt=\"Cisco\" src=\"/assets/images/cisco-white.png\">, bitdefenderr-white.png (note the misspelled double-r filename), 123formbuilder-white.png, easeus-white.png, mondly-languages-white.png, viewsonic-white.png — each wrapped in <a href=\"/success-stories\">. But page-success-stories.html contains NO occurrence of Cisco, Bitdefender, ViewSonic, EaseUS, Mondly, or 123FormBuilder anywhere; its case studies are anonymized fictions (ClaimFlow, Loyalo, VitalLink, FleetSignal, LedgerCore, Triage AI). These specific brands are also the exact logo set shipped on Verifone.com-style marketing templates.",
+          "why_it_reads_amateur_or_ai": "A firm claiming 500+ projects would name its marquee clients in a case study, not hide them behind fictional product names. The logos link to a page that never references them, which is the signature of a lifted template logo wall left un-swapped. Cisco and Bitdefender are themselves security/infrastructure vendors, and EaseUS/Mondly/ViewSonic/123FormBuilder are consumer-software companies — a wildly implausible and incoherent 'client' roster for an anonymous agency, which is the tell that these were grabbed for visual credibility rather than earned.",
+          "recommendation": "Remove all six third-party logos immediately — displaying Cisco/Bitdefender/etc. marks to imply a client relationship you cannot prove is trademark infringement and false advertising (deceptive-conduct exposure under Australian Consumer Law given the Sydney HQ claim). Replace with either (a) written, attributable client references you have signed permission to use, or (b) an honest 'Industries we serve' band with no logos. Never link a client logo to a page that doesn't feature that client."
+        },
+        {
+          "title": "Same testimonial author appears under two different surnames; company CEO is quoted as an external client",
+          "severity": "critical",
+          "evidence": "grep across files: 'Priya Venkataraman, CTO · E-commerce platform' in page-testimonials.html and page-success-stories.html, but 'Priya Venkatesan, CTO' in page-case-studies.html — same first name, two surnames, two industries. 'Marcus Hale, VP Engineering · Enterprise fintech' (testimonials/success-stories) vs 'Marcus Lindqvist, VP of Infrastructure' (case-studies). The surname 'Lindqvist' is then reused for a third person, 'Rachel Lindqvist, Founder · EdTech' (page-testimonials.html). Most damning: 'Sofia Marchetti' is the Chief Executive Officer on page-team.html ('Founded the company in 2014') AND is quoted as an external customer 'Sofia Marchetti, VP Engineering · Payments' in page-testimonials.html.",
+          "why_it_reads_amateur_or_ai": "These are LLM-generated placeholder names that were never reconciled across pages. No real testimonial set has the same person under two surnames, and no real company quotes its own founder as a third-party client. This is the single most decisive proof to a reviewer that every quote on the site is fabricated.",
+          "recommendation": "Delete every testimonial that cannot be tied to a real, consenting, named individual at a named company. If you have zero real testimonials, ship the page with none rather than fictional ones. At minimum, immediately fix the Venkataraman/Venkatesan and Hale/Lindqvist contradictions and remove the CEO (Marchetti) from the testimonial list — a diligence reviewer who catches this discards the entire site's credibility."
+        },
+        {
+          "title": "Twelve testimonials with no company name, no photo, no verifiable person",
+          "severity": "high",
+          "evidence": "page-testimonials.html <cite> blocks: 'Daniel Okafor · Founder & CEO · B2B SaaS', 'Elena Sørensen · CISO · Healthtech', 'Tobias Reinhardt · Head of Product · Marketplace', 'Amara Diallo · Director of Operations · Logistics SaaS', etc. — 12 quotes, every attribution is a generic role plus a generic industry category. IMG count inside the testimonials <main> is 0 (no headshots), and there are no company names or LinkedIn links on any quote.",
+          "why_it_reads_amateur_or_ai": "Real B2B testimonials name the company ('CTO, Xero') and usually carry a face and/or logo; anonymizing to 'CTO · E-commerce platform' is what you write when the client doesn't exist. The names are also a suspiciously even one-per-continent diversity spread (Okafor, Sørensen, Reinhardt, Diallo, Venkataraman, Nakamura, Boateng, Costa) — a hallmark of AI-generated persona lists.",
+          "recommendation": "For each quote add: full name, exact job title, real company name (with permission), and a real headshot or company logo. Cut the count to however many are genuinely real — three attributable, verifiable quotes outperform twelve anonymous ones. If none are real, remove the page and the /testimonials nav entry."
+        },
+        {
+          "title": "Entire 'team' is stock Unsplash portraits with unverifiable identities",
+          "severity": "high",
+          "evidence": "page-team.html: six members — Sofia Marchetti (CEO), Rahul Desai (CTO), Klara Novak (Head of Cloud & DevOps), Benjamin Asante (Lead Software Architect), Yuki Tanaka (Head of Security), Olivia Brandt (Head of Design) — each rendered from images.unsplash.com stock photos (e.g. photo-1494790108377-be9c29b29330, one of the most-reused stock headshots on the web; photo-1500648767791; photo-1507003211169). No LinkedIn links, no last-name-searchable credentials, no bylines. Bio text is generic ('deep experience in Node.js, TypeScript, and distributed systems on AWS').",
+          "why_it_reads_amateur_or_ai": "A 120+ engineer firm founded in 2014 would have a real, linkable leadership team. Stock-photo faces with no LinkedIn is the clearest 'this company may not employ these people' signal, and photo-1494790108377 is instantly recognizable to anyone who has seen a template demo. Combined with the same face-set diversity pattern as the testimonials, it reads machine-assembled.",
+          "recommendation": "Use real photographs of real employees with links to their LinkedIn/GitHub profiles. If the company is too small/early to show six leaders, show the two or three real founders honestly. Reverse-image-searchable stock faces on a leadership page are disqualifying for enterprise buyers who vet vendors."
+        },
+        {
+          "title": "All headline stats are unsourced round numbers repeated verbatim across every page",
+          "severity": "high",
+          "evidence": "Identical stat block ('500+ Projects delivered', '99.99% SLA-backed uptime', '98% Client retention', '120+ Engineers & specialists') appears on homepage.html (lines 707/746 etc.), page-success-stories.html, page-case-studies.html, page-about.html and page-team.html. Success-stories/about extend it with '40+ Countries served', '4.9/5 Average client rating', '12+ Years in operation', '24/7 Support coverage'. og:description hard-codes '120+ engineers, 500+ projects, and 99.99% SLA-backed uptime across 40+ countries.' None link to a methodology, status page, or third-party source; '99.99% uptime' has no public status page despite a /service-status nav link.",
+          "why_it_reads_amateur_or_ai": "Every figure is a marketing-round number (500+, 120+, 40+, 99.99%, 98%, 4.9/5) with no denominator or source. '99.99% uptime' is a per-service SLA metric, not a company-wide brag, and stating it with no live status page is a red flag to any engineer. Repeating the exact same numbers on six pages with zero variance signals a single templated data blob, not measured reality.",
+          "recommendation": "Cut vanity stats you cannot substantiate. Keep only figures you can defend and source them (e.g. '99.9% uptime — see live status' linking to a real status page; 'client retention measured over trailing 24 months'). Replace '500+ projects' with 3-5 named, dated, verifiable engagements. Anchor '4.9/5' to a real Clutch/G2 profile or delete it."
+        },
+        {
+          "title": "Awards and certifications are decorative text with no verification, evidence, or dates that survive scrutiny",
+          "severity": "high",
+          "evidence": "page-about.html 'Awards': 'Cloud Engineering Partner of the Year 2019 · Asia-Pacific Cloud Excellence Awards', 'Top B2B Software Developers 2021 · Clutch Global Recognition', plus Enterprise Technology Awards 2022, Global IT Services Council 2023, International Workplace Excellence Awards 2025 — all rendered as a '★' glyph with no logo, link, or citation. 'Certifications': ISO 27001, SOC 2 Type II, ISO 9001, AWS Advanced Tier, GDPR Compliant, HIPAA-Ready — each shown as a two-letter monogram in a coloured box ('I2', 'S2', 'AA', 'GC'), not an issuer's badge, with no certificate number or verification link. Timeline claims 'Achieved ISO 27001 and SOC 2 Type II' in 2019 and 'AWS Advanced Tier Partner' in 2022.",
+          "why_it_reads_amateur_or_ai": "Award bodies like 'Asia-Pacific Cloud Excellence Awards' and 'Global IT Services Council' are not recognizable, and the entries have the generic, plausible-but-ungoogleable shape of AI-invented accolades. Real SOC 2 / ISO 27001 / AWS Advanced Tier status is verifiable (AWS Partner Finder, auditor letters) and firms link to it; substituting a hand-typed 'S2' monogram for the actual AWS/SOC badge is what you do when you can't produce the certificate. Claiming HIPAA/SOC 2/ISO without evidence is itself a compliance-misrepresentation risk.",
+          "recommendation": "Remove any certification you cannot prove. For real ones, embed the issuer's official badge and link to the verification record (AWS Partner Finder listing, ISO certificate number, SOC 2 report available under NDA). Drop unrecognizable award names or link each to the awarding body's published results page. Unverifiable trust badges are worse than none — they invite the exact 'this is fake' conclusion."
+        },
+        {
+          "title": "Case-study metrics are impressive but wholly anonymous — no client is ever named",
+          "severity": "medium",
+          "evidence": "page-case-studies.html leads with hero metrics ('3 wks→2 hrs release lead time', '900→12k TPS', '840ms→64ms p99 latency', '−44% monthly cloud spend') but every subject is a category, not a company: 'A Series C fintech offering embedded payments', 'A mid-market healthcare analytics company', 'A venture-backed streaming startup'. Quotes are attributed to the same unverifiable/contradictory names flagged above (Priya Venkatesan, Marcus Lindqvist, Sophie Aldridge, Reuben Castellanos, Hannah Brückner).",
+          "why_it_reads_amateur_or_ai": "The writing is competent and the metrics are internally plausible, which is precisely the AI-generated 'realistic filler' pattern — specific enough to look real, anonymized enough to be unfalsifiable. Genuine case studies name the client (or state 'name withheld under NDA' with a real logo elsewhere); a whole page of nameless engagements plus fabricated quote-authors is not verifiable proof.",
+          "recommendation": "Convert at least one or two case studies into fully named references with a client contact willing to be cited, or clearly label the page 'representative engagements, details anonymized under NDA' and pair it with real named logos elsewhere. Do not attach fabricated named quotes to anonymized studies — the mismatch is what exposes the fabrication."
+        },
+        {
+          "title": "Fictional-reserved phone number and geography mismatch on the contact page",
+          "severity": "medium",
+          "evidence": "page-contact.html: 'Phone: +1 (628) 555-0137'. The 555-01XX block is the reserved directory range designated for fictional use (film/TV), so it is not a working business line. The number uses US country code +1 and area code 628 (San Francisco), yet the same page lists the primary office as 'Sydney, Australia — Level 12, 580 George Street, Sydney NSW 2000' plus 'London EC1M 3HE' and 'Singapore 049910'. Emails are generic role aliases (sales@sentrize.com, support@sentrize.com).",
+          "why_it_reads_amateur_or_ai": "A US fictional-range number on an Australian-headquartered firm is a copy-paste placeholder that was never replaced — an unmistakable tell. 580 George Street and 9 Battery Road are well-known prestige/serviced-office towers, so listing them without a suite-level tenant identity reads as borrowed prestige addresses rather than a real footprint.",
+          "recommendation": "Replace the 555-01XX number with a real, answerable line in the country of your actual HQ. Ensure the phone's country matches the primary office. If the addresses are virtual/serviced offices, either substitute your real operating address or drop the office list rather than imply three global offices you don't staff."
+        },
+        {
+          "title": "No company registration / legal entity anywhere, despite claiming a Sydney HQ and enterprise credibility",
+          "severity": "medium",
+          "evidence": "grep across all pages: no ABN, ACN, 'Pty Ltd', company number, or VAT/registration identifier appears in any file. Footer (all pages) shows only '© 2026 Sentrize. All rights reserved.' with links to /privacy-policy, /terms-of-service, /sla-policy. The contact page asserts an Australian principal office ('Sydney NSW 2000') but no ABN — which Australian businesses are expected to display — and no registered legal entity name is given anywhere.",
+          "why_it_reads_amateur_or_ai": "Legitimate enterprise vendors, especially Australian ones, publish their registered entity and ABN/ACN in the footer or contact page; its total absence alongside three claimed international offices signals either an unregistered operation or fabricated locations. Enterprise procurement and vendor onboarding will fail immediately without a verifiable legal entity.",
+          "recommendation": "Add the full registered legal entity name and jurisdiction plus ABN/ACN (and UK company number if the London office is real) to the footer and contact page. If no such entity exists, remove the international-office and enterprise claims until it does."
+        },
+        {
+          "title": "No pricing transparency — figures exist only as ranges inside a lead-capture form",
+          "severity": "low",
+          "evidence": "page-pricing.html shows engagement tiers ('From $18k', 'Scale — From $14k/mo', 'Enterprise — Custom', 'Talk to sales') and a monthly/annual toggle, but the only concrete cost signals a prospect encounters are self-selected budget bands inside the contact form (page-contact.html: 'Under $25k / $25k–$75k / $75k–$200k / $200k+ / Not sure yet'). The homepage/nav 'Pricing' promises specifics that resolve mostly to 'Contact Us'/'Talk to sales'.",
+          "why_it_reads_amateur_or_ai": "This is a smaller trust issue than the fabricated proof — 'From $Xk' plus 'Enterprise: Custom' is a legitimate agency pattern. It reads slightly evasive only because the budget-selector in the contact form is doing the real qualification while the pricing page stays vague, but it is not a credibility red flag on its own.",
+          "recommendation": "Keep the 'From $X' anchors and add a one-line 'what's included / typical engagement size' under each tier so the pricing page carries more information than the contact form's budget dropdown. This is polish, not a fix for the trust problem — prioritize the logo, testimonial, and registration issues first."
+        }
+      ],
+      "_label": "trust-credibility"
+    },
+    {
+      "dimension": "Technical Build, Code Quality & SEO",
+      "overall_verdict": "This reads as amateur-to-fraudulent for a firm that sells engineering. The page is a Next.js/turbopack shell (turbopack-3shn73yrjm21y.js, data-precedence=\"next\") with an entire legacy Verifone.com template physically pasted on top (chrome.css, enterprise.css, en0000000000000812.css, theme-teal.css, sh__/sf__ classes). The lift is not merely stylistic: the \"feature\" icons are Verifone's payment-terminal \"Blink\" icon set embedded verbatim as base64 (data-iconname=\"TERMINAL_ENCRYPTION\", \"HARDWARE_HEALTH\", \"ESTATE_MANAGEMENT\", \"FIELD_SERVICES\", \"NETWORK_MANAGEMENT_SYSTEM\"), a hero asset literally named beyond-payments-image.png (Verifone's \"Beyond Payments\" slogan), and dead jQuery ColorBox + a \"#volume-booster-visusalizer\" audio widget that have nothing to do with a software agency. On top of that sit real, checkable defects: three different taglines across title/OG/OG-alt, zero JSON-LD structured data, empty GTM shells, malformed cache-bust query strings, a pricing page with no canonical and an og:url pointing at the homepage, no image lazy-loading, ~15 of 31 images with no alt text, and a broken heading hierarchy. Any engineer opening DevTools sees a firm that sells clean architecture shipping the messiest possible front-end. This is the dimension most likely to lose a technical buyer, because the code is the product demo.",
+      "findings": [
+        {
+          "title": "Verifone payment-terminal icons shipped verbatim as base64 in a software-agency page",
+          "severity": "critical",
+          "evidence": "The Section-3 pricing cards and Section-7 feature cards use <img src=\"data:image/svg+xml;base64,...\"> blobs that decode to SVGs carrying class=\"blink-icon\" and data-iconname attributes from Verifone's 'Blink' terminal UI kit. Enumerated across the 15 base64 images: TERMINAL_ENCRYPTION, HARDWARE_HEALTH, SOFTWARE_HEALTH, ESTATE_MANAGEMENT, FIELD_SERVICES, NETWORK_MANAGEMENT_SYSTEM, SINGLE_SOURCE_PROVIDER, DEEP_PERSONALIZATION, TWO_WAY_CONVERSATION, DESKTOP_PC, CALENDAR, and a source-baked typo OTHER_POLCICIES. Internal CSS ids inside the SVGs are .cls-2906. The SVGs even include blink-open/blink-shut animation groups (an eye that blinks) native to Verifone's brand system.",
+          "why_it_reads_amateur_or_ai": "These are icons for managing a fleet of physical card-payment terminals (terminal encryption, hardware/estate management, field services). Pasting them unmodified into a cloud-engineering agency page is nonsensical and is unambiguous proof the whole template was lifted, not built. The misspelling OTHER_POLCICIES shows nobody read what they copied. For a firm selling engineering rigor, this is the single most damaging artifact on the page.",
+          "recommendation": "Delete every base64 blink-icon and replace with a small, self-authored SVG set that maps to the actual services (custom software, SaaS, cloud/DevOps, security). Strip all data-iconname/blink-*/cls-2906 remnants. Do not embed 12+ large SVGs as base64 in HTML regardless — reference an inlined <symbol> sprite or optimized SVG files so the icon system is intentional and cacheable."
+        },
+        {
+          "title": "Architectural incoherence: Next.js/turbopack app shell with an entire legacy Verifone stylesheet stack pasted on top",
+          "severity": "critical",
+          "evidence": "The <head> loads a modern RSC/turbopack build (/_next/static/chunks/turbopack-3shn73yrjm21y.js, <link ... data-precedence=\"next\">, a noModule=\"\" legacy fallback chunk, and a ~188KB self.__next_f RSC hydration payload on the last line) AND simultaneously preloads/loads a hand-maintained legacy CSS stack: /assets/css/chrome.css, site.css, enterprise.css, en0000000000000812.css (an opaque Verifone build-hash filename), style.css, theme-teal.css. Body markup uses Verifone template classes: header.sh.sh--overlay, nav.sh__nav, sh__mega, footer.sf, sf__grid, plus content-CMS classes wrap_all homePage cookie-buffer, introPageBannerContainer, wrapperRingBanner, mouseGlowBox. Dead legacy plugins are still in the DOM: jQuery ColorBox (#cboxOverlay, #colorbox, #cboxWrapper ... #cboxSlideshow) and a #volume-booster-visusalizer audio visualizer block with an <audio class=\"audio-output\"> and sound-wave segments.",
+          "why_it_reads_amateur_or_ai": "A company that sells clean cloud architecture is shipping the least coherent front-end possible: a React 18 streaming shell wrapping a jQuery-era CMS theme it doesn't own, complete with a leftover audio-booster widget and a lightbox library that a Next.js build would never emit. en0000000000000812.css is literally another site's compiled asset name. Any prospective technical client who opens the Network/Elements tab immediately sees the product demo (the site itself) contradicts the sales pitch.",
+          "recommendation": "Pick one system. Rebuild the page as native Next.js components with a single owned stylesheet (or Tailwind/CSS modules) and delete chrome.css, enterprise.css, en0000000000000812.css, theme-teal.css, style.css, site.css and the sh__/sf__/wrap_all class taxonomy. Remove the ColorBox and volume-booster DOM entirely. The rendered HTML is your strongest sales asset for an engineering firm — treat it as production code, not a mashup."
+        },
+        {
+          "title": "Three different brand taglines in the metadata of a single page",
+          "severity": "high",
+          "evidence": "homepage.html <head> carries three distinct positioning lines: <title>Build &amp; Scale Your Software With Confidence | Sentrize</title>; og:title / twitter:title = \"Sentrize | Engineering That Scales Your Business\" (appears 4x); og:image:alt = \"Sentrize — Intelligent Software. Limitless Impact.\" (appears 2x). The <h1> in the body is yet a fourth line: \"We build the software and cloud platforms your business runs on.\" The og:site_name is \"Sentrize\" but the twitter/og title format \"Sentrize | ...\" is inconsistent with the pipe order of the <title> (\"... | Sentrize\").",
+          "why_it_reads_amateur_or_ai": "A real brand ships one tagline. Three simultaneous, mutually-inconsistent slogans in one <head> is the classic fingerprint of AI-generated boilerplate (each field filled independently) or a template where placeholders were never reconciled. Search snippets and social shares will show a different promise than the page, undermining trust.",
+          "recommendation": "Choose one tagline and one title pattern (e.g. always \"<Page> | Sentrize\"). Make <title>, og:title, twitter:title identical, set og:image:alt to describe the actual OG image, and align the H1 to the same core promise. Do this across all pages."
+        },
+        {
+          "title": "Canonical/HTTPS/www mismatch and pricing page missing canonical entirely",
+          "severity": "high",
+          "evidence": "Homepage declares <link rel=\"canonical\" href=\"https://www.sentrize.com\"> and og:url https://www.sentrize.com, but per the audit context the site is actually served at apex http://sentrize.com (no HTTPS, no www) — a three-way mismatch (scheme + host + trailing form). The pricing page (page-pricing.html) has NO canonical link at all, yet its og:url is content=\"https://www.sentrize.com\" — i.e. the pricing page tells crawlers its canonical social URL is the homepage, not /pricing. No <meta name=\"robots\"> on either page.",
+          "why_it_reads_amateur_or_ai": "Serving a canonical that points to a URL the server doesn't actually redirect to (http apex vs https www) causes crawlers to see the live URL as non-canonical and can suppress indexing; an og:url that points every page at the homepage is a copy-paste tell. For a firm that lists 'Cloud Migration' and 'Security & Compliance' as services, shipping a site with no HTTPS is self-refuting.",
+          "recommendation": "Serve everything over HTTPS, 301-redirect apex+http to a single canonical host, and make each page's canonical + og:url self-referential to its own final HTTPS URL (e.g. https://www.sentrize.com/pricing). Add HSTS. Add a canonical to the pricing page. Verify the served host matches the declared canonical exactly."
+        },
+        {
+          "title": "No structured data (JSON-LD) on either page",
+          "severity": "medium",
+          "evidence": "grep for application/ld+json returns 0 matches in both homepage.html and page-pricing.html. There is no Organization, WebSite, BreadcrumbList, Service, or Offer schema anywhere, despite concrete claims (500+ projects, 120+ engineers, 99.99% uptime, 40+ countries) and a dedicated pricing page with engagement tiers.",
+          "why_it_reads_amateur_or_ai": "An engineering/SaaS vendor with a pricing page and named clients would normally ship Organization + Offer/Service schema; its total absence is a basic SEO miss that signals the metadata was generated superficially (OG/Twitter tags present, but no machine-readable entity data).",
+          "recommendation": "Add Organization JSON-LD (name, logo, sameAs to the LinkedIn/GitHub/X profiles already in the footer) on all pages, WebSite schema with SearchAction, and Service/Offer schema on the pricing page. Only include stat claims in schema if they are actually substantiated."
+        },
+        {
+          "title": "Empty Google Tag Manager scaffolding left in place",
+          "severity": "medium",
+          "evidence": "homepage.html lines 3-5 contain the GTM comment shell with nothing between: '<!-- Google Tag Manager (noscript) -->' then a blank line then '<!-- End Google Tag Manager (noscript) -->'. There is no corresponding GTM <script> in the head and no container id anywhere. The pricing page has no GTM comments at all (grep count 0), so the two pages are inconsistent about even the placeholder.",
+          "why_it_reads_amateur_or_ai": "Empty analytics boilerplate is a hallmark of a template that was populated by find-and-replace and never finished. Either analytics were never wired up (so the business is flying blind) or the comments are vestigial from the source template. Inconsistency between pages confirms hand-assembly rather than a shared layout component.",
+          "recommendation": "Either install a real GTM/analytics container via a shared layout component so it appears identically on every page, or remove the dead noscript comments entirely. Do not ship half-wired third-party scaffolding."
+        },
+        {
+          "title": "Malformed, self-referential cache-busting query strings on icons/favicons",
+          "severity": "medium",
+          "evidence": "Icon links use query strings that repeat the filename plus a random token and duplicate the extension: rel=\"icon\" href=\"/favicon.ico?favicon.2elyky-un3itm.ico\", rel=\"icon\" href=\"/icon.png?icon.0tey8b0o0tkkx.png\", rel=\"apple-touch-icon\" href=\"/apple-icon.png?apple-icon.0oi4038m5n36y.png\". The query value is not a version/hash param (e.g. ?v=abc123) — it is 'favicon.<token>.ico', an extension-suffixed filename used as a bare query string.",
+          "why_it_reads_amateur_or_ai": "This is not how any framework or CDN generates cache-busted assets; the query key/value is nonsensical (the whole thing is a value with no key) and duplicates the extension. It reads like an automated tool blindly appended hashed filenames into the query position — sloppy and inauthentic for an engineering vendor.",
+          "recommendation": "Use standard content-hash cache busting (e.g. /favicon.<hash>.ico as the path, or ?v=<hash> as a proper key=value) and let the framework generate it. Fix the icon URLs so they resolve to real files without the duplicated extension in the query."
+        },
+        {
+          "title": "Broken heading hierarchy on both pages; H2s styled to imitate H1",
+          "severity": "medium",
+          "evidence": "Homepage document order: H1 (introPageBannerTitle font_52) -> H2 -> H2 -> H3 -> H2 -> H2 -> H2 (class=\"black buffer0 h1_52\", i.e. an H2 dressed as an H1) -> then footer H4 x4 (jumping H2 to H4, skipping H3). Pricing page order is worse: H1 -> H3 -> H3 -> H3 -> H2 -> H2 -> H2 -> H4 x4 — the first sub-heading after the H1 is an H3 (skips H2), and H2s appear only after the H3s.",
+          "why_it_reads_amateur_or_ai": "Levels are chosen by visual size (font_44, h1_52) rather than document structure, and the pricing page opens H1 -> H3. This breaks the outline for screen readers and SEO and is a telltale sign headings were dropped into a copied template by appearance, not semantics.",
+          "recommendation": "Make headings follow a strict outline (single H1, then H2 for each major section, H3 for nested items, no skipped levels) and decouple size from level using CSS classes. Never use an H2 with an 'h1_52' class to fake an H1; size it with CSS instead."
+        },
+        {
+          "title": "No image lazy-loading and missing alt text on ~15 of 31 images",
+          "severity": "medium",
+          "evidence": "31 <img> tags total in homepage.html, 0 with loading=\"lazy\". The client 'marquee' duplicates 12 logo <img>s (Cisco, Bitdefender, 123 FormBuilder, EaseUS, Mondly, Viewsonic, each rendered twice for the infinite-loop effect) all eager-loaded. ~15 img tags have no alt attribute at all — these are the decorative base64 blink-icons, which are neither given alt=\"\" nor aria-hidden, so screen readers will announce raw/empty images. One logo asset is misspelled bitdefenderr-white.png (double r).",
+          "why_it_reads_amateur_or_ai": "Shipping 31 eager images including a 12-image duplicated marquee with no lazy-loading, plus unlabeled decorative icons, is exactly the accessibility/perf debt an engineering firm claims to eliminate for clients. The misspelled asset filename reinforces the copy-paste-without-review pattern.",
+          "recommendation": "Add loading=\"lazy\" to all below-the-fold images (all marquee logos and the platform mockup), add width/height to prevent CLS (some already have it), give decorative icons alt=\"\" plus aria-hidden=\"true\", and give the client logos meaningful alt like 'Cisco logo'. Use next/image so this is handled automatically, and fix the bitdefenderr-white.png filename."
+        },
+        {
+          "title": "Unsupported quantitative claims stated as fact with no substantiation, next to lifted client logos",
+          "severity": "high",
+          "evidence": "meta description and body assert '120+ engineers, 500+ projects, and 99.99% SLA-backed uptime across 40+ countries' (Section 6: font_52 '500+' PROJECTS DELIVERED, '99.99%' Enterprise reliability, 'SLA-backed uptime', 'Real-time OBSERVABILITY', '100% code ownership'). The client marquee shows Cisco, Bitdefender, ViewSonic, EaseUS, Mondly, 123 FormBuilder as logos linking to /success-stories — the same logo set that appears on the source Verifone-style template, with no case study text on the homepage to back any relationship.",
+          "why_it_reads_amateur_or_ai": "Round, unverifiable numbers (500+/120+/99.99%/40+) combined with major brand logos and zero substantiating detail is the signature of AI-generated marketing filler. Because the rest of the page is provably a lifted template, a technical evaluator will assume these stats and logos are fabricated too, which is worse than omitting them.",
+          "recommendation": "Either back each claim with a verifiable artifact (public status page for 99.99%, named case studies for the logos with client permission, a team page listing the engineers) or remove/soften the numbers. Do not display client logos you cannot prove a relationship with — for an engineering buyer, unbacked logos read as fraud."
+        }
+      ],
+      "_label": "technical-seo"
+    },
+    {
+      "dimension": "Accessibility & Mobile UX",
+      "overall_verdict": "This page reads as amateur and template-lifted the moment you interact with it non-visually or on a phone. Accessibility is broken in ways an enterprise agency would never ship: the skip link points to #main but no such element (and no <main> landmark) exists, so it silently does nothing; the mobile hamburger has aria-expanded but no aria-controls and there is literally no mobile menu markup for it to open (the sh__menu is the desktop Verifone mega-menu); the entire page has exactly ONE real subheading (a single <h3>) while every stat and feature-card title is a non-semantic <div>, so a screen-reader heading outline is essentially h1 → 5×h2 and nothing else; and the site's most-used text color #5b5b6b (49 uses) sits on near-black cards at ~2.5:1 contrast, failing WCAG AA and even the 3:1 large-text floor. On mobile the 6215px desktop design becomes a ~9,800px endless scroll built from ~16 near-identical dark rounded cards each ending in an identical \"Learn more\" link (48 total, 24 unique, all the same words), interrupted by jarring full-bleed black↔white↔cyan band flips. Combined with leftover Verifone template cruft (beyond-payments-image.png, colorbox dialog, a \"volume-booster\" audio widget) and three conflicting taglines in the metadata, the experience confirms rather than dispels the \"AI-generated, non-professional\" impression.",
+      "findings": [
+        {
+          "title": "Skip link targets #main but no #main / <main> element exists — skip-to-content is broken",
+          "severity": "critical",
+          "evidence": "Line 1 emits `<a class=\"skip-link\" href=\"#main\">Skip to content</a>`, and design-tokens lists it as a real focusable button (bg #0a84ff). But a full scan of homepage.html returns 0 occurrences of `id=\"main\"` and 0 `<main>` elements. The main content wrapper is `<div class=\"content\">` / `<div class=\"homePageContent\">` with no id. The hero uses `id=\"banner\"`, not `main`.",
+          "why_it_reads_amateur_or_ai": "A skip link is the single most visible signal that someone thought about keyboard/screen-reader users. Shipping one whose anchor goes nowhere is worse than not having it — it's the classic signature of scaffolding copied without wiring it up. Enterprise sites test this; template-lifters don't.",
+          "recommendation": "Add `id=\"main\"` (and ideally convert the wrapper to a semantic `<main id=\"main\" tabindex=\"-1\">`) on the primary content container at line 6/39 so the skip link and the landmark both resolve. Verify by tabbing once from page load and pressing Enter — focus must jump past the 7-item nav."
+        },
+        {
+          "title": "Mobile hamburger button opens nothing — aria-expanded present, aria-controls absent, no mobile menu markup",
+          "severity": "critical",
+          "evidence": "Line 15: `<button class=\"sh__toggle\" aria-label=\"Menu\" aria-expanded=\"false\">☰</button>`. There are 0 `aria-controls` attributes in the entire document, and the only menu is `<ul class=\"sh__menu\">` — the desktop Verifone-style mega-menu (`sh__mega sh__mega--wide`) containing ~50 links across 7 columns. There is no separate mobile drawer/nav in the DOM. The mobile screenshot shows the ☰ icon top-right but a mobile user has no primary navigation path.",
+          "why_it_reads_amateur_or_ai": "On a phone the entire multi-level site navigation (Products, Solutions, Company, Pricing, Resources, Support, Partners) is unreachable — you can only scroll the landing page. A working enterprise site's #1 requirement is that mobile users can navigate. The static aria-expanded=\"false\" that never toggles is a hallmark of markup generated/copied without the accompanying JS.",
+          "recommendation": "Ship an actual mobile nav: on toggle, reveal a full-screen or drawer menu built from the same link data, set `aria-controls=\"<menu-id>\"` on the button, toggle `aria-expanded` true/false in JS, move focus into the menu, and trap/close on Escape. Until then the site is unusable on mobile beyond the homepage."
+        },
+        {
+          "title": "Primary body text color #5b5b6b fails WCAG contrast on the dark cards it's used on (2.5:1)",
+          "severity": "critical",
+          "evidence": "design-tokens.json lists #5b5b6b as the most-used text color (49 occurrences) and the card/section backgrounds include #1a1a1a, #1c1c26, #333333 and #000000. Computed contrast: #5b5b6b on #1c1c26 = 2.54:1, on #1a1a1a = 2.61:1, on #000000 = 3.15:1 — all below the 4.5:1 AA minimum for body text and below the 3:1 large-text floor for the smaller sizes (13.12px is the 2nd-most-common size). Separately #9a9aad on white = 2.76:1 (fails), and brand cyan #0891b2 on white 'Learn more' links = 3.68:1 (fails AA).",
+          "why_it_reads_amateur_or_ai": "Mid-grey body copy on near-black is the default 'looks moody' choice of an AI/template that never ran a contrast checker. On the mobile crops the paragraph text under 'Full visibility', '100% code ownership', and the footer link columns is visibly washed out. Enterprise design systems pin body text to a token that passes AA on every surface.",
+          "recommendation": "Raise dark-surface body text to at least #b8b8c4 (≈7:1 on #1a1a1a) and light-surface body text off #9a9aad to ~#5b5b6b (6.66:1 on white). Recolor cyan links to #0e7490 or darker on white. Define one AA-verified 'text-secondary' token per surface instead of reusing #5b5b6b on both."
+        },
+        {
+          "title": "No heading hierarchy — one lone <h3>, and every stat/card title is a non-semantic <div>",
+          "severity": "high",
+          "evidence": "Grep of all heading tags returns: one <h1> (line 53), five <h2> (154, 338, 696, 858, 1077), and exactly one <h3> (line 459, 'Beyond delivery'). The stat cards render '500+' and 'Proven delivery' as `<div class=\"font_52 ...\">` and `<div class=\"flexBoxTitle\">` (lines 706–718); the six 'Power your roadmap' card titles ('Scale with confidence', etc.) are `<div class=\"flexBoxTitle font_24\">` (line 871); the six service-accordion labels ('Web & mobile apps', etc.) are `<div class=\"fontRegular_24\">`. Footer column headers use <h4> but there is no <h3> level bridging them.",
+          "why_it_reads_amateur_or_ai": "A screen-reader user pulling up the heading list gets h1, five identical-styling h2s, and a single orphan h3 — no way to grasp the page's ~7 distinct card sections. Styling text large with a font_52/font_24 class instead of using headings is the exact shortcut an AI/template generator takes. It also tanks SEO structure for a company selling 'engineering.'",
+          "recommendation": "Promote card titles to real headings: stat/value labels and the six 'Power your roadmap' and six engagement-model titles should be <h3> (or <h4> nested under their section <h2>). Keep the visual size via classes, but the tag must convey structure."
+        },
+        {
+          "title": "15 of 31 images have no alt attribute at all (not even alt=\"\")",
+          "severity": "high",
+          "evidence": "Programmatic count: 31 <img> total, 15 with NO alt attribute and 0 with empty alt. The missing-alt set is the base64 data-URI card icons (lines 350–670, 869–1033, e.g. `<img class=\"img-responsive\" src=\"data:image/svg+xml;base64,...\">`) plus the leftover hero-adjacent `<img src=\"/assets/images/beyond-payments-image.png\" class=\"img-responsive\">` (line 453). The logo (line 14/1107) and marquee client logos (98–131) and 'Platform designed to scale' (323) do have alt.",
+          "why_it_reads_amateur_or_ai": "Screen readers announce a src-less-alt image by reading its filename/URL — here a 3KB base64 blob or 'beyond-payments-image.png'. Decorative icons should be alt=\"\" (or aria-hidden); a content image needs a real description. Having exactly half the images un-alted is a generator artifact, not a human review.",
+          "recommendation": "Add `alt=\"\"` to the decorative card icons (they duplicate adjacent text) and give beyond-payments-image.png a descriptive alt or mark it decorative. Note the filename itself ('beyond-payments') is Verifone-template residue and should be renamed."
+        },
+        {
+          "title": "The 6215px desktop page becomes a ~9,800px endless mobile scroll of near-identical dark cards",
+          "severity": "high",
+          "evidence": "design-tokens pageHeight is 6215px desktop; the mobile screenshot is 390×9816px — the page grows ~58% taller and requires roughly 25 phone-viewport scrolls. The middle third (bands m04–m07) is a monotonous vertical stack: three stat cards, then six full-width 'Power your roadmap' cards, then more — each an identical dark or grey rounded rectangle (border-radius 11px/32px) with an icon, a title, 2–3 lines, and a 'Learn more'. 'Learn more' appears 48 times in the markup.",
+          "why_it_reads_amateur_or_ai": "Everything is stacked at one rhythm with no density variation, no 2-up grids collapsed intelligently, no anchor navigation — the reader loses orientation. This 'one long ribbon of the same card' is the tell-tale output of generated section templates dumped in sequence. Real product sites vary layout and cut content for mobile.",
+          "recommendation": "For mobile, cut or collapse: turn the six-card 'Power your roadmap' and six-card engagement grids into a swipeable carousel or an accordion, drop redundant sections, and shorten the page. Vary card treatments so sections are distinguishable while scrolling."
+        },
+        {
+          "title": "24 identical 'Learn more' links give screen-reader users a useless, ambiguous link list",
+          "severity": "high",
+          "evidence": "48 'Learn more' strings in markup = 24 rendered links (each is `<a href=\"/services\" class=\"ctaLink\">...<span class=\"ctaLinkText\">Learn more</span></a>`, lines 187, 213, 239, 725, etc.). All say 'Learn more' with no distinguishing accessible name, and most point to the same `/services` URL. The SVG arrow is correctly aria-hidden, so the entire accessible name is just 'Learn more'.",
+          "why_it_reads_amateur_or_ai": "When a screen-reader user opens the links-list dialog they see 'Learn more' 24 times with no way to tell them apart — a WCAG 2.4.4 (Link Purpose) failure. Duplicating one generic CTA across every card, mostly to the same page, is generated-content behavior.",
+          "recommendation": "Give each link a unique accessible name, e.g. append visually-hidden context: `Learn more<span class=\"sr-only\"> about custom software</span>`, or use aria-label. Point them to their actual distinct destinations rather than all to /services."
+        },
+        {
+          "title": "Jarring full-bleed band-color flips (black → green → white → cyan) with no transition on small screens",
+          "severity": "medium",
+          "evidence": "Mobile crops show: hero ends in a green gradient behind Bitdefender/123FormBuilder logos (band m00), abruptly to a white section 'An engineering partner...' , then a black engagement-model section (m01–m02), a white photo section, then a solid cyan #22d3ee 'Built for ambitious technology teams' block (m03), back to black stats (m04), to white 'Power your roadmap' (m05), then a full cyan #22d3ee CTA block (m07), then dark footer. design-tokens confirms backgrounds #000000, #ffffff, #22d3ee, #0891b2 all in play.",
+          "why_it_reads_amateur_or_ai": "The hard black/white/cyan alternation with no shared spacing or gradient bridging reads like separate templates pasted together — especially the two unrelated saturated-cyan blocks. On a narrow screen each flip fills the whole viewport, so the eye is strobed. Enterprise sites maintain a controlled 2–3 surface palette with intentional rhythm.",
+          "recommendation": "Reduce to a deliberate light/dark alternation, reserve the saturated cyan for one CTA moment only (not two full blocks), and add consistent vertical padding tokens between bands so transitions feel authored rather than concatenated."
+        },
+        {
+          "title": "Three conflicting taglines in the page metadata",
+          "severity": "medium",
+          "evidence": "Line 1 metadata contains: <title> 'Build & Scale Your Software With Confidence | Sentrize', og:title/twitter:title 'Sentrize | Engineering That Scales Your Business', and og:image:alt 'Sentrize — Intelligent Software. Limitless Impact.' Three different positioning statements ship simultaneously; the on-page hero H1 is a fourth phrasing ('We build the software and cloud platforms your business runs on').",
+          "why_it_reads_amateur_or_ai": "A company that can't state one consistent tagline across its own <head> looks like copy was generated in multiple passes and never reconciled. Search/social previews will show a different slogan than the tab title. This is a direct 'AI-generated' tell.",
+          "recommendation": "Pick one tagline and use it verbatim in <title>, og:title, twitter:title, and og:image:alt. 'Intelligent Software. Limitless Impact.' in particular is generic filler that undercuts the concrete engineering positioning of the H1 — drop it."
+        },
+        {
+          "title": "Leftover Verifone / unrelated template cruft left in the shipped DOM",
+          "severity": "medium",
+          "evidence": "CSS files are the lifted set (chrome.css, enterprise.css, en0000000000000812.css, theme-teal.css) with header class sh__nav. The DOM still contains a jQuery Colorbox lightbox scaffold `<div id=\"colorbox\" role=\"dialog\" tabindex=\"-1\">` with cboxPrevious/cboxNext/cboxSlideshow buttons (line 1132), a 'volume-booster-visusalizer' audio widget with sound-wave segments (lines 1132–1146, note misspelled class 'visusalizer'), an empty Google Tag Manager noscript comment (lines 3–5), and image filename 'beyond-payments-image.png' — payments being Verifone's domain, not Sentrize's.",
+          "why_it_reads_amateur_or_ai": "A 'volume booster visualizer' and a payments-themed image on a software-agency homepage are unmistakable evidence of a copied template that was never cleaned. The misspelled class ('visusalizer') and empty GTM stub reinforce that no one audited the output. These are exactly the artifacts that make a site read as non-original / AI-assembled.",
+          "recommendation": "Strip the Colorbox scaffold, the audio 'volume-booster' widget, and empty GTM comments; rename Verifone-derived assets (beyond-payments-image.png) and CSS files to project-specific names; remove any theme classes (theme-teal, en0000000000000812) not actually used."
+        },
+        {
+          "title": "No visible focus styling defined in the document; hero H1 uses ultra-thin 300 weight despite fontBold class",
+          "severity": "medium",
+          "evidence": "The only 'focus'/'outline' references in homepage.html are inside the skip-link inline CSS (line 1) and the minified blob (line 1147); no component (nav links, the 24 'Learn more' links, CTA buttons, accordion toggles) has an authored :focus-visible style in the inline markup, so keyboard focus likely relies on unstyled defaults or is suppressed by the template reset. Separately, design-tokens shows the H1 (class 'fontBold') actually renders at weight 300 (57.2px line-height, 52px), and every H2 is weight 300 too — 'Bold' class producing hairline text.",
+          "why_it_reads_amateur_or_ai": "Keyboard users need a clearly visible focus ring on all 24+ card links and nav items; template resets frequently kill the default outline, and nothing here restores it. And a class literally named fontBold rendering as thin 300 weight is a mismatched-token artifact typical of a lifted stylesheet where the font files (Verifone-Sans-Bold) aren't mapped to the class.",
+          "recommendation": "Add a global `:focus-visible { outline: 2px solid #22d3ee; outline-offset: 2px; }` and verify every interactive element shows it. Fix the weight mapping so 'fontBold' hero text loads Verifone-Sans-Bold (or intentionally rename the class to match the 300 weight actually used)."
+        },
+        {
+          "title": "Heading line-breaks use hardcoded <br> causing awkward orphans on mobile ('model' / 'team' alone on a line)",
+          "severity": "low",
+          "evidence": "Headings hardcode desktop line breaks: line 339-341 'Choose the engagement model <br> that fits your team', line 859-861 'Power your roadmap with the <br> Sentrize engineering team', and the H1 lines 54-58 use three <br>. On the 390px mobile crop (m01) this renders 'Choose the engagement' / 'model' (orphan word alone) / 'that fits your team', and (m05) 'Power your roadmap with' / 'the Sentrize engineering' / 'team' (orphan).",
+          "why_it_reads_amateur_or_ai": "Hardcoded <br> line breaks are tuned for one desktop width and fall apart responsively, stranding single words ('model', 'team') on their own line. Hand-crafted enterprise sites use max-width + natural wrapping or text-wrap:balance; the <br>-in-heading pattern is a generator convenience.",
+          "recommendation": "Remove the <br> tags from headings and control line length with max-width plus `text-wrap: balance`, so wrapping adapts per viewport and no single-word orphans appear on mobile."
+        }
+      ],
+      "_label": "a11y-mobile"
+    },
+    {
+      "dimension": "Brand credibility & \"is this a real enterprise?\" trust signals",
+      "overall_verdict": "This page reads as amateur/AI-generated within about two seconds, and the reasons are concrete, not vibes. The single most damaging tell is forensic: the entire front-end is a lifted Verifone.com template. The brand font is literally \"Verifone-Sans-Regular\" (used 550 times per design-tokens.json), the stylesheets are named chrome.css / enterprise.css / en0000000000000812.css / theme-teal.css, and the header markup still uses Verifone's sh__nav class system. A real 120-engineer firm does not ship a competitor-payments-company's design system with the serial-numbered CSS filenames intact. Layered on top of that theft are the classic generative-content fingerprints: three mutually inconsistent taglines in the metadata, four suspiciously round trophy stats (\"500+\", \"120+\", \"99.99%\", \"40+\") with zero proof, a marquee of borrowed enterprise logos (Cisco, Bitdefender, ViewSonic, EaseUS, Mondly, 123 FormBuilder) that link to a \"/success-stories\" page but are backed by no testimonial or case study anywhere on the homepage, a generic Unsplash stock hero, two competing accent color systems (teal vs blue), universally thin 300-weight headings, and a border-radius set that uses eleven different values. Individually each is a yellow flag; stacked together they scream \"template + AI copy + fabricated proof.\" The good news: almost every tell is cheap to fix because the problem is presentation and honesty, not the underlying service offering.",
+      "findings": [
+        {
+          "title": "The entire site is a lifted Verifone.com template — font, CSS filenames, and class names all still say \"Verifone\"",
+          "severity": "critical",
+          "evidence": "design-tokens.json fontFamilies: \"Verifone-Sans-Regular, sans-serif\" (550 uses), plus Verifone-Sans-Medium/SemiBold/Bold. homepage.html head preloads /assets/css/chrome.css, /assets/css/enterprise.css, /assets/css/en0000000000000812.css, and /assets/css/theme-teal.css; header uses class sh__nav (Verifone's shell-header convention). The og:image:alt is even \"Sentrize — Intelligent Software. Limitless Impact.\" over a stolen chrome.",
+          "why_it_reads_amateur_or_ai": "An enterprise buyer's technical evaluator opens DevTools and sees a payments giant's design system with its serialized CSS filename (en0000000000000812.css) shipped verbatim. It signals the company cannot produce its own front-end — fatal for a firm selling \"custom software\" and \"UI/UX Design\" — and it invites a trademark/brand-theft concern that instantly kills trust.",
+          "recommendation": "Rebuild the front-end on an original design system. Rename/rewrite CSS to semantic files (base.css, components.css), delete every Verifone-* font reference and self-host a licensed brand typeface (e.g. Inter, Söhne, or a commissioned face), and purge all sh__ / chrome / enterprise / en0000... artifacts. This is non-negotiable and must be fixed before anything else."
+        },
+        {
+          "title": "Three different taglines in the metadata — the brand does not know what it is",
+          "severity": "critical",
+          "evidence": "Verbatim from homepage.html head: <title>\"Build & Scale Your Software With Confidence | Sentrize\"; og:title/twitter:title \"Sentrize | Engineering That Scales Your Business\"; og:image:alt \"Sentrize — Intelligent Software. Limitless Impact.\" The H1 then adds a fourth positioning line: \"We build the software and cloud platforms your business runs on.\"",
+          "why_it_reads_amateur_or_ai": "Inconsistent taglines across title/OG/social are a hallmark of copy generated in separate prompts and pasted without an editor. A buyer who sees the browser tab say one thing and the LinkedIn share preview say another concludes there is no marketing owner and no brand discipline — i.e. not a real 120-person company.",
+          "recommendation": "Pick ONE positioning line and use it everywhere. \"Intelligent Software. Limitless Impact.\" is the weakest (empty AI cadence); \"We build the software and cloud platforms your business runs on\" is the strongest and concrete. Standardize title, og:title, twitter:title, and hero to that single line."
+        },
+        {
+          "title": "Four round-number trophy stats with zero proof, and they only appear in metadata + a stat block — never substantiated",
+          "severity": "high",
+          "evidence": "meta description: \"120+ engineers, 500+ projects, and 99.99% SLA-backed uptime across 40+ countries.\" On-page stat cards (homepage.html ~line 707-828): \"500+ / PROJECTS DELIVERED / Production systems shipped across 40+ countries\", \"99.99% / Enterprise reliability\", plus \"Real-time / OBSERVABILITY\", \"100% / code ownership\". No dates, client names, or audited source anywhere.",
+          "why_it_reads_amateur_or_ai": "Every number is a suspiciously clean round figure (500+, 120+, 40+, 99.99%, 100%) — the exact distribution an LLM emits when asked to \"make it sound impressive.\" A 500-project / 40-country firm would be widely known; the absence of a single named engagement to back it reads as fabricated, which is worse than claiming nothing.",
+          "recommendation": "Replace unprovable round numbers with specific, verifiable facts: a real project count with a \"since 2019\" date, 2-3 named clients with a one-line outcome and metric, and a link to a status page for the 99.99% claim. If the numbers can't be substantiated, delete them — an honest smaller number beats an unbelievable big one."
+        },
+        {
+          "title": "Borrowed enterprise logo strip with no case studies behind it — implies clients that aren't clients",
+          "severity": "high",
+          "evidence": "homepage.html lines 98-131: a duplicated marquee of Cisco, Bitdefender, 123 FormBuilder, EaseUS, Mondly, Viewsonic logos, each wrapped in <a href=\"/success-stories\">. No testimonial, quote, engagement description, or named case study exists on the homepage — the grep for testimonial/case-study content returns only class names, not real content.",
+          "why_it_reads_amateur_or_ai": "A row of famous logos with nothing behind them is the oldest fake-credibility trick, and buyers know it. Linking each logo to a generic /success-stories page with no per-client story reads as \"we found these logos,\" not \"these are our clients.\" For Cisco/Bitdefender-tier names this is also legally risky if untrue.",
+          "recommendation": "Show only logos you can prove, and pair each with a real artifact: a one-paragraph case study, a named quote with person + title + photo, or a measurable outcome. One genuine, detailed case study outperforms six borrowed logos. If these are not real clients, remove them entirely."
+        },
+        {
+          "title": "Two competing accent-color systems — teal and blue fighting on the same page",
+          "severity": "high",
+          "evidence": "design-tokens.json shows teal accents #0891b2 (7 text + 3 bg uses) and #22d3ee (3 bg), sourced from theme-teal.css, alongside a separate blue family: #0a84ff (Skip-to-content button bg), #004aef, and #3474ff. The hero CTA and skip link are blue while section accents and the big cyan \"Built for ambitious technology teams\" panel are teal.",
+          "why_it_reads_amateur_or_ai": "A coherent brand has one accent color. Teal (#0891b2/#22d3ee) from the borrowed theme-teal.css collides with leftover Verifone-style blues (#0a84ff/#004aef) — the visual signature of a template whose theme was half-recolored. It tells a designer's eye that nobody owns the palette.",
+          "recommendation": "Choose one accent and define it as a token (e.g. commit to teal #0891b2 with #22d3ee as the light variant, and eliminate #0a84ff/#004aef/#3474ff entirely, including the Skip-to-content button). Every button, link, and highlight should resolve to that single accent + one neutral scale."
+        },
+        {
+          "title": "Everything is hairline-thin weight 300 — no typographic hierarchy or authority",
+          "severity": "medium",
+          "evidence": "design-tokens.json headings: H1 52px weight 300, every H2 44px weight 300, H3 32px weight 300, final CTA H2 30px weight 300. Body text is dominated by low-contrast grays #5b5b6b (49 uses) and #9a9aad (31 uses) on white. (Note: the H1 markup class is fontBold but it renders at weight 300 per the computed tokens — a further style/markup mismatch.)",
+          "why_it_reads_amateur_or_ai": "Uniform 300-weight at every level means the H1, H2, and H3 differ only by pixel size, so there is no real hierarchy — a default AI/template aesthetic that mistakes \"thin = premium.\" Combined with washed-out gray body copy (#9a9aad on white fails contrast), it looks fragile and unedited rather than confident and enterprise.",
+          "recommendation": "Establish weight contrast: headings at 600-700, body at 400, and darken body text to roughly #33333a or #1c1c26 for legibility. Reduce the H1 to a deliberate scale (e.g. 48-56px/700) and let weight — not just size — carry the hierarchy."
+        },
+        {
+          "title": "Generic Unsplash stock hero — the literal \"AI startup\" cliché image",
+          "severity": "medium",
+          "evidence": "homepage.html head: <link rel=\"preconnect\" href=\"https://images.unsplash.com\">; desktop-hero.png shows a generic stock photo of a woman at a laptop in front of dual monitors, framed in a borderRadius32 \"video\" card with a fake play button (introPagePlay markup, no actual video source).",
+          "why_it_reads_amateur_or_ai": "Unsplash \"person at laptop\" is the single most overused stock image in AI-generated landing pages; buyers have seen it on a thousand template sites. The decorative play button that opens nothing compounds the impression of a mockup dressed up as a real product.",
+          "recommendation": "Replace with owned imagery: a real photo of the team/office, a screenshot of actual delivered software, or a purpose-built abstract brand graphic. If there is no video, remove the play button; if there is, wire it up. Never ship a stock human photo as the hero for an engineering brand."
+        },
+        {
+          "title": "Border-radius and spacing chaos — eleven different corner radii across the page",
+          "severity": "medium",
+          "evidence": "design-tokens.json borderRadii: 11px (49x), 32px (19x), 16px (14x), 10px (7x), 18px (7x), 30px (5x), 23px (5x), 999px (2x), 50% (2x), plus shadow-shaped values. Buttons alone mix radius 10px (nav), 11px (menu items), and a 0px 0px 10px skip-link. Font sizes are similarly untuned: 13.12px (53x), 15.36px, 15.2px, 14.4px — non-integer values that come from unscaled template rem math.",
+          "why_it_reads_amateur_or_ai": "A designed system uses a small radius scale (typically 2-3 values) and a clean type scale. Eleven radii and fractional font sizes like 13.12px / 15.36px / 15.2px are the fingerprint of a template being stretched and overridden piecemeal — the details a professional would never let ship.",
+          "recommendation": "Define a radius token scale of at most three values (e.g. 8px controls, 16px cards, 999px pills) and apply globally. Rebuild the type scale on whole-pixel steps (e.g. 14/16/20/24/32/44) so no computed size lands on 13.12px or 15.2px."
+        },
+        {
+          "title": "Cliché, hollow AI-cadence copy throughout",
+          "severity": "low",
+          "evidence": "Verbatim: hero subcopy \"pairing modern engineering practices with senior teams who stay for the long haul\"; section \"Beyond delivery - engineering as a long-term partnership\"; \"Why teams keep building with us\"; \"Built for ambitious technology teams\"; \"Ready to build your next product with confidence?\"; service blurbs like \"Kubernetes — Orchestration done right\", \"CI/CD Automation — Ship safely, many times a day\", \"Managed Hosting — We run it, you build it.\"",
+          "why_it_reads_amateur_or_ai": "These are frictionless, interchangeable phrases with no specifics — the exact register of LLM marketing filler. \"Orchestration done right\" and \"engineering as a long-term partnership\" could belong to any of ten thousand agencies; they convey zero differentiated information, which readers now pattern-match to AI-written.",
+          "recommendation": "Rewrite with specifics only a real practitioner would know: name the stack decisions, the SLAs, the on-call model, a concrete client outcome (\"cut deploy time from 40 min to 4\"). Replace slogans with claims that carry a number, a name, or a mechanism."
+        }
+      ],
+      "_label": "ai-tells"
+    },
+    {
+      "dimension": "Content credibility & trust conventions (positioning, proof, palette, typography, team) vs. credible dev/cloud consultancies",
+      "overall_verdict": "Sentrize reads amateur/AI-generated because it violates nearly every convention that makes real consultancies (Thoughtworks, Netguru, STX Next) read as trustworthy. The most damaging tells are structural, not cosmetic: (1) the entire front-end is a lifted Verifone.com payments template — CSS files chrome.css / enterprise.css / en0000000000000812.css / theme-teal.css, header classes sh__nav / sh__mega, a Verifone-Sans brand font, and a leftover /assets/images/beyond-payments-image.png asset that belongs to a payments company, not a dev shop; (2) three different taglines ship simultaneously (title \"Build & Scale Your Software With Confidence\", H1 \"We build the software and cloud platforms your business runs on\", og:title \"Engineering That Scales Your Business\") where credible firms commit to exactly one; (3) unverifiable round-number brag stats (500+ projects, 120+ engineers, 99.99% uptime, 40+ countries) presented with zero named-client evidence; (4) real, recognizable client logos (Cisco, Bitdefender, ViewSonic, EaseUS, Mondly, 123FormBuilder) paired with case studies that name NO clients (\"a Healthcare Data Provider\", \"a B2B Collaboration Product\"); and (5) a \"Our Team\" page of named executives whose headshots are generic Unsplash stock portraits — the same photo IDs reused elsewhere on the site. Credible firms do the opposite of all five: one positioning line, named case studies with real metrics, real client logos that match named stories, real team photos, and a bespoke design system. Fixing the palette or typography alone will not help until these credibility contradictions are removed.",
+      "findings": [
+        {
+          "title": "Lifted Verifone.com payments template — filenames, font, and a leftover payments asset betray the origin",
+          "severity": "critical",
+          "evidence": "homepage.html loads /assets/css/chrome.css, /assets/css/enterprise.css, /assets/css/en0000000000000812.css and /assets/css/theme-teal.css; header markup uses class=\"sh__nav\", \"sh__mega sh__mega--wide\", \"sh__brand\", \"sh__cta\". design-tokens.json shows the brand font is Verifone-Sans-Regular (550 occurrences) / Verifone-Sans-Medium / -SemiBold / -Bold. A stock image /assets/images/beyond-payments-image.png (a Verifone 'Beyond Payments' marketing asset) is still referenced on the homepage. Credible firms ship a bespoke design system: Thoughtworks, Netguru and STX Next all use their own component/class naming and self-hosted brand fonts, never a competitor's payment-terminal template.",
+          "why_it_reads_amateur_or_ai": "The single strongest 'this was slapped together' signal. An enterprise-grade engineering firm that literally builds software would never ship a front-end whose class names (sh__), obfuscated stylesheet (en0000000000000812.css), brand font (Verifone-Sans) and orphaned image asset (beyond-payments) all point to a payments company it has no relationship with. It signals the site was cloned, not built, which is fatal for a firm selling engineering competence.",
+          "recommendation": "Strip every Verifone artifact before anything else. Rename CSS to semantic files (base.css, layout.css, components.css), delete en0000000000000812.css and beyond-payments-image.png, rename all sh__* classes to a Sentrize prefix (e.g. sz-nav, sz-mega), and replace Verifone-Sans with a self-hosted neutral grotesque you have a license to (e.g. Inter, or a licensed face like Söhne/Aeonik). Grep the repo for 'verifone', 'sh__', 'beyond-payments', 'chrome.css', 'enterprise.css' and confirm zero hits before launch."
+        },
+        {
+          "title": "Three different taglines ship at once — no single positioning line",
+          "severity": "critical",
+          "evidence": "Verbatim from homepage.html: <title>Build & Scale Your Software With Confidence | Sentrize</title>; H1 = \"We build the software and cloud platforms your business runs on.\"; og:title / twitter:title = \"Sentrize | Engineering That Scales Your Business\". That is three distinct value props (confidence / platforms-you-run-on / scaling-your-business) on one page. By contrast each reference firm commits to ONE line: Netguru = \"AI-native commerce\"; STX Next = \"AI-First, Outcome-driven Technology Partner. Built on Python Excellence\"; Thoughtworks leads with a single modernization-powered-by-AI narrative.",
+          "why_it_reads_amateur_or_ai": "Three taglines is the classic tell of AI-generated / unedited copy — each field was filled independently and never reconciled. A real firm has a positioning statement it repeats everywhere (SERP title, social share, hero) so the brand compounds. Divergent taglines read as a template with placeholder text nobody owned.",
+          "recommendation": "Pick ONE positioning line and use it verbatim in <title>, og:title, twitter:title, and the H1. Recommend anchoring on a concrete niche the way STX Next does with Python — e.g. 'Sentrize — the engineering partner that ships and operates your cloud software.' Then make every meta tag match it word-for-word."
+        },
+        {
+          "title": "Round-number vanity stats with no verifiable backing",
+          "severity": "high",
+          "evidence": "meta description and the homepage stat tiles claim \"120+ engineers, 500+ projects, and 99.99% SLA-backed uptime across 40+ countries\" plus tiles reading \"500+ / Proven delivery\", \"99.99% / Enterprise reliability\", \"Real-time / Full visibility\", \"100% / code ownership\". All are unsourced round numbers. STX Next presents comparable claims (500+ team members, 21 years on market, 1000+ projects, 20+ years Python) but ties them to a verifiable 2008 founding, named clients (Canon, Decathlon, Mastercard, GSK) and specific case-study numbers like 'reducing unplanned downtime by 20%'.",
+          "why_it_reads_amateur_or_ai": "Every number ends in a suspiciously clean +0 (500+, 120+, 40+) and the 99.99% uptime is an infrastructure-SLA claim a project-based dev shop cannot credibly make company-wide. AI-generated marketing gravitates to these exact placeholder figures. With no named client or verifiable proof beneath them, they read as invented.",
+          "recommendation": "Either substantiate or replace. Keep only numbers you can defend and tie each to proof: e.g. '11 years in operation (founded 2015)' instead of vague scale, and replace '99.99% SLA-backed uptime' with the specific product/SLA it applies to. Attach at least one named client logo or case study to each stat tile so the number is corroborated, the way STX Next pairs its counters with the Man Group / Linde stories."
+        },
+        {
+          "title": "Real recognizable client logos, but case studies name no clients — a credibility contradiction",
+          "severity": "high",
+          "evidence": "Homepage logo strip uses real brand marks: alt=\"Cisco\", \"Bitdefender\", \"Viewsonic\", \"EaseUS\", \"Mondly\", \"123 FormBuilder\" (files cisco-white.png, bitdefenderr-white.png [note the misspelled double-r], viewsonic-white.png, etc.). Yet page-case-studies.html headlines are all anonymized: \"Re-Architecting a Payments Core for Linear Scale\", \"Lift, Re-Platform, and Optimize for a Healthcare Data Provider\", \"Multi-Tenant Re-Platform for a B2B Collaboration Product\", \"FinOps and Reliability Engineering for a Consumer Streaming App\". Thoughtworks and Netguru do the reverse: named client + named story + metric (Netguru: 'IKEA / OLX / Żabka' with '40% growth in international & GCC orders', '21% higher conversion').",
+          "why_it_reads_amateur_or_ai": "Showing Cisco/Bitdefender logos as if they are clients, while no case study can name a single company, is internally inconsistent — a reviewer immediately asks 'if Cisco is a client, where is the Cisco story?' The mismatch reads as borrowed logos plus fabricated-sounding generic case studies. The double-r typo in bitdefenderr-white.png reinforces that the logos were grabbed hastily.",
+          "recommendation": "Only display a logo if you can back it with a named, linkable case study (get written permission per client). Convert the anonymized studies into named ones with a client quote, a role-attributed name, and 2-3 real metrics each (following the Netguru pattern). If a client won't be named, remove its logo from the 'trusted by' strip rather than implying a relationship you can't evidence. Fix the bitdefenderr filename regardless."
+        },
+        {
+          "title": "'Our Team' page uses stock Unsplash portraits for named executives — reused across the site",
+          "severity": "critical",
+          "evidence": "page-team.html pairs named people (\"Sofia Marchetti\", \"Rahul Desai\", \"Klara Novak\", \"Benjamin Asante\", \"Yuki Tanaka\", \"Olivia Brandt\") with Unsplash stock headshots: photo IDs 1500648767791, 1494790108377 (the famously overused 'smiling brunette' stock portrait), 1507003211169, 1438761681033, 1472099645785. The SAME photo IDs appear elsewhere on the site (each ID resolves twice in page-team.html and also across other pages). Thoughtworks, Netguru and STX Next all use genuine team/office photography of real, findable employees.",
+          "why_it_reads_amateur_or_ai": "Named leaders backed by recognizable free stock faces is the single most trust-destroying signal a services firm can send — anyone who reverse-image-searches one headshot finds it on a hundred other sites. Reusing the same stock IDs in multiple places proves the 'team' is decorative filler, a hallmark of AI-assembled placeholder content.",
+          "recommendation": "Replace every headshot with real photographs of real Sentrize people (a consistent studio shoot: same background, lighting, crop). If specific individuals can't be shown yet, remove the named-team grid entirely and show an office/culture photo instead — an empty-but-honest team section beats fabricated bios. Never pair a real name with a stock face."
+        },
+        {
+          "title": "Palette indiscipline — teal/cyan brand color polluted by three stray blues",
+          "severity": "medium",
+          "evidence": "design-tokens.json backgrounds include the intended teal accents #0891b2 (x3) and #22d3ee (x3) but ALSO three unrelated blues used as accents/CTAs: #0a84ff (the iOS system blue, on the 'Skip to content' button), #004aef, and text color #3474ff. So four different accent hues compete. The stylesheet is even named theme-teal.css, implying teal is the brand, yet #0a84ff/#004aef/#3474ff leak through from the lifted template. Reference firms hold to one accent: Netguru = one green on dark, STX Next = a single teal-to-blue gradient, Thoughtworks = mostly neutral with one brand color.",
+          "why_it_reads_amateur_or_ai": "Using Apple's stock #0a84ff system blue alongside a nominal teal brand shows the palette was never defined — colors were inherited from whatever template fragments were pasted in. Disciplined palettes are a baseline enterprise signal; four accents reads as unfinished.",
+          "recommendation": "Define one accent and one hover/active shade as CSS custom properties (e.g. --accent:#0891b2; --accent-strong:#0369a1) and replace every occurrence of #0a84ff, #004aef, and #3474ff with them. Delete unused brand blues from theme-teal.css. Keep the neutral scale you already have (#ffffff, #0b0b0f/#000, grays #5b5b6b/#9a9aad) and cap total non-neutral hues at two."
+        },
+        {
+          "title": "Hero uses generic Unsplash stock photography instead of product/work imagery",
+          "severity": "medium",
+          "evidence": "The hero and multiple sections pull Unsplash stock via images.unsplash.com (photo IDs 1461749280684, 1498050108023 'laptop code on desk', 1451187580459, 1460925895917, 1512941937669, etc.). The desktop hero shows a generic 'woman at laptop' stock scene beside a fake video-play thumbnail (homepage-img-video.png). Credible firms show their actual product UI, real client work, or real people: STX Next and Netguru lead with product mockups and named case-study visuals, not desk stock.",
+          "why_it_reads_amateur_or_ai": "Interchangeable corporate-desk stock photography is the visual equivalent of placeholder text — it says nothing specific about Sentrize's work and appears on thousands of other sites. Combined with the stock team photos, it makes the whole site feel populated by assets rather than evidence.",
+          "recommendation": "Replace hero and section imagery with screenshots of software Sentrize has actually shipped (dashboards, architecture diagrams, deployment pipelines) or a short real product demo behind the play button. If real work can't be shown for NDA reasons, use abstract branded illustration/3D that is clearly bespoke, not photo-1498050108023 which is one of the most-used stock code photos on the web."
+        },
+        {
+          "title": "Anemic 300-weight headings on a payments-terminal font undercut authority",
+          "severity": "low",
+          "evidence": "design-tokens.json headings: H1 'We build the software...' is 52px at font-weight 300 (Light); every H2 ('An engineering partner built to scale...', 'Why teams keep building with us') is 44px weight 300; H3 32px weight 300. The face is Verifone-Sans, a display font tuned for a payments brand, not a software consultancy. Reference firms use bold, single-concept headline hierarchy (Netguru 'Bold headline hierarchy using large, single-concept statements'; STX Next hierarchical H1/H2 with punchy <12-word subheads).",
+          "why_it_reads_amateur_or_ai": "Uniform 300-weight at large sizes produces a thin, low-contrast, generic-startup look and removes hierarchy — everything whispers. Paired with a borrowed payments font, the typography carries none of Sentrize's own voice. It reads as default template settings left untouched.",
+          "recommendation": "After swapping Verifone-Sans for a licensed self-hosted face, set headline weight to 600-700 for H1/H2 to establish authority, keep body at 400, and build a real type scale (e.g. H1 48-56px/700, H2 32-36px/600, H3 22-24px/600, body 16-18px/400). Tighten letter-spacing slightly on large headings. Reserve light weights (300) for large decorative numerals only, not core headlines."
+        }
+      ],
+      "_label": "benchmark"
+    }
+  ],
+  "workflowProgress": [
+    {
+      "type": "workflow_phase",
+      "index": 1,
+      "title": "Analyze"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 1,
+      "label": "color-palette",
+      "phaseIndex": 1,
+      "phaseTitle": "Analyze",
+      "agentId": "a21894e0941c8dfdb",
+      "agentType": "general-purpose",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1782893746435,
+      "queuedAt": 1782893746394,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "Color & Palette",
+      "promptPreview": "You are a brand/visual designer auditing COLOR & PALETTE.\nRead these files: C:/Users/RHN/sentrize-website-report/assets/desktop-full.png , C:/Users/RHN/sentrize-website-report/assets/desktop-hero.png , C:/Users/RHN/sentrize-website-report/assets/mobile-full.png , C:/Users/RHN/sentrize-website-report/assets/design-tokens.json\n\nCONTEXT (verify everything yourself from the files — do not just repeat …",
+      "lastProgressAt": 1782893895778,
+      "tokens": 39119,
+      "toolCalls": 11,
+      "durationMs": 149342,
+      "resultPreview": "{\"dimension\":\"Color & Palette\",\"overall_verdict\":\"This is not a palette — it is three unrelated theme colors bolted onto a lifted Verifone.com template, plus a black/white/gray substrate that switches on almost every section. Pixel-sampling the screenshots confirms accent hues spanning a 63-degree arc across THREE distinct families: emerald green (H158-159, the hero gradient #03c37e-#04c783), cyan…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 2,
+      "label": "typography",
+      "phaseIndex": 1,
+      "phaseTitle": "Analyze",
+      "agentId": "a882c9a858a2f0167",
+      "agentType": "general-purpose",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1782893746438,
+      "queuedAt": 1782893746394,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "Typography & Hierarchy",
+      "promptPreview": "You are a typographer auditing TYPOGRAPHY & HIERARCHY.\nRead: C:/Users/RHN/sentrize-website-report/assets/desktop-full.png , C:/Users/RHN/sentrize-website-report/assets/desktop-hero.png , C:/Users/RHN/sentrize-website-report/assets/design-tokens.json\n\nCONTEXT (verify everything yourself from the files — do not just repeat this):\nThe site is sentrize.com, a software/cloud engineering agency landing …",
+      "lastProgressAt": 1782893936272,
+      "tokens": 39469,
+      "toolCalls": 18,
+      "durationMs": 189834,
+      "resultPreview": "{\"dimension\":\"Typography & Hierarchy\",\"overall_verdict\":\"This type system reads unmistakably as a lifted template with the labels filed off, not an original enterprise brand. The single most damning fact is verifiable in design-tokens.json: the entire site renders in Verifone-Sans (Verifone-Sans-Regular alone is used 550 times, plus -Medium/-SemiBold/-Bold and a \\\"Verifone Sans\\\" stack) — the prop…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 3,
+      "label": "layout-spacing",
+      "phaseIndex": 1,
+      "phaseTitle": "Analyze",
+      "agentId": "a2fd67936ee84b5b7",
+      "agentType": "general-purpose",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1782893746440,
+      "queuedAt": 1782893746394,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "Layout, Spacing, Grid & Visual Cohesion",
+      "promptPreview": "You are a UI designer auditing LAYOUT, SPACING, GRID & VISUAL COHESION.\nRead: C:/Users/RHN/sentrize-website-report/assets/desktop-full.png , C:/Users/RHN/sentrize-website-report/assets/mobile-full.png , C:/Users/RHN/sentrize-website-report/assets/design-tokens.json\n\nCONTEXT (verify everything yourself from the files — do not just repeat this):\nThe site is sentrize.com, a software/cloud engineering…",
+      "lastProgressAt": 1782893928245,
+      "tokens": 47547,
+      "toolCalls": 26,
+      "durationMs": 181805,
+      "resultPreview": "{\"dimension\":\"Layout, Spacing, Grid & Visual Cohesion\",\"overall_verdict\":\"This reads as a bolted-together lift of the Verifone.com template, not a cohesive original design. The strongest tells are systemic, not cosmetic: two competing accent-color systems coexist on the same page (a blue #0a84ff/gradient logo system inherited from the source template vs. a cyan #22d3ee/#0891b2 system layered on to…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 4,
+      "label": "copy-ia",
+      "phaseIndex": 1,
+      "phaseTitle": "Analyze",
+      "agentId": "aed8005942ed04a28",
+      "agentType": "general-purpose",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1782893746441,
+      "queuedAt": 1782893746394,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "Copy, Messaging, Labeling & Information Architecture",
+      "promptPreview": "You are a B2B content strategist auditing COPY, MESSAGING, LABELING & INFORMATION ARCHITECTURE.\nRead: C:/Users/RHN/sentrize-website-report/assets/homepage.html , C:/Users/RHN/sentrize-website-report/assets/page-pricing.html , C:/Users/RHN/sentrize-website-report/assets/page-about.html , C:/Users/RHN/sentrize-website-report/assets/page-software-development.html , C:/Users/RHN/sentrize-website-repor…",
+      "lastProgressAt": 1782893968086,
+      "tokens": 112957,
+      "toolCalls": 37,
+      "durationMs": 221645,
+      "resultPreview": "{\"dimension\":\"Copy, Messaging, Labeling & Information Architecture\",\"overall_verdict\":\"The copy is grammatically clean and, sentence by sentence, more competent than most agency sites — but it reads as AI-generated and non-enterprise for three structural reasons. First, there is no single owned positioning: the metadata layer alone carries THREE different taglines (\\\"Build & Scale Your Software Wi…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 5,
+      "label": "trust-credibility",
+      "phaseIndex": 1,
+      "phaseTitle": "Analyze",
+      "agentId": "afe065bffd2bbee5c",
+      "agentType": "general-purpose",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1782893746442,
+      "queuedAt": 1782893746394,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "Trust & Proof",
+      "promptPreview": "You are a conversion/credibility auditor auditing TRUST & PROOF.\nRead: C:/Users/RHN/sentrize-website-report/assets/homepage.html , C:/Users/RHN/sentrize-website-report/assets/page-portfolio.html , C:/Users/RHN/sentrize-website-report/assets/page-case-studies.html , C:/Users/RHN/sentrize-website-report/assets/page-success-stories.html , C:/Users/RHN/sentrize-website-report/assets/page-testimonials.…",
+      "lastProgressAt": 1782893944961,
+      "tokens": 88731,
+      "toolCalls": 15,
+      "durationMs": 198519,
+      "resultPreview": "{\"dimension\":\"Trust & Proof\",\"overall_verdict\":\"This site reads as amateur and AI-generated on the trust dimension, and it carries real legal exposure. The \\\"Trusted by\\\" strip on the homepage displays six genuine, recognizable third-party brand logos (Cisco, Bitdefender, ViewSonic, EaseUS, Mondly, 123 FormBuilder) — every one of them linking to /success-stories — yet the success-stories page neve…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 6,
+      "label": "technical-seo",
+      "phaseIndex": 1,
+      "phaseTitle": "Analyze",
+      "agentId": "abc90c2042453b331",
+      "agentType": "general-purpose",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1782893746442,
+      "queuedAt": 1782893746394,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "Technical Build, Code Quality & SEO",
+      "promptPreview": "You are a senior front-end engineer auditing TECHNICAL BUILD, CODE QUALITY & SEO.\nRead: C:/Users/RHN/sentrize-website-report/assets/homepage.html (focus on <head>, script/css loading, DOM structure, class names) and skim C:/Users/RHN/sentrize-website-report/assets/page-pricing.html\n\nCONTEXT (verify everything yourself from the files — do not just repeat this):\nThe site is sentrize.com, a software/…",
+      "lastProgressAt": 1782894037049,
+      "tokens": 71093,
+      "toolCalls": 27,
+      "durationMs": 290607,
+      "resultPreview": "{\"dimension\":\"Technical Build, Code Quality & SEO\",\"overall_verdict\":\"This reads as amateur-to-fraudulent for a firm that sells engineering. The page is a Next.js/turbopack shell (turbopack-3shn73yrjm21y.js, data-precedence=\\\"next\\\") with an entire legacy Verifone.com template physically pasted on top (chrome.css, enterprise.css, en0000000000000812.css, theme-teal.css, sh__/sf__ classes). The lift…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 7,
+      "label": "a11y-mobile",
+      "phaseIndex": 1,
+      "phaseTitle": "Analyze",
+      "agentId": "a2b4bfeba6bc0b5e9",
+      "agentType": "general-purpose",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1782893746443,
+      "queuedAt": 1782893746394,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "Accessibility & Mobile UX",
+      "promptPreview": "You are an accessibility + mobile UX specialist.\nRead: C:/Users/RHN/sentrize-website-report/assets/mobile-full.png , C:/Users/RHN/sentrize-website-report/assets/desktop-full.png , C:/Users/RHN/sentrize-website-report/assets/homepage.html\n\nCONTEXT (verify everything yourself from the files — do not just repeat this):\nThe site is sentrize.com, a software/cloud engineering agency landing page. The ow…",
+      "lastProgressAt": 1782894013878,
+      "tokens": 69829,
+      "toolCalls": 34,
+      "durationMs": 267435,
+      "resultPreview": "{\"dimension\":\"Accessibility & Mobile UX\",\"overall_verdict\":\"This page reads as amateur and template-lifted the moment you interact with it non-visually or on a phone. Accessibility is broken in ways an enterprise agency would never ship: the skip link points to #main but no such element (and no <main> landmark) exists, so it silently does nothing; the mobile hamburger has aria-expanded but no aria…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 8,
+      "label": "ai-tells",
+      "phaseIndex": 1,
+      "phaseTitle": "Analyze",
+      "agentId": "a585e6d10eb27a54a",
+      "agentType": "general-purpose",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1782893746443,
+      "queuedAt": 1782893746394,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "Brand credibility & \"is this a real enterprise?\" trust sign…",
+      "promptPreview": "You are a design director explaining, bluntly and specifically, WHY a viewer instantly reads this site as \"AI-generated / not a real enterprise.\"\nRead: C:/Users/RHN/sentrize-website-report/assets/desktop-full.png , C:/Users/RHN/sentrize-website-report/assets/desktop-hero.png , C:/Users/RHN/sentrize-website-report/assets/mobile-full.png , C:/Users/RHN/sentrize-website-report/assets/design-tokens.js…",
+      "lastProgressAt": 1782893913306,
+      "tokens": 50457,
+      "toolCalls": 28,
+      "durationMs": 166863,
+      "resultPreview": "{\"dimension\":\"Brand credibility & \\\"is this a real enterprise?\\\" trust signals\",\"overall_verdict\":\"This page reads as amateur/AI-generated within about two seconds, and the reasons are concrete, not vibes. The single most damaging tell is forensic: the entire front-end is a lifted Verifone.com template. The brand font is literally \\\"Verifone-Sans-Regular\\\" (used 550 times per design-tokens.json), …"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 9,
+      "label": "benchmark",
+      "phaseIndex": 1,
+      "phaseTitle": "Analyze",
+      "agentId": "a1038ed030d8c88a9",
+      "agentType": "general-purpose",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1782893746444,
+      "queuedAt": 1782893746394,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "Content credibility & trust conventions (positioning, proof…",
+      "promptPreview": "You are a competitive researcher. Use WebSearch/WebFetch to study 3-4 credible software-engineering / cloud consultancy websites (e.g. thoughtworks.com, netguru.com, stxnext.com, vercel.com, or similar reputable dev shops) and extract the concrete design & content conventions that make them read as trustworthy and enterprise-grade: palette discipline, one clear positioning line, real named case st…",
+      "lastProgressAt": 1782893980816,
+      "tokens": 48554,
+      "toolCalls": 20,
+      "durationMs": 234371,
+      "resultPreview": "{\"dimension\":\"Content credibility & trust conventions (positioning, proof, palette, typography, team) vs. credible dev/cloud consultancies\",\"overall_verdict\":\"Sentrize reads amateur/AI-generated because it violates nearly every convention that makes real consultancies (Thoughtworks, Netguru, STX Next) read as trustworthy. The most damaging tells are structural, not cosmetic: (1) the entire front-e…"
+    }
+  ],
+  "totalTokens": 567756,
+  "totalToolCalls": 216
+}

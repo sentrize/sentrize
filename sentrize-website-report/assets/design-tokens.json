@@ -1,0 +1,529 @@
+{
+  "backgrounds": [
+    [
+      "#ffffff",
+      11
+    ],
+    [
+      "#000000",
+      8
+    ],
+    [
+      "#e6e6e6",
+      6
+    ],
+    [
+      "#ececec",
+      5
+    ],
+    [
+      "#1a1a1a",
+      4
+    ],
+    [
+      "#333333",
+      4
+    ],
+    [
+      "#0891b2",
+      3
+    ],
+    [
+      "#22d3ee",
+      3
+    ],
+    [
+      "#0a84ff",
+      1
+    ],
+    [
+      "#004aef",
+      1
+    ],
+    [
+      "#f5f5f5",
+      1
+    ],
+    [
+      "#1c1c26",
+      1
+    ]
+  ],
+  "textColors": [
+    [
+      "#5b5b6b",
+      49
+    ],
+    [
+      "#ffffff",
+      47
+    ],
+    [
+      "#9a9aad",
+      31
+    ],
+    [
+      "#000000",
+      24
+    ],
+    [
+      "#c7c9d4",
+      7
+    ],
+    [
+      "#0891b2",
+      7
+    ],
+    [
+      "#82829a",
+      2
+    ],
+    [
+      "#3474ff",
+      1
+    ]
+  ],
+  "fontFamilies": [
+    [
+      "Verifone-Sans-Regular, sans-serif",
+      550
+    ],
+    [
+      "\"Verifone Sans\", Verifone-Sans-Regular, system-ui, -apple-system, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+      23
+    ],
+    [
+      "Verifone-Sans-Medium, sans-serif",
+      7
+    ],
+    [
+      "Verifone-Sans-SemiBold, sans-serif",
+      2
+    ],
+    [
+      "Verifone-Sans-Bold, sans-serif",
+      1
+    ]
+  ],
+  "fontSizes": [
+    [
+      "16px",
+      62
+    ],
+    [
+      "13.12px",
+      53
+    ],
+    [
+      "24px",
+      14
+    ],
+    [
+      "14px",
+      13
+    ],
+    [
+      "15.36px",
+      7
+    ],
+    [
+      "32px",
+      7
+    ],
+    [
+      "52px",
+      3
+    ],
+    [
+      "15.2px",
+      2
+    ],
+    [
+      "44px",
+      2
+    ],
+    [
+      "20px",
+      2
+    ],
+    [
+      "28px",
+      1
+    ],
+    [
+      "30px",
+      1
+    ],
+    [
+      "14.4px",
+      1
+    ]
+  ],
+  "borderRadii": [
+    [
+      "11px",
+      49
+    ],
+    [
+      "32px",
+      19
+    ],
+    [
+      "16px",
+      14
+    ],
+    [
+      "10px",
+      7
+    ],
+    [
+      "18px",
+      7
+    ],
+    [
+      "30px",
+      5
+    ],
+    [
+      "23px",
+      5
+    ],
+    [
+      "999px",
+      2
+    ],
+    [
+      "50%",
+      2
+    ],
+    [
+      "0px 0px 10px",
+      1
+    ],
+    [
+      "0px 0px 10px 10px",
+      1
+    ]
+  ],
+  "buttons": [
+    {
+      "text": "Skip to content",
+      "bg": "#0a84ff",
+      "color": "#ffffff",
+      "border": "0px none rgb(255, 255, 255)",
+      "radius": "0px 0px 10px",
+      "padding": "12px 18px",
+      "fontSize": "16px",
+      "fontWeight": "600"
+    },
+    {
+      "text": "Products",
+      "bg": "transparent",
+      "color": "#c7c9d4",
+      "border": "0px none rgb(199, 201, 212)",
+      "radius": "10px",
+      "padding": "10px 13px",
+      "fontSize": "15.36px",
+      "fontWeight": "500"
+    },
+    {
+      "text": "Software DevelopmentCustom systems built",
+      "bg": "transparent",
+      "color": "#1c1c26",
+      "border": "0px none rgb(28, 28, 38)",
+      "radius": "11px",
+      "padding": "11px 13px",
+      "fontSize": "15.2px",
+      "fontWeight": "500"
+    },
+    {
+      "text": "SaaS DevelopmentMulti-tenant products, M",
+      "bg": "transparent",
+      "color": "#1c1c26",
+      "border": "0px none rgb(28, 28, 38)",
+      "radius": "11px",
+      "padding": "11px 13px",
+      "fontSize": "15.2px",
+      "fontWeight": "500"
+    },
+    {
+      "text": "Web ApplicationsReact & Next.js front en",
+      "bg": "transparent",
+      "color": "#1c1c26",
+      "border": "0px none rgb(28, 28, 38)",
+      "radius": "11px",
+      "padding": "11px 13px",
+      "fontSize": "15.2px",
+      "fontWeight": "500"
+    },
+    {
+      "text": "Mobile ApplicationsiOS & Android, one co",
+      "bg": "transparent",
+      "color": "#1c1c26",
+      "border": "0px none rgb(28, 28, 38)",
+      "radius": "11px",
+      "padding": "11px 13px",
+      "fontSize": "15.2px",
+      "fontWeight": "500"
+    },
+    {
+      "text": "API DevelopmentREST & GraphQL, built to ",
+      "bg": "transparent",
+      "color": "#1c1c26",
+      "border": "0px none rgb(28, 28, 38)",
+      "radius": "11px",
+      "padding": "11px 13px",
+      "fontSize": "15.2px",
+      "fontWeight": "500"
+    },
+    {
+      "text": "AI & AutomationPractical AI in your prod",
+      "bg": "transparent",
+      "color": "#1c1c26",
+      "border": "0px none rgb(28, 28, 38)",
+      "radius": "11px",
+      "padding": "11px 13px",
+      "fontSize": "15.2px",
+      "fontWeight": "500"
+    },
+    {
+      "text": "UI/UX DesignBuild-ready interface design",
+      "bg": "transparent",
+      "color": "#1c1c26",
+      "border": "0px none rgb(28, 28, 38)",
+      "radius": "11px",
+      "padding": "11px 13px",
+      "fontSize": "15.2px",
+      "fontWeight": "500"
+    },
+    {
+      "text": "Solutions",
+      "bg": "transparent",
+      "color": "#c7c9d4",
+      "border": "0px none rgb(199, 201, 212)",
+      "radius": "10px",
+      "padding": "10px 13px",
+      "fontSize": "15.36px",
+      "fontWeight": "500"
+    },
+    {
+      "text": "DevOps ServicesAutomate build, deploy, m",
+      "bg": "transparent",
+      "color": "#1c1c26",
+      "border": "0px none rgb(28, 28, 38)",
+      "radius": "11px",
+      "padding": "11px 13px",
+      "fontSize": "15.2px",
+      "fontWeight": "500"
+    },
+    {
+      "text": "Cloud InfrastructureResilient, cost-awar",
+      "bg": "transparent",
+      "color": "#1c1c26",
+      "border": "0px none rgb(28, 28, 38)",
+      "radius": "11px",
+      "padding": "11px 13px",
+      "fontSize": "15.2px",
+      "fontWeight": "500"
+    },
+    {
+      "text": "AWS ConsultingWell-Architected on AWS",
+      "bg": "transparent",
+      "color": "#1c1c26",
+      "border": "0px none rgb(28, 28, 38)",
+      "radius": "11px",
+      "padding": "11px 13px",
+      "fontSize": "15.2px",
+      "fontWeight": "500"
+    },
+    {
+      "text": "KubernetesOrchestration done right",
+      "bg": "transparent",
+      "color": "#1c1c26",
+      "border": "0px none rgb(28, 28, 38)",
+      "radius": "11px",
+      "padding": "11px 13px",
+      "fontSize": "15.2px",
+      "fontWeight": "500"
+    },
+    {
+      "text": "CI/CD AutomationShip safely, many times ",
+      "bg": "transparent",
+      "color": "#1c1c26",
+      "border": "0px none rgb(28, 28, 38)",
+      "radius": "11px",
+      "padding": "11px 13px",
+      "fontSize": "15.2px",
+      "fontWeight": "500"
+    },
+    {
+      "text": "Managed HostingWe run it, you build it",
+      "bg": "transparent",
+      "color": "#1c1c26",
+      "border": "0px none rgb(28, 28, 38)",
+      "radius": "11px",
+      "padding": "11px 13px",
+      "fontSize": "15.2px",
+      "fontWeight": "500"
+    },
+    {
+      "text": "Infrastructure MonitoringObservability b",
+      "bg": "transparent",
+      "color": "#1c1c26",
+      "border": "0px none rgb(28, 28, 38)",
+      "radius": "11px",
+      "padding": "11px 13px",
+      "fontSize": "15.2px",
+      "fontWeight": "500"
+    },
+    {
+      "text": "Security & ComplianceSecure from the fir",
+      "bg": "transparent",
+      "color": "#1c1c26",
+      "border": "0px none rgb(28, 28, 38)",
+      "radius": "11px",
+      "padding": "11px 13px",
+      "fontSize": "15.2px",
+      "fontWeight": "500"
+    },
+    {
+      "text": "Cloud MigrationMove without the downtime",
+      "bg": "transparent",
+      "color": "#1c1c26",
+      "border": "0px none rgb(28, 28, 38)",
+      "radius": "11px",
+      "padding": "11px 13px",
+      "fontSize": "15.2px",
+      "fontWeight": "500"
+    },
+    {
+      "text": "Docker ContainerizationPortable, reprodu",
+      "bg": "transparent",
+      "color": "#1c1c26",
+      "border": "0px none rgb(28, 28, 38)",
+      "radius": "11px",
+      "padding": "11px 13px",
+      "fontSize": "15.2px",
+      "fontWeight": "500"
+    },
+    {
+      "text": "Infrastructure as CodeTerraform-managed ",
+      "bg": "transparent",
+      "color": "#1c1c26",
+      "border": "0px none rgb(28, 28, 38)",
+      "radius": "11px",
+      "padding": "11px 13px",
+      "fontSize": "15.2px",
+      "fontWeight": "500"
+    },
+    {
+      "text": "Managed DevOpsYour DevOps team, on tap",
+      "bg": "transparent",
+      "color": "#1c1c26",
+      "border": "0px none rgb(28, 28, 38)",
+      "radius": "11px",
+      "padding": "11px 13px",
+      "fontSize": "15.2px",
+      "fontWeight": "500"
+    },
+    {
+      "text": "Company",
+      "bg": "transparent",
+      "color": "#c7c9d4",
+      "border": "0px none rgb(199, 201, 212)",
+      "radius": "10px",
+      "padding": "10px 13px",
+      "fontSize": "15.36px",
+      "fontWeight": "500"
+    },
+    {
+      "text": "About UsWho we are",
+      "bg": "transparent",
+      "color": "#1c1c26",
+      "border": "0px none rgb(28, 28, 38)",
+      "radius": "11px",
+      "padding": "11px 13px",
+      "fontSize": "15.2px",
+      "fontWeight": "500"
+    },
+    {
+      "text": "Our TeamThe people behind the work",
+      "bg": "transparent",
+      "color": "#1c1c26",
+      "border": "0px none rgb(28, 28, 38)",
+      "radius": "11px",
+      "padding": "11px 13px",
+      "fontSize": "15.2px",
+      "fontWeight": "500"
+    }
+  ],
+  "headings": [
+    {
+      "tag": "H1",
+      "text": "We build the software\n                    \n                    and cloud platfor",
+      "size": "52px",
+      "weight": "300",
+      "lineHeight": "57.2px",
+      "letterSpacing": "normal",
+      "transform": "none"
+    },
+    {
+      "tag": "H2",
+      "text": "An engineering partner built to scale your digital products",
+      "size": "44px",
+      "weight": "300",
+      "lineHeight": "48.4px",
+      "letterSpacing": "normal",
+      "transform": "none"
+    },
+    {
+      "tag": "H2",
+      "text": "Choose the engagement model\n        \n        that fits your team",
+      "size": "44px",
+      "weight": "300",
+      "lineHeight": "48.4px",
+      "letterSpacing": "normal",
+      "transform": "none"
+    },
+    {
+      "tag": "H3",
+      "text": "Beyond delivery - engineering as a long-term partnership",
+      "size": "32px",
+      "weight": "300",
+      "lineHeight": "35.2px",
+      "letterSpacing": "normal",
+      "transform": "none"
+    },
+    {
+      "tag": "H2",
+      "text": "Why teams keep building with us",
+      "size": "44px",
+      "weight": "300",
+      "lineHeight": "48.4px",
+      "letterSpacing": "normal",
+      "transform": "none"
+    },
+    {
+      "tag": "H2",
+      "text": "Power your roadmap with the\n        \n        Sentrize engineering team",
+      "size": "44px",
+      "weight": "300",
+      "lineHeight": "48.4px",
+      "letterSpacing": "normal",
+      "transform": "none"
+    },
+    {
+      "tag": "H2",
+      "text": "Ready to build your next product with confidence?",
+      "size": "30px",
+      "weight": "300",
+      "lineHeight": "40px",
+      "letterSpacing": "normal",
+      "transform": "none"
+    }
+  ],
+  "pageHeight": 6215,
+  "title": "Build & Scale Your Software With Confidence | Sentrize",
+  "imgCount": 31,
+  "svgCount": 17
+}
