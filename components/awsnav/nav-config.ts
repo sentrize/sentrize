@@ -129,7 +129,7 @@ export const utilityNav: { label: string; href: string; icon?: IconName; chevron
   { label: "Contact us", href: "/contact" },
   { label: "Help Center", href: "/help-center" },
   { label: "Service Status", href: "/service-status" },
-  { label: "Customer Portal", href: "/customer-portal", chevron: true },
+  { label: "Marketplace", href: "/marketplace", chevron: true },
 ];
 
 /** Tiny classNames joiner — no external deps. Filters falsy values. */
