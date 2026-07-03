@@ -14,7 +14,7 @@ const TRUST: [string, string][] = [
   ["500+", "Projects delivered"],
   ["12+", "Years experience"],
   ["98%", "Client satisfaction"],
-  ["120+", "Senior engineers"],
+  ["50+", "Senior engineers"],
 ];
 const OVERVIEW_POOL = ["officeteam", "collab", "meeting", "racks", "dashboard", "code2"];
 function lock(s: string) {

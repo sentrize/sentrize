@@ -205,7 +205,7 @@ export default function PortfolioPage() {
             <div className="stat"><div className="stat__num">500+</div><div className="stat__label">Projects delivered</div></div>
             <div className="stat"><div className="stat__num">99.99%</div><div className="stat__label">SLA-backed uptime</div></div>
             <div className="stat"><div className="stat__num">98%</div><div className="stat__label">Client retention</div></div>
-            <div className="stat"><div className="stat__num">120+</div><div className="stat__label">Engineers & specialists</div></div>
+            <div className="stat"><div className="stat__num">50+</div><div className="stat__label">Engineers & specialists</div></div>
           </div>
         </div>
       </section>

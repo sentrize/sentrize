@@ -1,0 +1,236 @@
+/* aws-site navigation — ported 1:1 from the rebuilt Sentrize site (E:\aws).
+   ------------------------------------------------------------------------
+   This page also loads the legacy landing CSS (un-layered Bootstrap-era
+   rules like `a{color:#428bca}` and `html{font-size:62.5%}`), so:
+   - Tailwind utilities compile un-layered and !important so they always win
+     over the legacy element rules.
+   - The whole theme is imported as `inline reference`: no CSS variables are
+     emitted globally, values are inlined into the utilities. Nothing here
+     can leak into other routes after client-side navigation.
+   - rem-based theme defaults are re-declared in px (root font-size is 10px
+     on this site, which would shrink every rem utility by 37.5%).
+   - Brand tokens live on [data-aws-nav] under --sx-* names and flip with
+     the `dark` class on <html>, exactly like the source site.
+   - A [data-aws-nav]-scoped mini-preflight replicates the Tailwind reset
+     the source site relies on, with enough specificity to beat the legacy
+     element rules but never the !important utilities. */
+
+@import "tailwindcss/theme.css" theme(inline reference);
+@import "tailwindcss/utilities.css" important source(none);
+@source "./";
+
+@theme inline reference {
+  /* px re-derivations of rem-based defaults */
+  --spacing: 4px;
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-base: 16px;
+  --text-lg: 18px;
+  --radius-md: 6px;
+
+  /* brand tokens — resolve against the runtime vars scoped on [data-aws-nav] */
+  --color-canvas: var(--sx-canvas);
+  --color-card: var(--sx-card);
+  --color-surface: var(--sx-surface);
+  --color-border: var(--sx-border);
+  --color-border-strong: var(--sx-border-strong);
+  --color-foreground: var(--sx-foreground);
+  --color-body: var(--sx-body);
+  --color-muted: var(--sx-muted);
+  --color-on-dark-muted: var(--sx-on-dark-muted);
+  --color-navy: var(--sx-navy);
+  --color-brand: var(--sx-brand);
+  --color-link: var(--sx-link);
+
+  /* layered premium shadow used by the mega-menu panel */
+  --shadow-pop: 0 16px 40px -8px rgba(10, 18, 32, 0.22), 0 4px 12px rgba(10, 18, 32, 0.1);
+}
+
+/* The landing's .wrap_all wrapper stacks at z-index:500, so the header's
+   z-50 utility would leave the sticky bar and mega menu underneath the page
+   content. Match the z-index:1000 the replaced sh header used. !important
+   because the z-50 utility compiles !important here. */
+header[data-aws-nav] {
+  z-index: 1000 !important;
+}
+
+/* ---- Runtime tokens (light default), scoped to the nav subtree ---- */
+[data-aws-nav] {
+  --sx-canvas: #ffffff;
+  --sx-card: #ffffff;
+  --sx-surface: #f3f3f7;
+  --sx-border: #ccccd1;
+  --sx-border-strong: #b4b4bd;
+  --sx-foreground: #161d26;
+  --sx-body: #232b37;
+  --sx-muted: #72747e;
+  --sx-on-dark-muted: #a4a4ad;
+  --sx-navy: #161d26;
+  --sx-brand: #006ce0;
+  --sx-link: #006ce0;
+
+  font-family: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--sx-body);
+  font-feature-settings: "cv11", "ss01";
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---- Dark theme overrides (chrome/brand hues stay constant) ---- */
+.dark [data-aws-nav] {
+  --sx-canvas: #0f141a;
+  --sx-card: #1b2331;
+  --sx-surface: #151c26;
+  --sx-border: #2c333f;
+  --sx-border-strong: #424650;
+  --sx-foreground: #f9f9fb;
+  --sx-body: #c4ccd6;
+  --sx-muted: #8a93a1;
+  --sx-link: #5cb3ff;
+}
+
+/* Brand-colored text needs a lighter tone on dark surfaces for contrast
+   (mirror of the source site's `.dark .text-brand` fix; !important because
+   the utilities compile !important here). */
+.dark [data-aws-nav] .text-brand {
+  color: var(--sx-link) !important;
+}
+
+/* ---- Scoped mini-preflight (replica of what the source site gets from
+   Tailwind preflight + its base layer) ---- */
+[data-aws-nav] *,
+[data-aws-nav] ::before,
+[data-aws-nav] ::after {
+  box-sizing: border-box;
+  border: 0 solid var(--sx-border);
+  margin: 0;
+  padding: 0;
+}
+[data-aws-nav] ul,
+[data-aws-nav] ol {
+  list-style: none;
+}
+[data-aws-nav] a,
+[data-aws-nav] a:hover,
+[data-aws-nav] a:focus {
+  color: inherit;
+  text-decoration: none;
+}
+[data-aws-nav] button {
+  background: none;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  letter-spacing: inherit;
+  cursor: default;
+  appearance: none;
+  -webkit-appearance: none;
+}
+[data-aws-nav] img,
+[data-aws-nav] svg {
+  display: block;
+  vertical-align: middle;
+}
+[data-aws-nav] img {
+  max-width: 100%;
+  height: auto;
+}
+[data-aws-nav] summary {
+  display: block;
+  list-style: none;
+}
+[data-aws-nav] summary::-webkit-details-marker {
+  display: none;
+}
+[data-aws-nav] :focus-visible {
+  outline: 2px solid var(--sx-brand);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+[data-aws-nav] ::selection {
+  background: var(--sx-brand);
+  color: #fff;
+}
+
+/* ---- Animated underline for nav links (1rem/1.65rem → px) ---- */
+[data-aws-nav] .navlink {
+  position: relative;
+}
+[data-aws-nav] .navlink::after {
+  content: "";
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 26.4px;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.22s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+[data-aws-nav] .navlink:hover::after,
+[data-aws-nav] .navlink[data-active="true"]::after {
+  transform: scaleX(1);
+}
+
+/* ---- Responsive display ladder re-assertion ----
+   The legacy landing CSS defines `.hidden{display:none!important;
+   visibility:hidden!important}` (Bootstrap), which beats the Tailwind
+   responsive un-hide variants no matter the stylesheet order. Re-assert the
+   variants used by the nav at higher specificity, restoring visibility. */
+@media (min-width: 40rem) {
+  [data-aws-nav] .sm\:block {
+    display: block !important;
+    visibility: visible !important;
+  }
+  [data-aws-nav] .sm\:inline-flex {
+    display: inline-flex !important;
+    visibility: visible !important;
+  }
+}
+@media (min-width: 64rem) {
+  [data-aws-nav] .lg\:block {
+    display: block !important;
+    visibility: visible !important;
+  }
+}
+@media (min-width: 80rem) {
+  [data-aws-nav] .xl\:block {
+    display: block !important;
+    visibility: visible !important;
+  }
+  [data-aws-nav] .xl\:flex {
+    display: flex !important;
+    visibility: visible !important;
+  }
+  [data-aws-nav] .xl\:hidden {
+    display: none !important;
+  }
+}
+
+/* ---- Mega-menu / drawer enter animation ---- */
+@keyframes sx-menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+[data-aws-nav] .animate-menu-in {
+  animation: sx-menu-in 0.18s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-aws-nav] .animate-menu-in {
+    opacity: 1 !important;
+    animation: none !important;
+    transform: none !important;
+  }
+}

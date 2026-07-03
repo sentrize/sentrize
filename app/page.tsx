@@ -2,11 +2,12 @@ import fs from "node:fs";
 import path from "node:path";
 import type { Metadata } from "next";
 import LandingClient from "@/components/LandingClient";
+import { AwsNav } from "@/components/awsnav/AwsNav";
 
 export const metadata: Metadata = {
-  title: { absolute: "Build & Scale Your Software With Confidence | Sentrize" },
+  title: { absolute: "Sentrize — the software and cloud platforms your business runs on" },
   description:
-    "Sentrize builds, scales, and operates digital products and cloud infrastructure. 120+ engineers, 500+ projects, and 99.99% SLA-backed uptime across 40+ countries.",
+    "Sentrize designs, builds, and operates custom software and cloud platforms — from first commit to production and round-the-clock operations.",
   alternates: { canonical: "/" },
 };
 
@@ -25,6 +26,10 @@ export default function Home() {
       <link rel="stylesheet" href="/assets/css/en0000000000000812.css" />
       <link rel="stylesheet" href="/assets/css/style.css" />
       <link rel="stylesheet" href="/assets/css/theme-teal.css" />
+      {/* aws-site nav (from the E:\aws rebuild) replaces the landing's
+          embedded sh--overlay header on this page only — inner pages keep
+          the regular chrome header. */}
+      <AwsNav />
       <LandingClient html={landingHtml} />
     </>
   );

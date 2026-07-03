@@ -1,5 +1,5 @@
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { AwsNav } from "@/components/awsnav/AwsNav";
 
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -7,7 +7,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
       {/* Inner-page design system (scoped to this route group) */}
       <link rel="stylesheet" href="/assets/css/site.css" />
       <link rel="stylesheet" href="/assets/css/enterprise.css" />
-      <Header />
+      <AwsNav />
       <main id="main">{children}</main>
       <Footer />
     </>

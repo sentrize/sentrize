@@ -955,7 +955,7 @@ export const HOOKS: Record<string, [string, string, string]> = {
  "software-development": [
   "Custom software engineered to outlast its first release.",
   "Production-grade systems on Laravel, Node.js, and TypeScript that scale with your business instead of being rewritten in two years.",
-  "500+ projects delivered across 40+ countries"
+  "500+ projects delivered across 23+ countries"
  ],
  "saas-development": [
   "Multi-tenant SaaS built to grow margins, not just users.",
@@ -980,7 +980,7 @@ export const HOOKS: Record<string, [string, string, string]> = {
  "ai-automation": [
   "Automation that turns manual hours into measurable savings.",
   "We embed AI and workflow automation into real operations and tie every deployment to a cost or throughput metric.",
-  "120+ engineers & specialists"
+  "50+ engineers & specialists"
  ],
  "ui-ux-design": [
   "Design decisions backed by how users actually behave.",
@@ -995,7 +995,7 @@ export const HOOKS: Record<string, [string, string, string]> = {
  "cloud-infrastructure": [
   "Infrastructure that scales before you do.",
   "Cloud foundations that handle 10x traffic spikes without redesign, downtime, or runaway bills.",
-  "99.99% SLA-backed uptime in 40+ countries"
+  "99.99% SLA-backed uptime in 23+ countries"
  ],
  "aws-consulting": [
   "AWS done right, the first time.",
@@ -1045,12 +1045,12 @@ export const HOOKS: Record<string, [string, string, string]> = {
  "managed-devops": [
   "Your DevOps team, fully managed.",
   "An embedded team of senior engineers running your pipelines, infrastructure, and on-call so you don't have to hire it.",
-  "120+ specialists · 24/7 coverage"
+  "50+ specialists · 24/7 coverage"
  ],
  "digital-transformation": [
   "Transformation that ships, not slideware.",
   "We modernize legacy systems and processes into measurable engineering and business outcomes.",
-  "500+ projects modernizing businesses in 40+ countries"
+  "500+ projects modernizing businesses in 23+ countries"
  ],
  "enterprise-software": [
   "Enterprise software built to outlast trends.",
@@ -1065,7 +1065,7 @@ export const HOOKS: Record<string, [string, string, string]> = {
  "erp-development": [
   "One system to run the whole business.",
   "Custom ERP platforms that unify finance, operations, and inventory into a single source of truth.",
-  "Backed by 12+ years and 120+ specialists"
+  "Backed by 12+ years and 50+ specialists"
  ],
  "cybersecurity": [
   "Security built by engineers, not just scanners.",

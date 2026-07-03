@@ -6,7 +6,7 @@ import { METRICS } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Our Team",
   description:
-    "Meet the Sentrize team: 120+ engineers and specialists across 40+ countries delivering production software, cloud, and DevOps.",
+    "Meet the Sentrize team: 50+ engineers and specialists across 23+ countries delivering production software, cloud, and DevOps.",
 };
 
 const PEOPLE: { img: string; name: string; role: string; bio: string }[] = [
@@ -56,7 +56,7 @@ export default function TeamPage() {
           <span className="eyebrow">Our team</span>
           <h1>The engineers behind the systems</h1>
           <p className="lead">
-            120+ engineers and specialists across 40+ countries, led by people who have built and
+            50+ engineers and specialists across 23+ countries, led by people who have built and
             operated software at scale.
           </p>
         </div>

@@ -5,7 +5,7 @@ import Cta from "@/components/Cta";
 export const metadata: Metadata = {
   title: "Careers",
   description:
-    "Join Sentrize: 120+ engineers across 40+ countries building production software and cloud systems. Remote-friendly roles for specialists.",
+    "Join Sentrize: 50+ engineers across 23+ countries building production software and cloud systems. Remote-friendly roles for specialists.",
 };
 
 const WHY: [string, string][] = [
@@ -14,11 +14,11 @@ const WHY: [string, string][] = [
   ["Cloud-native by default", "We design on AWS, Kubernetes, and Terraform from day one, so systems scale without rebuilds."],
   ["Security & compliance built in", "Encryption, access control, and audit readiness are part of the architecture, not a later phase."],
   ["Transparent delivery", "Clear roadmaps, visible progress, and direct access to the people building your systems."],
-  ["Global delivery, single standard", "Teams across 40+ countries operate to one engineering bar for consistent quality."],
+  ["Global delivery, single standard", "Teams across 23+ countries operate to one engineering bar for consistent quality."],
 ];
 
 const BENEFITS: string[] = [
-  "Fully remote across 40+ countries",
+  "Fully remote across 23+ countries",
   "Market-leading global compensation",
   "Equity & ownership",
   "Annual learning budget",
@@ -53,18 +53,18 @@ export default function CareersPage() {
       <section className="hero hero--centered glow">
         <div className="container">
           <span className="eyebrow">Careers</span>
-          <h1>Build infrastructure and software that 40+ countries depend on.</h1>
+          <h1>Build infrastructure and software that 23+ countries depend on.</h1>
           <p className="lead">
             Ship production systems for startups and enterprises alike, with the autonomy to own
             outcomes and the engineering rigor to do it right.
           </p>
           <div className="stats" style={{ gridTemplateColumns: "repeat(3,1fr)", maxWidth: 680, margin: "28px auto 0" }}>
             <div className="stat">
-              <div className="stat__num">120+</div>
+              <div className="stat__num">50+</div>
               <div className="stat__label">Engineers</div>
             </div>
             <div className="stat">
-              <div className="stat__num">40+</div>
+              <div className="stat__num">23+</div>
               <div className="stat__label">Countries</div>
             </div>
             <div className="stat">

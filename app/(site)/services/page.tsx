@@ -63,7 +63,7 @@ export default function ServicesPage() {
               <div className="stat__label">Client satisfaction</div>
             </div>
             <div className="stat">
-              <div className="stat__num">120+</div>
+              <div className="stat__num">50+</div>
               <div className="stat__label">Senior engineers</div>
             </div>
           </div>

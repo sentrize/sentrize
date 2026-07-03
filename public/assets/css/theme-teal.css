@@ -2,3 +2,22 @@
    The header/footer (.sh/.sf chrome) are intentionally left at their original
    colors so the nav stays as it was (blue), matching the inner pages. */
 :root{--blue:#0891b2;--mint:#22d3ee;}
+
+/* ---- De-Verifone the landing font ----
+   This file loads AFTER en0000000000000812.css, so redefining the font-family
+   custom properties here overrides the Verifone-Sans values via the cascade —
+   every .fontLight/.fontRegular/... class picks up the brand stack instead.
+   The explicit element rules override the hard-coded `font-family:'Verifone-
+   Sans-Regular'` declarations on body/button/input in the lifted stylesheet.
+   (Inter-first so a self-hosted Inter upgrades the look automatically; today it
+   renders as the clean native UI font for every visitor.) */
+:root{
+  --fontLight:'Inter','Inter var',system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+  --fontRegular:'Inter','Inter var',system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+  --fontMedium:'Inter','Inter var',system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+  --fontSemiBold:'Inter','Inter var',system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+  --fontBold:'Inter','Inter var',system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+}
+body,button,input,textarea,select,pre,code,kbd,samp{
+  font-family:'Inter','Inter var',system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif !important;
+}

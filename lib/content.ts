@@ -4,8 +4,8 @@ export const METRICS: [string, string][] = [
   ["500+", "Projects delivered"],
   ["99.99%", "SLA-backed uptime"],
   ["98%", "Client retention"],
-  ["120+", "Engineers & specialists"],
-  ["40+", "Countries served"],
+  ["50+", "Engineers & specialists"],
+  ["23+", "Countries served"],
   ["4.9/5", "Average client rating"],
   ["12+", "Years in operation"],
   ["24/7", "Support coverage"],
@@ -25,18 +25,10 @@ export const MILESTONES: [string, string][] = [
   ["2016", "Crossed 50 delivered projects and established a dedicated DevOps practice."],
   ["2017", "Became an AWS Partner and opened a second delivery region across new time zones."],
   ["2019", "Achieved ISO 27001 and SOC 2 Type II, formalizing our enterprise security posture."],
-  ["2020", "Scaled to a fully distributed model across 25+ countries without missing SLAs."],
+  ["2020", "Scaled to a fully distributed delivery model spanning multiple regions without missing SLAs."],
   ["2022", "Reached AWS Advanced Tier Partner status and surpassed 300 projects at 99.99% uptime."],
   ["2024", "Launched a dedicated AI & Automation practice across client products and pipelines."],
-  ["2026", "Surpassed 500 projects across 40+ countries with 120+ specialists and 98% retention."],
-];
-
-export const AWARDS: [string, string][] = [
-  ["Cloud Engineering Partner of the Year", "2019 · Asia-Pacific Cloud Excellence Awards"],
-  ["Top B2B Software Developers", "2021 · Clutch Global Recognition"],
-  ["Best DevOps Transformation Provider", "2022 · Enterprise Technology Awards"],
-  ["Excellence in Managed Cloud Services", "2023 · Global IT Services Council"],
-  ["Employer of Choice in Technology", "2025 · International Workplace Excellence Awards"],
+  ["2026", "Surpassed 500 projects across 23+ countries with 50+ specialists and 98% retention."],
 ];
 
 export const CERTS: [string, string][] = [

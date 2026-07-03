@@ -4,12 +4,6 @@
    The landing page does NOT use this file, so it is unaffected.
    ========================================================================== */
 
-@font-face{font-family:'Verifone Sans';src:url("../fonts/VerifoneSans-Light-Thin_100.woff") format('woff');font-weight:300;font-display:swap;}
-@font-face{font-family:'Verifone Sans';src:url("../fonts/VerifoneSans-Regular-Normal_400.woff") format('woff');font-weight:400;font-display:swap;}
-@font-face{font-family:'Verifone Sans';src:url("../fonts/VerifoneSans-Medium-Medium_500.woff") format('woff');font-weight:500;font-display:swap;}
-@font-face{font-family:'Verifone Sans';src:url("../fonts/VerifoneSans-SemiBold-Semi-Bold_600.woff") format('woff');font-weight:600;font-display:swap;}
-@font-face{font-family:'Verifone Sans';src:url("../fonts/VerifoneSans-Bold-Bold_700.woff") format('woff');font-weight:700;font-display:swap;}
-
 :root{
   --bg:#050816; --bg-2:#0B1220; --bg-3:#101827;
   --card:#111827; --card-2:#161B26;
@@ -22,7 +16,7 @@
   --container:1280px; --gap:26px;
   --shadow:0 14px 44px rgba(0,0,0,.5);
   --glow:0 24px 70px rgba(10,132,255,.22);
-  --font:'Verifone Sans',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  --font:'Inter','Inter var',system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
 }
 
 *,*::before,*::after{box-sizing:border-box}

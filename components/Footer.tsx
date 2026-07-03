@@ -9,7 +9,7 @@ export default function Footer() {
           <div>
             <Link className="sf__brand" href="/" aria-label={BRAND}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/branding/logo.png" alt={BRAND} width={132} height={35} />
+              <img src="/branding/logo.png" alt={BRAND} width={147} height={40} />
             </Link>
             <p className="sf__brand-text">
               Engineering, scaling, and operating digital products and cloud

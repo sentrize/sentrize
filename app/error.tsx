@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { AwsNav } from "@/components/awsnav/AwsNav";
 
 const POPULAR: [string, string][] = [
   ["Home", "/"],
@@ -16,7 +16,7 @@ export default function Error({ reset }: { error: Error & { digest?: string }; r
     <>
       <link rel="stylesheet" href="/assets/css/site.css" />
       <link rel="stylesheet" href="/assets/css/enterprise.css" />
-      <Header />
+      <AwsNav />
       <main id="main">
         <section className="error">
           <div className="container">

@@ -4,30 +4,32 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.sentrize.com"),
+  // ONE positioning line, repeated everywhere (title / OG / Twitter / image alt)
+  // so the browser tab, Google result, and social preview all say the same thing.
   title: {
-    default: "Sentrize | Engineering That Scales Your Business",
+    default: "Sentrize — the software and cloud platforms your business runs on",
     template: "%s | Sentrize",
   },
   description:
-    "Sentrize builds, scales, and operates digital products and cloud infrastructure. 120+ engineers, 500+ projects, and 99.99% SLA-backed uptime across 40+ countries.",
+    "Sentrize designs, builds, and operates custom software and cloud platforms — from first commit to production and round-the-clock operations.",
   // Favicon / app icons come from the app/ file conventions:
   // app/favicon.ico, app/icon.png, app/apple-icon.png
   openGraph: {
     type: "website",
     siteName: "Sentrize",
-    title: "Sentrize | Engineering That Scales Your Business",
+    title: "Sentrize — the software and cloud platforms your business runs on",
     description:
-      "Sentrize builds, scales, and operates digital products and cloud infrastructure. 120+ engineers, 500+ projects, and 99.99% SLA-backed uptime across 40+ countries.",
+      "Sentrize designs, builds, and operates custom software and cloud platforms — from first commit to production and round-the-clock operations.",
     url: "/",
     images: [
-      { url: "/og.png", width: 1200, height: 630, alt: "Sentrize — Intelligent Software. Limitless Impact." },
+      { url: "/og.png", width: 1200, height: 630, alt: "Sentrize — the software and cloud platforms your business runs on" },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sentrize | Engineering That Scales Your Business",
+    title: "Sentrize — the software and cloud platforms your business runs on",
     description:
-      "Sentrize builds, scales, and operates digital products and cloud infrastructure.",
+      "Sentrize designs, builds, and operates custom software and cloud platforms.",
     images: ["/og.png"],
   },
 };

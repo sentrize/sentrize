@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Metrics from "@/components/Metrics";
 import Cta from "@/components/Cta";
-import { METRICS, VALUES, MILESTONES, AWARDS, CERTS } from "@/lib/content";
+import { METRICS, VALUES, MILESTONES, CERTS } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Founded 2014, Sentrize is a global engineering firm of 120+ specialists with 500+ delivered projects, 98% retention, and 24/7 support across 40+ countries.",
+    "Founded 2014, Sentrize is a global engineering firm of 50+ specialists with 500+ delivered projects, 98% retention, and 24/7 support across 23+ countries.",
 };
 
 function Badges({ eyebrow, title, items, mode }: { eyebrow: string; title: string; items: [string, string][]; mode: "award" | "cert" }) {
@@ -67,7 +67,7 @@ export default function AboutPage() {
               traffic. We rebuilt them properly — automated testing, version-controlled
               infrastructure, and deployment pipelines that did not depend on one person remembering
               the right command. That approach earned repeat work, and repeat work let us grow
-              deliberately into a distributed firm of 120+ engineers across 40+ countries.
+              deliberately into a distributed firm of 50+ engineers across 23+ countries.
             </p>
             <p>
               The tools have changed since 2014. The standard has not. We build software that holds
@@ -136,7 +136,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <Badges eyebrow="Recognition" title="Awards" items={AWARDS} mode="award" />
       <Badges eyebrow="Compliance" title="Certifications" items={CERTS} mode="cert" />
 
       <section className="section">

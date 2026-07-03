@@ -219,7 +219,7 @@ export default function SolutionsPage() {
               <div className="stat__label">Client retention</div>
             </div>
             <div className="stat">
-              <div className="stat__num">120+</div>
+              <div className="stat__num">50+</div>
               <div className="stat__label">Engineers & specialists</div>
             </div>
           </div>

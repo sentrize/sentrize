@@ -95,7 +95,6 @@ export default function ContactPage() {
               <ul className="checks" style={{ marginBottom: 24 }}>
                 <li>Sales: sales@sentrize.com</li>
                 <li>Support: support@sentrize.com</li>
-                <li>Phone: +1 (628) 555-0137</li>
                 <li>Mon–Fri, 9:00–18:00 local · 24/7 production support for SLA clients</li>
               </ul>
               <h3>What happens next</h3>
