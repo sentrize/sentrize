@@ -9,8 +9,8 @@
      can leak into other routes after client-side navigation.
    - rem-based theme defaults are re-declared in px (root font-size is 10px
      on this site, which would shrink every rem utility by 37.5%).
-   - Brand tokens live on [data-aws-nav] under --sx-* names and flip with
-     the `dark` class on <html>, exactly like the source site.
+   - Brand tokens live on [data-aws-nav] under --sx-* names, pinned to the
+     source site's dark palette.
    - A [data-aws-nav]-scoped mini-preflight replicates the Tailwind reset
      the source site relies on, with enough specificity to beat the legacy
      element rules but never the !important utilities. */
@@ -54,20 +54,20 @@ header[data-aws-nav] {
   z-index: 1000 !important;
 }
 
-/* ---- Runtime tokens (light default), scoped to the nav subtree ---- */
+/* ---- Runtime tokens (dark, pinned), scoped to the nav subtree ---- */
 [data-aws-nav] {
-  --sx-canvas: #ffffff;
-  --sx-card: #ffffff;
-  --sx-surface: #f3f3f7;
-  --sx-border: #ccccd1;
-  --sx-border-strong: #b4b4bd;
-  --sx-foreground: #161d26;
-  --sx-body: #232b37;
-  --sx-muted: #72747e;
+  --sx-canvas: #0f141a;
+  --sx-card: #1b2331;
+  --sx-surface: #151c26;
+  --sx-border: #2c333f;
+  --sx-border-strong: #424650;
+  --sx-foreground: #f9f9fb;
+  --sx-body: #c4ccd6;
+  --sx-muted: #8a93a1;
   --sx-on-dark-muted: #a4a4ad;
   --sx-navy: #161d26;
   --sx-brand: #006ce0;
-  --sx-link: #006ce0;
+  --sx-link: #5cb3ff;
 
   font-family: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
     "Segoe UI", Helvetica, Arial, sans-serif;
@@ -80,23 +80,10 @@ header[data-aws-nav] {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ---- Dark theme overrides (chrome/brand hues stay constant) ---- */
-.dark [data-aws-nav] {
-  --sx-canvas: #0f141a;
-  --sx-card: #1b2331;
-  --sx-surface: #151c26;
-  --sx-border: #2c333f;
-  --sx-border-strong: #424650;
-  --sx-foreground: #f9f9fb;
-  --sx-body: #c4ccd6;
-  --sx-muted: #8a93a1;
-  --sx-link: #5cb3ff;
-}
-
 /* Brand-colored text needs a lighter tone on dark surfaces for contrast
    (mirror of the source site's `.dark .text-brand` fix; !important because
    the utilities compile !important here). */
-.dark [data-aws-nav] .text-brand {
+[data-aws-nav] .text-brand {
   color: var(--sx-link) !important;
 }
 

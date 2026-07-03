@@ -8,7 +8,7 @@ import { Logo } from "./Logo";
 import { UtilityBar } from "./UtilityBar";
 import { navGroups, cn } from "./nav-config";
 
-/** Dark near-black pill CTA; flips to white in dark mode. */
+/** White pill CTA on the dark nav chrome (foreground/canvas tokens). */
 const pillCta =
   "inline-flex items-center justify-center whitespace-nowrap rounded-full bg-foreground px-6 font-bold text-canvas transition-opacity hover:opacity-85";
 
@@ -57,12 +57,12 @@ export function Navbar({ className }: { className?: string }) {
         className={cn(
           "border-b transition-[background-color,box-shadow,border-color] duration-300",
           scrolled
-            ? "border-border/70 bg-canvas/90 shadow-[0_10px_30px_-12px_rgba(15,20,26,0.18)] backdrop-blur-xl"
+            ? "border-border/70 bg-canvas/90 shadow-[0_10px_30px_-12px_rgba(0,0,0,0.55)] backdrop-blur-xl"
             : "border-border/60 bg-canvas"
         )}
       >
         <div className="mx-auto flex h-18 max-w-350 items-center gap-4 px-5 sm:px-6 lg:h-20.75 lg:px-8">
-          <Logo onDark={false} />
+          <Logo />
 
           {/* Desktop primary nav */}
           <nav className="ml-2 hidden items-center xl:flex" aria-label="Primary">
