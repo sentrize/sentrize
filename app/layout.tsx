@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { MotionConfig } from "motion/react";
 import SiteScripts from "@/components/SiteScripts";
 import "./globals.css";
 
@@ -45,12 +46,16 @@ export default function RootLayout({
         <link rel="stylesheet" href="/assets/css/chrome.css" />
       </head>
       <body>
-        <a className="skip-link" href="#main">
-          Skip to content
-        </a>
-        {children}
-        {/* Reused interactions (nav toggle, scroll reveal, forms, filters) */}
-        <SiteScripts />
+        {/* Every animate-ui/motion animation site-wide respects the OS
+            prefers-reduced-motion setting through this one boundary. */}
+        <MotionConfig reducedMotion="user">
+          <a className="skip-link" href="#main">
+            Skip to content
+          </a>
+          {children}
+          {/* Reused interactions (nav toggle, scroll reveal, forms, filters) */}
+          <SiteScripts />
+        </MotionConfig>
       </body>
     </html>
   );

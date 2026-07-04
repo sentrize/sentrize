@@ -3,10 +3,12 @@
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
+import { AnimatePresence, motion } from "motion/react";
 import { Icon } from "./Icon";
 import { Logo } from "./Logo";
 import { UtilityBar } from "./UtilityBar";
 import { navGroups, cn } from "./nav-config";
+import { Button as MotionButton } from "@/components/animate-ui/primitives/buttons/button";
 
 /** White pill CTA on the dark nav chrome (foreground/canvas tokens). */
 const pillCta =
@@ -103,9 +105,11 @@ export function Navbar({ className }: { className?: string }) {
             >
               Talk to engineering
             </Link>
-            <Link href="/contact" className={cn(pillCta, "hidden h-11 text-[15px] sm:inline-flex")}>
-              Start a project
-            </Link>
+            <MotionButton asChild hoverScale={1.02} tapScale={0.97}>
+              <Link href="/contact" className={cn(pillCta, "hidden h-11 text-[15px] sm:inline-flex")}>
+                Start a project
+              </Link>
+            </MotionButton>
 
             {/* Mobile toggle */}
             <button
@@ -119,67 +123,82 @@ export function Navbar({ className }: { className?: string }) {
           </div>
         </div>
 
-        {/* Desktop mega-menu panel */}
-        {activeGroup && (
-          <div
-            className="animate-menu-in absolute inset-x-0 top-full hidden border-b border-border bg-card shadow-pop xl:block"
-            onMouseEnter={cancelClose}
-            onMouseLeave={scheduleClose}
-          >
-            <div className="mx-auto max-w-350 px-8 py-8">
-              <div className="grid grid-cols-4 gap-x-8 gap-y-6">
-                <div className="col-span-1">
-                  <p className="text-[13px] font-bold uppercase tracking-wider text-muted">
-                    {activeGroup.label}
-                  </p>
-                  <p className="mt-3 text-sm leading-relaxed text-body">{activeGroup.blurb}</p>
-                  <Link
-                    href={activeGroup.top}
-                    onClick={() => setOpenMenu(null)}
-                    className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-link hover:underline"
+        {/* Desktop mega-menu panel — AnimatePresence animates both open and close */}
+        <AnimatePresence>
+          {activeGroup && (
+            <motion.div
+              key="mega-menu"
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.18, ease: "easeOut" }}
+              className="absolute inset-x-0 top-full hidden border-b border-border bg-card shadow-pop xl:block"
+              onMouseEnter={cancelClose}
+              onMouseLeave={scheduleClose}
+            >
+              <div className="mx-auto max-w-350 px-8 py-8">
+                <div className="grid grid-cols-4 gap-x-8 gap-y-6">
+                  <div className="col-span-1">
+                    <p className="text-[13px] font-bold uppercase tracking-wider text-muted">
+                      {activeGroup.label}
+                    </p>
+                    <p className="mt-3 text-sm leading-relaxed text-body">{activeGroup.blurb}</p>
+                    <Link
+                      href={activeGroup.top}
+                      onClick={() => setOpenMenu(null)}
+                      className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-link hover:underline"
+                    >
+                      {activeGroup.topLabel} <Icon name="chevron" size={14} />
+                    </Link>
+                  </div>
+                  <ul
+                    className={cn(
+                      "col-span-3 grid gap-x-6 gap-y-1",
+                      activeGroup.links.length > 8 ? "grid-cols-3" : "grid-cols-2"
+                    )}
                   >
-                    {activeGroup.topLabel} <Icon name="chevron" size={14} />
-                  </Link>
-                </div>
-                <ul
-                  className={cn(
-                    "col-span-3 grid gap-x-6 gap-y-1",
-                    activeGroup.links.length > 8 ? "grid-cols-3" : "grid-cols-2"
-                  )}
-                >
-                  {activeGroup.links.map((link) => (
-                    <li key={link.label}>
-                      <Link
-                        href={link.href}
-                        onClick={() => setOpenMenu(null)}
-                        className="group flex items-start gap-2.5 rounded-md p-1.5 hover:bg-surface"
-                      >
-                        {link.icon && (
-                          <span className="mt-0.5 text-brand">
-                            <Icon name={link.icon} size={18} />
-                          </span>
-                        )}
-                        <span>
-                          <span className="block text-sm font-semibold text-foreground group-hover:text-brand">
-                            {link.label}
-                          </span>
-                          {link.sub && (
-                            <span className="block text-xs text-muted">{link.sub}</span>
+                    {activeGroup.links.map((link) => (
+                      <li key={link.label}>
+                        <Link
+                          href={link.href}
+                          onClick={() => setOpenMenu(null)}
+                          className="group flex items-start gap-2.5 rounded-md p-1.5 hover:bg-surface"
+                        >
+                          {link.icon && (
+                            <span className="mt-0.5 text-brand">
+                              <Icon name={link.icon} size={18} />
+                            </span>
                           )}
-                        </span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+                          <span>
+                            <span className="block text-sm font-semibold text-foreground group-hover:text-brand">
+                              {link.label}
+                            </span>
+                            {link.sub && (
+                              <span className="block text-xs text-muted">{link.sub}</span>
+                            )}
+                          </span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-            </div>
-          </div>
-        )}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
-      {/* Mobile drawer */}
-      {mobileOpen && (
-        <div className="animate-menu-in fixed inset-0 top-18 z-40 overflow-y-auto bg-canvas xl:hidden">
+      {/* Mobile drawer — AnimatePresence animates both open and close */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            key="mobile-drawer"
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.18, ease: "easeOut" }}
+            className="fixed inset-0 top-18 z-40 overflow-y-auto bg-canvas xl:hidden"
+          >
           <nav className="flex flex-col px-5 py-4" aria-label="Mobile">
             {navGroups.map((group) => (
               <details key={group.label} className="border-b border-border/60">
@@ -212,13 +231,15 @@ export function Navbar({ className }: { className?: string }) {
               </details>
             ))}
             <div className="mt-5 flex flex-col gap-3 pb-10">
-              <Link
-                href="/contact"
-                onClick={() => setMobileOpen(false)}
-                className={cn(pillCta, "h-12 text-base")}
-              >
-                Start a project
-              </Link>
+              <MotionButton asChild hoverScale={1.02} tapScale={0.97}>
+                <Link
+                  href="/contact"
+                  onClick={() => setMobileOpen(false)}
+                  className={cn(pillCta, "h-12 text-base")}
+                >
+                  Start a project
+                </Link>
+              </MotionButton>
               <Link
                 href="/contact"
                 onClick={() => setMobileOpen(false)}
@@ -228,8 +249,9 @@ export function Navbar({ className }: { className?: string }) {
               </Link>
             </div>
           </nav>
-        </div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

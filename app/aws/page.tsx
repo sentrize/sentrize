@@ -1,5 +1,8 @@
 import Link from "next/link";
 import AwsInteractions from "./AwsInteractions";
+import StoryCarousel from "./StoryCarousel";
+import { Slide } from "@/components/animate-ui/primitives/effects/slide";
+import { CountingNumber } from "@/components/animate-ui/primitives/texts/counting-number";
 
 /* Recreation of the aws.amazon.com homepage layout in AWS's own design
    language — squid-ink global nav, orange call-to-action, get-started card
@@ -160,10 +163,10 @@ const INDUSTRIES = [
 ];
 
 const STATS = [
-  { num: "38", label: "Launched Regions worldwide" },
-  { num: "120+", label: "Availability Zones" },
-  { num: "700+", label: "Points of presence" },
-  { num: "245", label: "Countries and territories served" },
+  { num: 38, suffix: "", label: "Launched Regions worldwide" },
+  { num: 120, suffix: "+", label: "Availability Zones" },
+  { num: 700, suffix: "+", label: "Points of presence" },
+  { num: 245, suffix: "", label: "Countries and territories served" },
 ];
 
 const FOOTER = [
@@ -300,13 +303,15 @@ export default function AwsHomepage() {
               <p>Whether you&apos;re building your first app or migrating a global platform, start here.</p>
             </div>
             <div className="aws-cards">
-              {CARDS.map((c) => (
-                <div className="aws-card" key={c.title}>
-                  <span className="aws-card__icon">{c.icon}</span>
-                  <h3>{c.title}</h3>
-                  <p>{c.body}</p>
-                  <a className="aws-link-arrow" href="#">{c.cta}</a>
-                </div>
+              {CARDS.map((c, i) => (
+                <Slide key={c.title} asChild direction="up" offset={24} inView inViewOnce delay={i * 80}>
+                  <div className="aws-card">
+                    <span className="aws-card__icon">{c.icon}</span>
+                    <h3>{c.title}</h3>
+                    <p>{c.body}</p>
+                    <a className="aws-link-arrow" href="#">{c.cta}</a>
+                  </div>
+                </Slide>
               ))}
             </div>
           </div>
@@ -316,39 +321,7 @@ export default function AwsHomepage() {
         <section className="aws-stories">
           <div className="aws-container">
             <h2>Powering what&apos;s next in every industry</h2>
-            <div className="aws-carousel" data-aws-carousel>
-              <div className="aws-carousel__track">
-                {STORIES.map((s, i) => (
-                  <article className="aws-slide" data-aws-slide key={s.title} hidden={i !== 0}>
-                    <div className="aws-slide__media">
-                      <img src={s.img} alt="" width={560} height={350} />
-                    </div>
-                    <div className="aws-slide__body">
-                      <p className="aws-slide__tag">{s.tag}</p>
-                      <h3>{s.title}</h3>
-                      <p>{s.body}</p>
-                      <a className="aws-btn aws-btn--light" href="#">Read the story</a>
-                    </div>
-                  </article>
-                ))}
-              </div>
-              <div className="aws-carousel__nav">
-                <button className="aws-carousel__btn" data-aws-prev aria-label="Previous story">‹</button>
-                <button className="aws-carousel__btn" data-aws-next aria-label="Next story">›</button>
-                <div className="aws-carousel__dots" role="tablist" aria-label="Choose story">
-                  {STORIES.map((s, i) => (
-                    <button
-                      className="aws-dot"
-                      data-aws-dot
-                      key={s.title}
-                      role="tab"
-                      aria-selected={i === 0 ? "true" : "false"}
-                      aria-label={`Story ${i + 1}`}
-                    />
-                  ))}
-                </div>
-              </div>
-            </div>
+            <StoryCarousel stories={STORIES} />
           </div>
         </section>
 
@@ -356,17 +329,19 @@ export default function AwsHomepage() {
         <section className="aws-section aws-section--soft">
           <div className="aws-container">
             <div className="aws-features">
-              {FEATURES.map((f) => (
-                <article className="aws-feature" key={f.title}>
-                  <img src={f.img} alt="" width={580} height={320} />
-                  <span className="aws-feature__scrim" aria-hidden="true" />
-                  <div className="aws-feature__body">
-                    <p className="aws-feature__tag">{f.tag}</p>
-                    <h3>{f.title}</h3>
-                    <p style={{ color: "#d5dbdb", fontSize: 15, marginBottom: 18 }}>{f.body}</p>
-                    <a className="aws-btn aws-btn--light" href="#">{f.cta}</a>
-                  </div>
-                </article>
+              {FEATURES.map((f, i) => (
+                <Slide key={f.title} asChild direction="up" offset={24} inView inViewOnce delay={i * 100}>
+                  <article className="aws-feature">
+                    <img src={f.img} alt="" width={580} height={320} />
+                    <span className="aws-feature__scrim" aria-hidden="true" />
+                    <div className="aws-feature__body">
+                      <p className="aws-feature__tag">{f.tag}</p>
+                      <h3>{f.title}</h3>
+                      <p style={{ color: "#d5dbdb", fontSize: 15, marginBottom: 18 }}>{f.body}</p>
+                      <a className="aws-btn aws-btn--light" href="#">{f.cta}</a>
+                    </div>
+                  </article>
+                </Slide>
               ))}
             </div>
           </div>
@@ -380,12 +355,14 @@ export default function AwsHomepage() {
               <p>Purpose-built solutions and expertise for the way your industry works.</p>
             </div>
             <div className="aws-industries">
-              {INDUSTRIES.map((ind) => (
-                <a className="aws-industry" href="#" key={ind.label}>
-                  <img src={ind.img} alt="" width={280} height={210} />
-                  <span className="aws-industry__scrim" aria-hidden="true" />
-                  <span className="aws-industry__label">{ind.label}</span>
-                </a>
+              {INDUSTRIES.map((ind, i) => (
+                <Slide key={ind.label} asChild direction="up" offset={16} inView inViewOnce delay={(i % 4) * 60}>
+                  <a className="aws-industry" href="#">
+                    <img src={ind.img} alt="" width={280} height={210} />
+                    <span className="aws-industry__scrim" aria-hidden="true" />
+                    <span className="aws-industry__label">{ind.label}</span>
+                  </a>
+                </Slide>
               ))}
             </div>
           </div>
@@ -404,7 +381,10 @@ export default function AwsHomepage() {
               <div className="aws-stats">
                 {STATS.map((s) => (
                   <div className="aws-stat" key={s.label}>
-                    <div className="aws-stat__num">{s.num}</div>
+                    <div className="aws-stat__num">
+                      <CountingNumber number={s.num} inView inViewOnce transition={{ stiffness: 80, damping: 20 }} />
+                      {s.suffix}
+                    </div>
                     <div className="aws-stat__label">{s.label}</div>
                   </div>
                 ))}

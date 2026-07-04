@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { FOOTER_COLS, BRAND } from "@/lib/site";
+import { Fade } from "@/components/animate-ui/primitives/effects/fade";
 
 export default function Footer() {
   return (
     <footer className="sf">
       <div className="sf__container">
+        <Fade asChild inView inViewOnce inViewMargin="-80px">
         <div className="sf__grid">
           <div>
             <Link className="sf__brand" href="/" aria-label={BRAND}>
@@ -34,6 +36,7 @@ export default function Footer() {
             </div>
           ))}
         </div>
+        </Fade>
         <div className="sf__bottom">
           <span>&copy; 2026 {BRAND}. All rights reserved.</span>
           <span>

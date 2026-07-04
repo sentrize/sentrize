@@ -199,25 +199,7 @@ header[data-aws-nav] {
   }
 }
 
-/* ---- Mega-menu / drawer enter animation ---- */
-@keyframes sx-menu-in {
-  from {
-    opacity: 0;
-    transform: translateY(-8px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-[data-aws-nav] .animate-menu-in {
-  animation: sx-menu-in 0.18s ease-out both;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  [data-aws-nav] .animate-menu-in {
-    opacity: 1 !important;
-    animation: none !important;
-    transform: none !important;
-  }
-}
+/* Mega-menu / mobile-drawer enter+exit animation is now handled by
+   motion/react (AnimatePresence) in Navbar.tsx, which respects
+   prefers-reduced-motion via the app-wide <MotionConfig reducedMotion="user">
+   in app/layout.tsx. */
