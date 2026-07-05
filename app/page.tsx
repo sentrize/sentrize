@@ -1,8 +1,15 @@
-import fs from "node:fs";
-import path from "node:path";
 import type { Metadata } from "next";
-import LandingClient from "@/components/LandingClient";
 import { AwsNav } from "@/components/awsnav/AwsNav";
+import Hero from "@/components/landing/Hero";
+import Capabilities from "@/components/landing/Capabilities";
+import EngagementModels from "@/components/landing/EngagementModels";
+import PartnershipBanner from "@/components/landing/PartnershipBanner";
+import IndustryTabs from "@/components/landing/IndustryTabs";
+import WhyUsStats from "@/components/landing/WhyUsStats";
+import RoadmapCapabilities from "@/components/landing/RoadmapCapabilities";
+import VideoModal from "@/components/landing/VideoModal";
+import FinalCta from "@/components/landing/FinalCta";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: { absolute: "Sentrize — the software and cloud platforms your business runs on" },
@@ -11,26 +18,34 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
+// The landing was ported section-by-section from the bespoke (Verifone-based)
+// static build into real components (components/landing/*) for 100% visual
+// fidelity — every legacy className/id is preserved verbatim. Its header/
+// footer chrome uses the same shared AwsNav/Footer as the rest of the site.
 export default function Home() {
-  // The landing keeps the bespoke (Verifone-based) design verbatim for 100%
-  // fidelity — its header/footer chrome is already in the markup, links are
-  // rewritten to clean routes, and trackers/2Checkout refs are stripped.
-  // Read at render time (not module scope) so `next dev` reflects edits to
-  // _landing.html; the page is still statically prerendered in production.
-  const landingHtml = fs.readFileSync(
-    path.join(process.cwd(), "app", "_landing.html"),
-    "utf8"
-  );
   return (
     <>
-      <link rel="stylesheet" href="/assets/css/en0000000000000812.css" />
-      <link rel="stylesheet" href="/assets/css/style.css" />
-      <link rel="stylesheet" href="/assets/css/theme-teal.css" />
-      {/* aws-site nav (from the E:\aws rebuild) replaces the landing's
-          embedded sh--overlay header on this page only — inner pages keep
-          the regular chrome header. */}
+      {/* precedence hoists these into <head> and blocks paint until loaded,
+          preventing a flash of unstyled content (React 19 stylesheet API) */}
+      <link rel="stylesheet" href="/assets/css/en0000000000000812.css" precedence="default" />
+      <link rel="stylesheet" href="/assets/css/style.css" precedence="default" />
+      <link rel="stylesheet" href="/assets/css/theme-teal.css" precedence="default" />
       <AwsNav />
-      <LandingClient html={landingHtml} />
+      <div className="content">
+        <div className="clearfix" />
+        <div className="wrap_all homePage cookie-buffer">
+          <Hero />
+          <Capabilities />
+          <EngagementModels />
+          <PartnershipBanner />
+          <IndustryTabs />
+          <WhyUsStats />
+          <RoadmapCapabilities />
+          <VideoModal />
+          <FinalCta />
+        </div>
+        <Footer />
+      </div>
     </>
   );
 }

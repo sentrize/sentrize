@@ -43,7 +43,7 @@ export default function RootLayout({
       <head>
         {/* Shared chrome (header + footer) styles — used by every route */}
         <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="" />
-        <link rel="stylesheet" href="/assets/css/chrome.css" />
+        <link rel="stylesheet" href="/assets/css/chrome.css" precedence="default" />
       </head>
       <body>
         {/* Every animate-ui/motion animation site-wide respects the OS

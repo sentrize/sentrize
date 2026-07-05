@@ -14,7 +14,7 @@ export default function AwsLayout({
   return (
     <>
       {/* AWS-homepage design system — scoped to this route via the `.aws` class */}
-      <link rel="stylesheet" href="/assets/css/aws.css" />
+      <link rel="stylesheet" href="/assets/css/aws.css" precedence="default" />
       {children}
     </>
   );

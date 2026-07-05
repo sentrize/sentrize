@@ -92,7 +92,6 @@ function PopoverContent({
 }: PopoverContentProps) {
   return (
     <PopoverPrimitive.Content
-      asChild
       forceMount
       align={align}
       alignOffset={alignOffset}

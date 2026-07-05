@@ -101,7 +101,7 @@ function AccordionContent({
   return (
     <AnimatePresence>
       {keepRendered ? (
-        <AccordionPrimitive.Content asChild forceMount>
+        <AccordionPrimitive.Content forceMount>
           <motion.div
             key="accordion-content"
             data-slot="accordion-content"
@@ -124,7 +124,7 @@ function AccordionContent({
         </AccordionPrimitive.Content>
       ) : (
         isOpen && (
-          <AccordionPrimitive.Content asChild forceMount>
+          <AccordionPrimitive.Content forceMount>
             <motion.div
               key="accordion-content"
               data-slot="accordion-content"

@@ -58,22 +58,49 @@ function mergeProps<T extends HTMLElement>(
   return merged;
 }
 
+const REACT_LAZY_TYPE = Symbol.for('react.lazy');
+
+/* When a Server Component passes JSX across the RSC boundary into a client
+   component's `children`, React can deliver it as a lazy reference
+   ({$$typeof: react.lazy, _payload, _init}) rather than a plain element —
+   reliably so in `next dev`. Resolve it the same way React does when
+   rendering a lazy node, so the .type/.props introspection below works.
+   If the payload hasn't streamed yet, _init throws a thenable and React
+   suspends — identical to rendering the lazy child directly. */
+function unwrapLazy(node: unknown): unknown {
+  let current = node;
+  while (
+    current &&
+    typeof current === 'object' &&
+    (current as { $$typeof?: symbol }).$$typeof === REACT_LAZY_TYPE
+  ) {
+    const lazy = current as { _payload: unknown; _init: (payload: unknown) => unknown };
+    current = lazy._init(lazy._payload);
+  }
+  return current;
+}
+
 function Slot<T extends HTMLElement = HTMLElement>({
-  children,
+  children: rawChildren,
   ref,
   ...props
 }: SlotProps<T>) {
+  const children = unwrapLazy(rawChildren) as React.ReactElement;
+
   const isAlreadyMotion =
-    typeof children.type === 'object' &&
-    children.type !== null &&
+    typeof children?.type === 'object' &&
+    children?.type !== null &&
     isMotionComponent(children.type);
 
+  const childType = children?.type;
   const Base = React.useMemo(
     () =>
       isAlreadyMotion
-        ? (children.type as React.ElementType)
-        : motion.create(children.type as React.ElementType),
-    [isAlreadyMotion, children.type],
+        ? (childType as React.ElementType)
+        : // fall back to 'div' for invalid children — the isValidElement
+          // guard below returns null before Base is ever rendered
+          motion.create((childType ?? 'div') as React.ElementType),
+    [isAlreadyMotion, childType],
   );
 
   if (!React.isValidElement(children)) return null;

@@ -101,7 +101,7 @@ function TabsContent({
 }: TabsContentProps) {
   return (
     <AnimatePresence mode="wait">
-      <TabsPrimitive.Content asChild forceMount={forceMount} value={value}>
+      <TabsPrimitive.Content forceMount={forceMount} value={value}>
         <motion.div
           data-slot="tabs-content"
           layout

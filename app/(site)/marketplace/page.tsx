@@ -130,7 +130,7 @@ const INDUSTRIES: { label: string; icon: IconName; href: string; desc: string }[
 export default function MarketplacePage() {
   return (
     <>
-      <link rel="stylesheet" href="/assets/css/marketplace.css" />
+      <link rel="stylesheet" href="/assets/css/marketplace.css" precedence="default" />
 
       {/* Agent-mode search hero */}
       <section className="page-hero mkt-hero">

@@ -14,8 +14,8 @@ const POPULAR: [string, string][] = [
 export default function Error({ reset }: { error: Error & { digest?: string }; reset: () => void }) {
   return (
     <>
-      <link rel="stylesheet" href="/assets/css/site.css" />
-      <link rel="stylesheet" href="/assets/css/enterprise.css" />
+      <link rel="stylesheet" href="/assets/css/site.css" precedence="default" />
+      <link rel="stylesheet" href="/assets/css/enterprise.css" precedence="default" />
       <AwsNav />
       <main id="main">
         <section className="error">

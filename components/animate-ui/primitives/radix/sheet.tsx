@@ -72,7 +72,7 @@ function SheetOverlay({
   ...props
 }: SheetOverlayProps) {
   return (
-    <SheetPrimitive.Overlay asChild forceMount>
+    <SheetPrimitive.Overlay forceMount>
       <motion.div
         key="sheet-overlay"
         data-slot="sheet-overlay"
@@ -117,7 +117,7 @@ function SheetContent({
   };
 
   return (
-    <SheetPrimitive.Content asChild forceMount {...props}>
+    <SheetPrimitive.Content forceMount>
       <motion.div
         key="sheet-content"
         data-slot="sheet-content"
@@ -131,6 +131,7 @@ function SheetContent({
           ...style,
         }}
         transition={transition}
+        {...props}
       >
         {children}
       </motion.div>
