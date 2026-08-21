@@ -70,24 +70,33 @@ export default function TemplateScripts({
       patch(window);
       patch(doc);
 
-      // 1. inline template scripts, in document order
-      doc
-        .querySelectorAll<HTMLScriptElement>('script[type="text/template"][data-tpl]')
-        .forEach((tpl) => {
-          const s = doc.createElement("script");
-          s.textContent = tpl.textContent;
-          tpl.replaceWith(s);
-        });
-
-      // 2. vendor + runtime files, strictly sequential
-      for (const src of scripts) {
-        await new Promise<void>((res) => {
+      const loadSrc = (src: string) =>
+        new Promise<void>((res) => {
           const s = doc.createElement("script");
           s.src = src;
           s.onload = () => res();
           s.onerror = () => res();
           doc.body.appendChild(s);
         });
+
+      // 1. head vendor files (they preceded all body scripts originally)
+      for (const src of scripts) await loadSrc(src);
+
+      // 2. body scripts in original document order: inline templates execute
+      //    in place, src placeholders load sequentially.
+      const tpls = Array.from(
+        doc.querySelectorAll<HTMLScriptElement>('script[type="text/template"][data-tpl]')
+      );
+      for (const tpl of tpls) {
+        const src = tpl.getAttribute("data-tpl-src");
+        if (src) {
+          tpl.remove();
+          await loadSrc(src);
+        } else {
+          const s = doc.createElement("script");
+          s.textContent = tpl.textContent;
+          tpl.replaceWith(s);
+        }
       }
     };
     void boot();
