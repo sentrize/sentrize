@@ -166,6 +166,24 @@ export default function SiteHeader() {
                               </a>
                             </div>
                           </div>
+                          <div className="nav-prod-group">
+                            <div className="t-paragraph-3-rg text-c-white-60-p">
+                              {"Tools"}
+                            </div>
+                            <div className="v2-navbar-dropdown-links is-left-padding">
+                              <a className="v2-navbar-dropdown-link w-inline-block" href="/mobile-simulator" tabIndex={0}>
+                                <img alt="" className="v2-navbar-dropdown-icon" loading="lazy" src="/assets/images/App.svg" />
+                                <div className="v2-navbar-dropdown-content">
+                                  <div className="t-label-1-rg is-primary-font">
+                                    {"Mobile Simulator"}
+                                  </div>
+                                  <div className="t-paragraph-3-rg text-c-white-60-p">
+                                    {"Preview any site on real devices"}
+                                  </div>
+                                </div>
+                              </a>
+                            </div>
+                          </div>
                         </div>
                         <div className="hide w-embed">
                           <style dangerouslySetInnerHTML={{ __html: "\n                            .nav-link:hover .embed-icon-2.is-nav {\n                              transform: translateX(-0.75rem);\n                            }\n                          " }} />

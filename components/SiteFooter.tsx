@@ -34,6 +34,9 @@ export default function SiteFooter() {
                     <a className="v2-footer-link t-label-1-rg" href="/services">
                       {"UI/UX Design"}
                     </a>
+                    <a className="v2-footer-link t-label-1-rg" href="/mobile-simulator">
+                      {"Mobile Simulator"}
+                    </a>
                   </div>
                 </div>
                 <div className="v2-footer-col">

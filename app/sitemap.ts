@@ -8,6 +8,7 @@ const PAGES: [path: string, priority: number][] = [
   ["/solutions", 0.9],
   ["/enterprise", 0.9],
   ["/pricing", 0.9],
+  ["/mobile-simulator", 0.8],
   ["/about", 0.7],
   ["/careers", 0.7],
   ["/partners", 0.7],
