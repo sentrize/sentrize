@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import TemplateScripts from "@/components/TemplateScripts";
+import ClientNav from "@/components/ClientNav";
 
 const WF_SHIM = `(function (e) {
   var s = { r: [] };
@@ -49,6 +51,8 @@ export default function RootLayout({
           {children}
           <SiteFooter />
         </div>
+        <ClientNav />
+        <TemplateScripts driver />
       </body>
     </html>
   );

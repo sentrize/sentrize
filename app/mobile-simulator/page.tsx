@@ -78,7 +78,7 @@ export default function Page() {
                 {"Preview any website on iPhone, Android and tablets — up to five devices at once, right in your browser tab. A Chrome extension with realistic device frames, synced browsing, screenshots and screen recording."}
               </p>
               <div className="spacer-32" />
-              <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+              <div className="button-group">
                 <a
                   className="button-v2-full-width w-inline-block"
                   href={DOWNLOAD_URL}
@@ -158,13 +158,9 @@ export default function Page() {
               </h2>
               <div className="spacer-24" />
               <p className="t-paragraph-2-rg">
-                {"Check the "}
-                <a className="text-link" href="/help-center">
-                  {"Help Center"}
-                </a>
-                {" or "}
-                <a className="text-link" href="/contact-support">
-                  {"contact support"}
+                {"Questions or a feature request? "}
+                <a className="text-link" href="/contact">
+                  {"Contact support"}
                 </a>
                 {" — we answer fast."}
               </p>

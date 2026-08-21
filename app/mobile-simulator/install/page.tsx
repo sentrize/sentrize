@@ -91,13 +91,9 @@ export default function Page() {
               </div>
               <div className="spacer-64" />
               <p className="t-paragraph-2-rg">
-                {"Questions? Visit the "}
-                <a className="text-link" href="/help-center">
-                  {"Help Center"}
-                </a>
-                {", "}
-                <a className="text-link" href="/contact-support">
-                  {"contact support"}
+                {"Questions? "}
+                <a className="text-link" href="/contact">
+                  {"Contact support"}
                 </a>
                 {", or read more about "}
                 <a className="text-link" href="/mobile-simulator">

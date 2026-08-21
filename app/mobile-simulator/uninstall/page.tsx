@@ -33,7 +33,7 @@ export default function Page() {
                 {"If something didn't work, or a device or feature you needed was missing, we'd genuinely like to know — it's how the next version gets better."}
               </p>
               <div className="spacer-32" />
-              <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+              <div className="button-group">
                 <a
                   className="button-v2-full-width w-inline-block"
                   href="/contact"
