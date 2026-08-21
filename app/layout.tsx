@@ -1,61 +1,52 @@
 import type { Metadata } from "next";
-import { MotionConfig } from "motion/react";
-import SiteScripts from "@/components/SiteScripts";
-import "./globals.css";
+import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
+
+const WF_SHIM = `(function (e) {
+  var s = { r: [] };
+  e.wf = { r: s.r, ready: (t) => { s.r.push(t); } };
+})(window);`;
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.sentrize.com"),
-  // ONE positioning line, repeated everywhere (title / OG / Twitter / image alt)
-  // so the browser tab, Google result, and social preview all say the same thing.
   title: {
     default: "Sentrize — the software and cloud platforms your business runs on",
     template: "%s | Sentrize",
   },
   description:
     "Sentrize designs, builds, and operates custom software and cloud platforms — from first commit to production and round-the-clock operations.",
-  // Favicon / app icons come from the app/ file conventions:
-  // app/favicon.ico, app/icon.png, app/apple-icon.png
   openGraph: {
     type: "website",
     siteName: "Sentrize",
-    title: "Sentrize — the software and cloud platforms your business runs on",
-    description:
-      "Sentrize designs, builds, and operates custom software and cloud platforms — from first commit to production and round-the-clock operations.",
-    url: "/",
-    images: [
-      { url: "/og.png", width: 1200, height: 630, alt: "Sentrize — the software and cloud platforms your business runs on" },
-    ],
+    images: ["/assets/images/sentrize-og.png"],
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Sentrize — the software and cloud platforms your business runs on",
-    description:
-      "Sentrize designs, builds, and operates custom software and cloud platforms.",
-    images: ["/og.png"],
-  },
+  twitter: { card: "summary_large_image" },
 };
 
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      className="w-mod-js"
+      data-wf-site="65b8cd72835ceeacd4449a53"
+      suppressHydrationWarning
+    >
       <head>
-        {/* Shared chrome (header + footer) styles — used by every route */}
-        <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="" />
-        <link rel="stylesheet" href="/assets/css/chrome.css" precedence="default" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=JetBrains+Mono:300,400,500,600,700"
+        />
+        <link rel="stylesheet" href="/assets/css/sentrize.css" />
+        <script dangerouslySetInnerHTML={{ __html: WF_SHIM }} />
       </head>
-      <body>
-        {/* Every animate-ui/motion animation site-wide respects the OS
-            prefers-reduced-motion setting through this one boundary. */}
-        <MotionConfig reducedMotion="user">
-          <a className="skip-link" href="#main">
-            Skip to content
-          </a>
-          {children}
-          {/* Reused interactions (nav toggle, scroll reveal, forms, filters) */}
-          <SiteScripts />
-        </MotionConfig>
+      <body className="body-v2" suppressHydrationWarning>
+        <SiteHeader />
+        {children}
+        <SiteFooter />
       </body>
     </html>
   );

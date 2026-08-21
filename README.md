@@ -1,126 +1,55 @@
-# Sentrize — Next.js site
+# Sentrize — www.sentrize.com
 
-The Sentrize enterprise IT‑services website, migrated from a 58‑page static HTML site (`../raw/`) to **Next.js 16** with the App Router, React 19 and TypeScript.
+The Sentrize marketing site: a Next.js (App Router) port of the company's premium
+dark template, populated with the full Sentrize content inventory.
 
-The goal of the migration was **100% design fidelity** with a modern component architecture: the bespoke landing page is kept pixel‑for‑pixel, every inner page is a real React route, navigation is client‑side, and the original CSS/JS/fonts/images are reused byte‑for‑byte from `public/assets/`.
+## Stack
 
----
+- **Next.js 16 / React 19** — App Router, fully static output (all routes prerendered)
+- **Template assets** — the original theme's CSS, fonts (Manrope self-hosted,
+  JetBrains Mono via Google Fonts), images, and animation runtime
+  (GSAP + ScrollTrigger + SplitText, Swiper, Webflow interactions) served from `public/assets/`
+- **TypeScript** throughout
 
-## Tech stack
+## Routes (14)
 
-| | |
-|---|---|
-| Framework | Next.js **16.2.9** (App Router) |
-| UI | React **19.2.4** |
-| Language | TypeScript 5 |
-| Styling | Hand‑authored CSS in `public/assets/css` (no Tailwind — the dep is present but unused) |
-| Package manager | pnpm |
+`/` · `/services` · `/solutions` · `/enterprise` · `/pricing` · `/about` · `/careers`
+· `/partners` · `/case-studies` · `/blog` · `/contact` · `/privacy-policy`
+· `/terms-of-service` · `/sla-policy`
 
-> ⚠️ **This is not the Next.js you may know.** Next 16 has breaking changes. Before editing routing, metadata, `params`/`searchParams`, or `next/script`, read the relevant guide in `node_modules/next/dist/docs/` (see `AGENTS.md`). Notably, `params` and `searchParams` are now Promises and must be awaited.
+## How it fits together
 
----
+- `app/<route>/page.tsx` — one server component per page, converted 1:1 from the
+  finished template pages (markup, classes, and animations preserved), each with
+  its own `metadata` export (title, description, canonical).
+- `components/SiteHeader.tsx` / `SiteFooter.tsx` — shared chrome (announcement
+  banner, mega-menu navbar, footer with the giant wordmark + scroll spotlight).
+- `components/TemplateScripts.tsx` — boots the template's animation runtime
+  **after** React hydration: inline scripts ship as inert `<script type="text/template">`
+  and are re-executed in document order, then the vendor files load strictly
+  sequentially (jQuery → Webflow chunks → GSAP + plugins). Internal navigation
+  uses plain `<a>` full-page loads so the runtime re-initializes per page,
+  exactly like the original template.
+- `app/sitemap.ts` / `app/robots.ts` — generated sitemap + robots.
+- `content-export/` — the complete Markdown content inventory of the site
+  (every page, 24 service detail pages, 10 blog articles, 6 case studies).
+  Source of truth for adding the remaining detail pages.
 
-## Getting started
+## Develop
 
 ```bash
-pnpm install
-pnpm dev        # http://localhost:3000
+npm install
+npm run dev    # http://localhost:3000
+npm run build  # static production build
 ```
 
-Other scripts:
+## Known follow-ups
 
-```bash
-pnpm build      # production build (also type-checks + lints)
-pnpm start      # serve the production build
-pnpm lint       # eslint
-```
-
-Requires Node 20+.
-
----
-
-## Project structure
-
-```
-app/
-  layout.tsx              Root layout — loads chrome.css, skip-link, <SiteScripts/>, metadata template
-  page.tsx                Landing route "/" (Verifone design, rendered via <LandingClient/>)
-  _landing.html           Extracted landing body markup (kept verbatim for fidelity)
-  not-found.tsx           404 page
-  error.tsx               500 error boundary
-  (site)/
-    layout.tsx            Inner-page chrome: <Header/> + <main> + <Footer/> + site.css + enterprise.css
-    [slug]/page.tsx       24 data-driven service / solution / capability pages
-    about/ services/ solutions/ portfolio/ case-studies/ pricing/
-    contact/ blog/ careers/ team/ faq/ help-center/ ...   (31 special routes)
-
-components/
-  Header.tsx              Mega-menu header (namespaced .sh/.sf), `overlay` prop for the landing
-  Footer.tsx              Site footer
-  Cta.tsx                 Reusable call-to-action band
-  Metrics.tsx             Stats / metrics strip
-  ServiceDetail.tsx       Renders a service page from lib/services data (used by [slug])
-  SiteScripts.tsx         "use client" — ports the static site.js interactions (mobile nav,
-                          mega-menu, scroll reveal, form validation, filters); re-runs on route change
-  LandingClient.tsx       "use client" — wraps the landing: intercepts internal links for
-                          client-side navigation and re-runs the ported landing interactivity
-                          (cursor glow, equal-height cards, hero video)
-
-lib/
-  site.ts                 BRAND, NAV (mega-menu structure), FOOTER_COLS
-  content.ts              METRICS, VALUES, MILESTONES, AWARDS, CERTS, PHOTOS, img()
-  services.ts             Auto-generated service content: SERVICES, HOOKS, SVC_QUOTE, TESTI,
-                          IMG_MAP, PHOTOS, SERVICE_SLUGS, photoForService(), unsplash()
-
-public/assets/            css · js · fonts · images · html — reused byte-for-byte from ../raw
-```
-
----
-
-## Routing model
-
-Every page from the original `raw/` site is implemented:
-
-| Source | Next route | Count |
-|---|---|---|
-| `index.html` | `/` (landing) | 1 |
-| service / solution / capability pages | `/[slug]` (dynamic, `generateStaticParams`) | 24 |
-| about, services, portfolio, pricing, contact, blog, partners, legal, support … | explicit `(site)` routes | 31 |
-| `404.html` | `app/not-found.tsx` | 1 |
-| `500.html` | `app/error.tsx` | 1 |
-
-The 24 service pages are generated from a single dynamic route (`app/(site)/[slug]/page.tsx`) backed by the `SERVICES` data in `lib/services.ts`, with `dynamicParams = false` so only known slugs are built.
-
----
-
-## Styling & design system
-
-Pages are styled with the original CSS, loaded as plain `<link>` tags (React 19 hoists them into `<head>`):
-
-- **Landing (`/`)** — `en0000000000000812.css` + `style.css` + `theme-teal.css` + `chrome.css` (the Verifone-based design, kept verbatim).
-- **Inner pages** — `chrome.css` (header/footer, loaded in the root layout so it applies everywhere) + `site.css` (dark design system) + `enterprise.css` (page-type variants/components, loaded in the `(site)` layout).
-
-`chrome.css` is the **shared** header/footer stylesheet (namespaced `.sh` / `.sf`) used by both the landing and the inner pages, so the navigation looks identical across the whole site.
-
----
-
-## How the landing works
-
-The landing keeps its bespoke markup (`app/_landing.html`, ~144 KB) verbatim for pixel-accuracy, rendered through `LandingClient` (a client component) so it behaves like the rest of the app:
-
-- **Client-side navigation** — internal `<a>` clicks are intercepted and routed via the Next.js router, so there are no full page reloads.
-- **Re-runnable interactivity** — the four behaviours from the old run-once jQuery `main.js` (cursor glow, equal-height cards, hero video, default active tab) are ported into a React effect that re-initialises on every mount. jQuery, colorbox and `main.js` are no longer loaded.
-
-Inner-page interactivity (mobile menu, mega-menu close, scroll-reveal, form validation, portfolio filter, FAQ search, pricing toggle) lives in `SiteScripts.tsx`, which re-runs on each route change.
-
----
-
-## Deployment
-
-Standard Next.js build (`pnpm build` → `pnpm start`), deployable to any Node host or Vercel. All design assets are self-contained under `public/assets`, and the only external runtime request is the hero video iframe (YouTube) and Unsplash images referenced in content.
-
----
-
-## Relationship to `../raw`
-
-`../raw` is the source static site (and its Python generator, `build_site.py` / `build_v2.py`). `lib/services.ts` is generated from that data, and `public/assets` mirrors `raw/assets`. When the design or content changes in `raw/`, regenerate `lib/services.ts` and re-copy the affected assets.
+- Blog article / case-study detail routes: cards are stubbed with
+  `data-todo="article"` / `data-todo="case-study-detail"` + slugs; full content
+  is ready in `content-export/blog/` and `content-export/case-studies/`.
+- Forms (contact, newsletter) render with client-side validation but post to `#` —
+  wire a backend or form service before launch.
+- Legal pages need counsel review (open decisions are listed at the bottom of
+  each page's source content in `content-export/`).
+- The old pre-template site is preserved on the `old-sentrize-aug-26` branch.
