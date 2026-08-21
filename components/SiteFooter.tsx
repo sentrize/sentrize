@@ -164,6 +164,14 @@ export default function SiteFooter() {
                 </div>
               </div>
               <div className="v2-footer-logo-animation">
+                <div className="footer-lottie">
+                  <img
+                    src="/assets/images/logo-mark.png"
+                    alt=""
+                    loading="lazy"
+                    style={{ width: "100%", height: "100%", objectFit: "contain", borderRadius: "1.5rem" }}
+                  />
+                </div>
                 <div className="footer-logo-html w-embed">
                   <div className="logo-wrap">
                     <svg viewBox="0 0 1160 240" xmlns="http://www.w3.org/2000/svg">

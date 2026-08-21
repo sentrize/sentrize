@@ -29,8 +29,13 @@ export default function SiteHeader() {
       <div className="navbar2_component w-nav" data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease" data-w-id="162b5140-9840-3ab9-d243-3a325f908689" data-wf--navbar--variant="dark" fs-scrolldisable-element="smart-nav" role="banner">
         <div className="navbar2_container">
           <a aria-current="page" aria-label="home" className="navbar2_logo-link w-nav-brand w--current" data-wf-element-id="162b5140-9840-3ab9-d243-3a325f90868b" href="/">
-            <div className="navbar2_logo w-embed">
-              <span style={{ fontWeight: "700", fontSize: "1.25rem", letterSpacing: "-0.02em", color: "currentColor" }}>
+            <div className="navbar2_logo w-embed" style={{ display: "flex", alignItems: "center" }}>
+              <img
+                src="/assets/images/logo-mark.png"
+                alt=""
+                style={{ height: "2rem", width: "2rem", borderRadius: "0.45rem" }}
+              />
+              <span style={{ fontWeight: "700", fontSize: "1.25rem", letterSpacing: "-0.02em", color: "currentColor", marginLeft: "0.55rem" }}>
                 {"Sentrize"}
               </span>
             </div>
