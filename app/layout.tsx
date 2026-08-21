@@ -44,9 +44,11 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: WF_SHIM }} />
       </head>
       <body className="body-v2" suppressHydrationWarning>
-        <SiteHeader />
-        {children}
-        <SiteFooter />
+        <div className="page-wrapper">
+          <SiteHeader />
+          {children}
+          <SiteFooter />
+        </div>
       </body>
     </html>
   );
