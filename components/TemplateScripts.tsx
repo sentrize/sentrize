@@ -32,6 +32,10 @@ declare global {
     __tplBooted?: boolean;
     __tplBodyExtra?: string[];
     __tplWfDrain?: number;
+    __tplChain?: Promise<void>;
+    __tplBooting?: boolean;
+    __tplLateQ?: Array<() => void>;
+    __tplDefineGuarded?: boolean;
     wf?: { r: Array<() => void>; ready: (t: () => void) => void };
     Webflow?: {
       destroy?: () => void;
@@ -67,7 +71,17 @@ function loadSrc(src: string): Promise<void> {
   loaded.add(src);
   return new Promise((res) => {
     const s = document.createElement("script");
-    s.src = src;
+    // finsweet-attributes is an ES module configured via script-tag attributes.
+    // Its code-split chunks only exist on the CDN (the vendored copy shipped
+    // without them), so load it from jsDelivr like the original live site did.
+    if (/finsweet-attributes\.js$/.test(src)) {
+      s.type = "module";
+      s.setAttribute("fs-list", "");
+      s.setAttribute("fs-readtime", "");
+      s.src = "https://cdn.jsdelivr.net/npm/@finsweet/attributes@2/attributes.js";
+    } else {
+      s.src = src;
+    }
     s.onload = () => res();
     s.onerror = () => res();
     document.body.appendChild(s);
@@ -75,6 +89,10 @@ function loadSrc(src: string): Promise<void> {
 }
 
 function patchLateListeners() {
+  // Replays DOMContentLoaded/load for listeners registered after those events
+  // fired. Invocation is ALWAYS asynchronous (macrotask): a synchronous call
+  // can recurse without bound when a handler registers another handler, which
+  // hangs the tab until Chrome kills it ("This page couldn't load").
   const patch = (target: Window | Document) => {
     const orig = target.addEventListener.bind(target);
     (target as Window).addEventListener = ((
@@ -83,13 +101,19 @@ function patchLateListeners() {
       opts?: boolean | AddEventListenerOptions
     ) => {
       if ((type === "DOMContentLoaded" || type === "load") && document.readyState === "complete") {
-        try {
-          const ev = new Event(type);
-          if (typeof fn === "function") fn.call(target, ev);
-          else fn.handleEvent(ev);
-        } catch {
-          /* keep booting */
-        }
+        const replay = () => {
+          try {
+            const ev = new Event(type);
+            if (typeof fn === "function") fn.call(target, ev);
+            else fn.handleEvent(ev);
+          } catch {
+            /* best-effort replay */
+          }
+        };
+        // While a boot is in flight, hold replays until every vendor file is
+        // in — otherwise a handler can run before the library it needs.
+        if (window.__tplBooting) (window.__tplLateQ ??= []).push(replay);
+        else setTimeout(replay, 0);
         return;
       }
       orig(type, fn as EventListener, opts);
@@ -100,19 +124,36 @@ function patchLateListeners() {
 }
 
 async function runPendingTemplates() {
+  // React owns the template nodes: never remove or replace them (mutating
+  // React-rendered DOM breaks unmounting and can take the whole layout down).
+  // Mark them done and run the code via detached script elements instead.
   const tpls = Array.from(
-    document.querySelectorAll<HTMLScriptElement>('script[type="text/template"][data-tpl]')
+    document.querySelectorAll<HTMLScriptElement>(
+      'script[type="text/template"][data-tpl]:not([data-tpl-done])'
+    )
   );
   for (const tpl of tpls) {
+    tpl.setAttribute("data-tpl-done", "1");
     const src = tpl.getAttribute("data-tpl-src");
     if (src) {
-      tpl.remove();
       await loadSrc(src);
-    } else {
-      const s = document.createElement("script");
-      s.textContent = tpl.textContent;
-      tpl.replaceWith(s);
+      continue;
     }
+    const code = tpl.textContent ?? "";
+    const trimmed = code.trim();
+    if (!trimmed) continue;
+    // Data blobs (JSON configs) must not execute as scripts.
+    if (trimmed.startsWith("{") || trimmed.startsWith("[")) continue;
+    const s = document.createElement("script");
+    if (/^\s*(import|export)[\s{("'*]/m.test(trimmed)) {
+      s.type = "module";
+      s.textContent = code;
+    } else {
+      // IIFE-wrap classic scripts: their top-level const/let would otherwise
+      // collide when a page is visited twice in one session.
+      s.textContent = `(function () {\n${code}\n})();`;
+    }
+    document.body.appendChild(s);
   }
 }
 
@@ -144,6 +185,17 @@ export default function TemplateScripts({
       const cfg: PageConfig = window.__tplPage ?? {};
       window.__tplPage = null;
       const wasBooted = window.__tplBooted === true;
+      window.__tplBooting = true;
+
+      // Template scripts re-run per visit; a second customElements.define
+      // with the same name throws, so make defines idempotent once.
+      if (!window.__tplDefineGuarded) {
+        window.__tplDefineGuarded = true;
+        const origDefine = customElements.define.bind(customElements);
+        customElements.define = (name, ctor, opts) => {
+          if (!customElements.get(name)) origDefine(name, ctor, opts);
+        };
+      }
 
       // html/body per-page state
       doc.documentElement.setAttribute("data-wf-page", cfg.wfPage ?? HOME_WF_PAGE);
@@ -209,9 +261,15 @@ export default function TemplateScripts({
       }
 
       window.__tplBooted = true;
+      window.__tplBooting = false;
+      const lateQ = window.__tplLateQ ?? [];
+      window.__tplLateQ = [];
+      lateQ.forEach((replay) => setTimeout(replay, 0));
     };
 
-    void run();
+    // Serialize runs: StrictMode/dev double-invocation and rapid navigations
+    // must never interleave two boots.
+    window.__tplChain = (window.__tplChain ?? Promise.resolve()).then(run, run);
     return () => {
       cancelled = true;
     };
