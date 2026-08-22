@@ -300,7 +300,7 @@ export default function Page() {
                           </div>
                         </div>
                       </div>
-                      <a className="blog-link-absolute w-inline-block" data-slug="zero-downtime-deploys-kubernetes" data-todo="article" data-wf-ao-click-engagement-tracking="true" data-wf-cms-context="%5B%7B%22collectionId%22%3A%2269cb927ee5c865d9ed45f7f6%22%2C%22itemId%22%3A%226a7aa9af6aa0deee0adb5329%22%7D%5D" data-wf-element-id="86a71681-3882-de9b-b8a7-71792d51f11c" data-wf-native-id-path="86a71681-3882-de9b-b8a7-71792d51f11c_instance-0" href="#" />
+                      <a className="blog-link-absolute w-inline-block" data-wf-ao-click-engagement-tracking="true" data-wf-cms-context="%5B%7B%22collectionId%22%3A%2269cb927ee5c865d9ed45f7f6%22%2C%22itemId%22%3A%226a7aa9af6aa0deee0adb5329%22%7D%5D" data-wf-element-id="86a71681-3882-de9b-b8a7-71792d51f11c" data-wf-native-id-path="86a71681-3882-de9b-b8a7-71792d51f11c_instance-0" href="/blog/zero-downtime-deploys-kubernetes" />
                     </div>
                   </div>
                 </div>
@@ -391,7 +391,7 @@ export default function Page() {
                             </div>
                           </div>
                         </div>
-                        <a className="blog-link-absolute w-inline-block" data-slug="cutting-cloud-spend-by-40-percent" data-todo="article" data-wf-ao-click-engagement-tracking="true" data-wf-cms-context="%5B%7B%22collectionId%22%3A%2269cb927ee5c865d9ed45f7f6%22%2C%22itemId%22%3A%226a7aa9af6aa0deee0adb5329%22%7D%5D" data-wf-element-id="21376467-7a60-d75e-06d3-4c22208bc22a" data-wf-native-id-path="21376467-7a60-d75e-06d3-4c22208bc22a_instance-0" href="#" />
+                        <a className="blog-link-absolute w-inline-block" data-wf-ao-click-engagement-tracking="true" data-wf-cms-context="%5B%7B%22collectionId%22%3A%2269cb927ee5c865d9ed45f7f6%22%2C%22itemId%22%3A%226a7aa9af6aa0deee0adb5329%22%7D%5D" data-wf-element-id="21376467-7a60-d75e-06d3-4c22208bc22a" data-wf-native-id-path="21376467-7a60-d75e-06d3-4c22208bc22a_instance-0" href="/blog/cutting-cloud-spend-by-40-percent" />
                       </div>
                       <div className="blog-item w-dyn-item" role="listitem">
                         <div className="blog-link">
@@ -449,7 +449,7 @@ export default function Page() {
                             </div>
                           </div>
                         </div>
-                        <a className="blog-link-absolute w-inline-block" data-slug="multi-tenant-saas-isolation-boundary" data-todo="article" data-wf-ao-click-engagement-tracking="true" data-wf-cms-context="%5B%7B%22collectionId%22%3A%2269cb927ee5c865d9ed45f7f6%22%2C%22itemId%22%3A%226a767a3a660d00c6bca23c41%22%7D%5D" data-wf-element-id="21376467-7a60-d75e-06d3-4c22208bc22a" data-wf-native-id-path="21376467-7a60-d75e-06d3-4c22208bc22a_instance-2" href="#" />
+                        <a className="blog-link-absolute w-inline-block" data-wf-ao-click-engagement-tracking="true" data-wf-cms-context="%5B%7B%22collectionId%22%3A%2269cb927ee5c865d9ed45f7f6%22%2C%22itemId%22%3A%226a767a3a660d00c6bca23c41%22%7D%5D" data-wf-element-id="21376467-7a60-d75e-06d3-4c22208bc22a" data-wf-native-id-path="21376467-7a60-d75e-06d3-4c22208bc22a_instance-2" href="/blog/multi-tenant-saas-isolation-boundary" />
                       </div>
                       <div className="blog-item w-dyn-item" role="listitem">
                         <div className="blog-link">
@@ -507,7 +507,7 @@ export default function Page() {
                             </div>
                           </div>
                         </div>
-                        <a className="blog-link-absolute w-inline-block" data-slug="observability-that-earns-its-keep" data-todo="article" data-wf-ao-click-engagement-tracking="true" data-wf-cms-context="%5B%7B%22collectionId%22%3A%2269cb927ee5c865d9ed45f7f6%22%2C%22itemId%22%3A%226a72327cc41b5d7dff06d81f%22%7D%5D" data-wf-element-id="21376467-7a60-d75e-06d3-4c22208bc22a" data-wf-native-id-path="21376467-7a60-d75e-06d3-4c22208bc22a_instance-4" href="#" />
+                        <a className="blog-link-absolute w-inline-block" data-wf-ao-click-engagement-tracking="true" data-wf-cms-context="%5B%7B%22collectionId%22%3A%2269cb927ee5c865d9ed45f7f6%22%2C%22itemId%22%3A%226a72327cc41b5d7dff06d81f%22%7D%5D" data-wf-element-id="21376467-7a60-d75e-06d3-4c22208bc22a" data-wf-native-id-path="21376467-7a60-d75e-06d3-4c22208bc22a_instance-4" href="/blog/observability-that-earns-its-keep" />
                       </div>
                       <div className="blog-item w-dyn-item" role="listitem">
                         <div className="blog-link">
@@ -565,7 +565,7 @@ export default function Page() {
                             </div>
                           </div>
                         </div>
-                        <a className="blog-link-absolute w-inline-block" data-slug="terraform-at-scale" data-todo="article" data-wf-ao-click-engagement-tracking="true" data-wf-cms-context="%5B%7B%22collectionId%22%3A%2269cb927ee5c865d9ed45f7f6%22%2C%22itemId%22%3A%226a74c75339c2edf841248199%22%7D%5D" data-wf-element-id="21376467-7a60-d75e-06d3-4c22208bc22a" data-wf-native-id-path="21376467-7a60-d75e-06d3-4c22208bc22a_instance-5" href="#" />
+                        <a className="blog-link-absolute w-inline-block" data-wf-ao-click-engagement-tracking="true" data-wf-cms-context="%5B%7B%22collectionId%22%3A%2269cb927ee5c865d9ed45f7f6%22%2C%22itemId%22%3A%226a74c75339c2edf841248199%22%7D%5D" data-wf-element-id="21376467-7a60-d75e-06d3-4c22208bc22a" data-wf-native-id-path="21376467-7a60-d75e-06d3-4c22208bc22a_instance-5" href="/blog/terraform-at-scale" />
                       </div>
                       <div className="blog-item w-dyn-item" role="listitem">
                         <div className="blog-link">
@@ -623,7 +623,7 @@ export default function Page() {
                             </div>
                           </div>
                         </div>
-                        <a className="blog-link-absolute w-inline-block" data-slug="running-ai-in-production" data-todo="article" data-wf-ao-click-engagement-tracking="true" data-wf-cms-context="%5B%7B%22collectionId%22%3A%2269cb927ee5c865d9ed45f7f6%22%2C%22itemId%22%3A%226a70b06422b59bf71cd14c18%22%7D%5D" data-wf-element-id="21376467-7a60-d75e-06d3-4c22208bc22a" data-wf-native-id-path="21376467-7a60-d75e-06d3-4c22208bc22a_instance-8" href="#" />
+                        <a className="blog-link-absolute w-inline-block" data-wf-ao-click-engagement-tracking="true" data-wf-cms-context="%5B%7B%22collectionId%22%3A%2269cb927ee5c865d9ed45f7f6%22%2C%22itemId%22%3A%226a70b06422b59bf71cd14c18%22%7D%5D" data-wf-element-id="21376467-7a60-d75e-06d3-4c22208bc22a" data-wf-native-id-path="21376467-7a60-d75e-06d3-4c22208bc22a_instance-8" href="/blog/running-ai-in-production" />
                       </div>
                       <div className="blog-item w-dyn-item" role="listitem">
                         <div className="blog-link">
@@ -681,7 +681,7 @@ export default function Page() {
                             </div>
                           </div>
                         </div>
-                        <a className="blog-link-absolute w-inline-block" data-slug="shifting-security-left" data-todo="article" data-wf-ao-click-engagement-tracking="true" data-wf-cms-context="%5B%7B%22collectionId%22%3A%2269cb927ee5c865d9ed45f7f6%22%2C%22itemId%22%3A%226a6fed2c9df8573afc9f39f3%22%7D%5D" data-wf-element-id="21376467-7a60-d75e-06d3-4c22208bc22a" data-wf-native-id-path="21376467-7a60-d75e-06d3-4c22208bc22a_instance-9" href="#" />
+                        <a className="blog-link-absolute w-inline-block" data-wf-ao-click-engagement-tracking="true" data-wf-cms-context="%5B%7B%22collectionId%22%3A%2269cb927ee5c865d9ed45f7f6%22%2C%22itemId%22%3A%226a6fed2c9df8573afc9f39f3%22%7D%5D" data-wf-element-id="21376467-7a60-d75e-06d3-4c22208bc22a" data-wf-native-id-path="21376467-7a60-d75e-06d3-4c22208bc22a_instance-9" href="/blog/shifting-security-left" />
                       </div>
                       <div className="blog-item w-dyn-item" role="listitem">
                         <div className="blog-link">
@@ -739,7 +739,7 @@ export default function Page() {
                             </div>
                           </div>
                         </div>
-                        <a className="blog-link-absolute w-inline-block" data-slug="kubernetes-resource-tuning" data-todo="article" data-wf-ao-click-engagement-tracking="true" data-wf-cms-context="%5B%7B%22collectionId%22%3A%2269cb927ee5c865d9ed45f7f6%22%2C%22itemId%22%3A%2269cbafa52c7f205b929b4d40%22%7D%5D" data-wf-element-id="21376467-7a60-d75e-06d3-4c22208bc22a" data-wf-native-id-path="21376467-7a60-d75e-06d3-4c22208bc22a_instance-10" href="#" />
+                        <a className="blog-link-absolute w-inline-block" data-wf-ao-click-engagement-tracking="true" data-wf-cms-context="%5B%7B%22collectionId%22%3A%2269cb927ee5c865d9ed45f7f6%22%2C%22itemId%22%3A%2269cbafa52c7f205b929b4d40%22%7D%5D" data-wf-element-id="21376467-7a60-d75e-06d3-4c22208bc22a" data-wf-native-id-path="21376467-7a60-d75e-06d3-4c22208bc22a_instance-10" href="/blog/kubernetes-resource-tuning" />
                       </div>
                       <div className="blog-item w-dyn-item" role="listitem">
                         <div className="blog-link">
@@ -797,7 +797,7 @@ export default function Page() {
                             </div>
                           </div>
                         </div>
-                        <a className="blog-link-absolute w-inline-block" data-slug="incident-response-that-builds-trust" data-todo="article" data-wf-ao-click-engagement-tracking="true" data-wf-cms-context="%5B%7B%22collectionId%22%3A%2269cb927ee5c865d9ed45f7f6%22%2C%22itemId%22%3A%226a6b9d857fab7827fdb29279%22%7D%5D" data-wf-element-id="21376467-7a60-d75e-06d3-4c22208bc22a" data-wf-native-id-path="21376467-7a60-d75e-06d3-4c22208bc22a_instance-11" href="#" />
+                        <a className="blog-link-absolute w-inline-block" data-wf-ao-click-engagement-tracking="true" data-wf-cms-context="%5B%7B%22collectionId%22%3A%2269cb927ee5c865d9ed45f7f6%22%2C%22itemId%22%3A%226a6b9d857fab7827fdb29279%22%7D%5D" data-wf-element-id="21376467-7a60-d75e-06d3-4c22208bc22a" data-wf-native-id-path="21376467-7a60-d75e-06d3-4c22208bc22a_instance-11" href="/blog/incident-response-that-builds-trust" />
                       </div>
                       <div className="blog-item w-dyn-item" role="listitem">
                         <div className="blog-link">
@@ -855,7 +855,7 @@ export default function Page() {
                             </div>
                           </div>
                         </div>
-                        <a className="blog-link-absolute w-inline-block" data-slug="platform-engineering-paved-road" data-todo="article" data-wf-ao-click-engagement-tracking="true" data-wf-cms-context="%5B%7B%22collectionId%22%3A%2269cb927ee5c865d9ed45f7f6%22%2C%22itemId%22%3A%226a683e1f0fab36199e4e098e%22%7D%5D" data-wf-element-id="21376467-7a60-d75e-06d3-4c22208bc22a" data-wf-native-id-path="21376467-7a60-d75e-06d3-4c22208bc22a_instance-15" href="#" />
+                        <a className="blog-link-absolute w-inline-block" data-wf-ao-click-engagement-tracking="true" data-wf-cms-context="%5B%7B%22collectionId%22%3A%2269cb927ee5c865d9ed45f7f6%22%2C%22itemId%22%3A%226a683e1f0fab36199e4e098e%22%7D%5D" data-wf-element-id="21376467-7a60-d75e-06d3-4c22208bc22a" data-wf-native-id-path="21376467-7a60-d75e-06d3-4c22208bc22a_instance-15" href="/blog/platform-engineering-paved-road" />
                       </div>
                     </div>
                   </div>

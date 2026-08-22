@@ -74,7 +74,7 @@ export default function SiteHeader() {
                               {"Build"}
                             </div>
                             <div className="v2-navbar-dropdown-links is-left-padding">
-                              <a className="v2-navbar-dropdown-link w-inline-block" data-wf-element-id="162b5140-9840-3ab9-d243-3a325f90869b" href="/services#software-development" tabIndex={0}>
+                              <a className="v2-navbar-dropdown-link w-inline-block" data-wf-element-id="162b5140-9840-3ab9-d243-3a325f90869b" href="/software-development" tabIndex={0}>
                                 <img alt="" className="v2-navbar-dropdown-icon" loading="lazy" src="/assets/images/nav-icon-build.svg" />
                                 <div className="v2-navbar-dropdown-content">
                                   <div className="t-label-1-rg is-primary-font">
@@ -86,7 +86,7 @@ export default function SiteHeader() {
                                 </div>
                                 {" "}
                               </a>
-                              <a className="v2-navbar-dropdown-link w-inline-block" data-wf-element-id="fa278824-f02d-9c53-88cf-16cb701ead51" href="/services#saas-development" tabIndex={0}>
+                              <a className="v2-navbar-dropdown-link w-inline-block" data-wf-element-id="fa278824-f02d-9c53-88cf-16cb701ead51" href="/saas-development" tabIndex={0}>
                                 <img alt="" className="v2-navbar-dropdown-icon" loading="lazy" src="/assets/images/Frame-2147254707.svg" />
                                 <div className="v2-navbar-dropdown-content">
                                   <div className="t-label-1-rg is-primary-font">
@@ -98,7 +98,7 @@ export default function SiteHeader() {
                                 </div>
                                 {" "}
                               </a>
-                              <a className="v2-navbar-dropdown-link w-inline-block" data-wf-element-id="162b5140-9840-3ab9-d243-3a325f9086a2" href="/services#web-applications" tabIndex={0}>
+                              <a className="v2-navbar-dropdown-link w-inline-block" data-wf-element-id="162b5140-9840-3ab9-d243-3a325f9086a2" href="/web-applications" tabIndex={0}>
                                 <img alt="" className="v2-navbar-dropdown-icon" loading="lazy" src="/assets/images/Frame-2147255166.svg" />
                                 <div className="v2-navbar-dropdown-content">
                                   <div className="t-label-1-rg is-primary-font">
@@ -116,7 +116,7 @@ export default function SiteHeader() {
                               {"Ship & integrate"}
                             </div>
                             <div className="v2-navbar-dropdown-links is-left-padding">
-                              <a className="v2-navbar-dropdown-link w-inline-block" data-wf-element-id="ad19a62e-30d3-b5f1-3caf-ba16ed8a7a48" href="/services#mobile-applications" tabIndex={0}>
+                              <a className="v2-navbar-dropdown-link w-inline-block" data-wf-element-id="ad19a62e-30d3-b5f1-3caf-ba16ed8a7a48" href="/mobile-applications" tabIndex={0}>
                                 <img alt="" className="v2-navbar-dropdown-icon" loading="lazy" src="/assets/images/updated.svg" />
                                 <div className="v2-navbar-dropdown-content">
                                   <div className="t-label-1-rg is-primary-font">
@@ -128,7 +128,7 @@ export default function SiteHeader() {
                                 </div>
                                 {" "}
                               </a>
-                              <a className="v2-navbar-dropdown-link w-inline-block" data-wf-element-id="ad19a62e-30d3-b5f1-3caf-ba16ed8a7a56" href="/services#api-development" tabIndex={0}>
+                              <a className="v2-navbar-dropdown-link w-inline-block" data-wf-element-id="ad19a62e-30d3-b5f1-3caf-ba16ed8a7a56" href="/api-development" tabIndex={0}>
                                 <img alt="" className="v2-navbar-dropdown-icon" loading="lazy" src="/assets/images/sandboxes_light_mode-2.svg" />
                                 <div className="v2-navbar-dropdown-content">
                                   <div className="t-label-1-rg is-primary-font">
@@ -140,7 +140,7 @@ export default function SiteHeader() {
                                 </div>
                                 {" "}
                               </a>
-                              <a className="v2-navbar-dropdown-link w-inline-block" data-wf-element-id="1939be9d-ca29-058d-e957-22b55236b2ce" href="/services#ai-automation" tabIndex={0}>
+                              <a className="v2-navbar-dropdown-link w-inline-block" data-wf-element-id="1939be9d-ca29-058d-e957-22b55236b2ce" href="/ai-automation" tabIndex={0}>
                                 <img alt="" className="v2-navbar-dropdown-icon" loading="lazy" src="/assets/images/nav-icon-ai.png" />
                                 <div className="v2-navbar-dropdown-content">
                                   <div className="t-label-1-rg is-primary-font">
@@ -158,7 +158,7 @@ export default function SiteHeader() {
                               {"Design"}
                             </div>
                             <div className="v2-navbar-dropdown-links is-left-padding">
-                              <a className="v2-navbar-dropdown-link w-inline-block" data-wf-element-id="37d32479-3167-00e5-cf2e-1c82e75bed26" href="/services#ui-ux-design" tabIndex={0}>
+                              <a className="v2-navbar-dropdown-link w-inline-block" data-wf-element-id="37d32479-3167-00e5-cf2e-1c82e75bed26" href="/ui-ux-design" tabIndex={0}>
                                 <img alt="" className="v2-navbar-dropdown-icon" loading="lazy" src="/assets/images/nav-icon-design.svg" />
                                 <div className="v2-navbar-dropdown-content">
                                   <div className="t-label-1-rg is-primary-font">
@@ -203,7 +203,7 @@ export default function SiteHeader() {
                           {"Enterprise practices"}
                         </div>
                         <div className="v2-navbar-dropdown-links is-left-padding">
-                          <a className="v2-navbar-dropdown-link w-inline-block" data-wf-element-id="162b5140-9840-3ab9-d243-3a325f9086ca" href="/enterprise#enterprise-software" tabIndex={0}>
+                          <a className="v2-navbar-dropdown-link w-inline-block" data-wf-element-id="162b5140-9840-3ab9-d243-3a325f9086ca" href="/enterprise-software" tabIndex={0}>
                             <img alt="" className="v2-navbar-dropdown-icon" loading="lazy" src="/assets/images/updated-1.svg" />
                             <div className="v2-navbar-dropdown-content">
                               <div className="t-label-1-rg is-primary-font">
@@ -215,7 +215,7 @@ export default function SiteHeader() {
                             </div>
                             {" "}
                           </a>
-                          <a className="v2-navbar-dropdown-link w-inline-block" data-wf-element-id="162b5140-9840-3ab9-d243-3a325f9086c3" href="/enterprise#digital-transformation" tabIndex={0}>
+                          <a className="v2-navbar-dropdown-link w-inline-block" data-wf-element-id="162b5140-9840-3ab9-d243-3a325f9086c3" href="/digital-transformation" tabIndex={0}>
                             <img alt="" className="v2-navbar-dropdown-icon" loading="lazy" src="/assets/images/Frame-2147255166-1.svg" />
                             <div className="v2-navbar-dropdown-content">
                               <div className="t-label-1-rg is-primary-font">
@@ -227,7 +227,7 @@ export default function SiteHeader() {
                             </div>
                             {" "}
                           </a>
-                          <a className="v2-navbar-dropdown-link w-inline-block" data-wf-element-id="162b5140-9840-3ab9-d243-3a325f9086bc" href="/enterprise#cybersecurity" tabIndex={0}>
+                          <a className="v2-navbar-dropdown-link w-inline-block" data-wf-element-id="162b5140-9840-3ab9-d243-3a325f9086bc" href="/cybersecurity" tabIndex={0}>
                             <img alt="" className="v2-navbar-dropdown-icon" loading="lazy" src="/assets/images/Frame-2147254707-1.svg" />
                             <div className="v2-navbar-dropdown-content">
                               <div className="t-label-1-rg is-primary-font">
@@ -243,7 +243,7 @@ export default function SiteHeader() {
                           {"Business platforms"}
                         </div>
                         <div className="v2-navbar-dropdown-links is-left-padding">
-                          <a className="v2-navbar-dropdown-link w-inline-block" data-wf-element-id="958ba4cd-aa22-a3ca-4795-c750671fbdfc" href="/enterprise#crm-development" tabIndex={0}>
+                          <a className="v2-navbar-dropdown-link w-inline-block" data-wf-element-id="958ba4cd-aa22-a3ca-4795-c750671fbdfc" href="/crm-development" tabIndex={0}>
                             <img alt="" className="v2-navbar-dropdown-icon" loading="lazy" src="/assets/images/Component-12.svg" />
                             <div className="v2-navbar-dropdown-content">
                               <div className="t-label-1-rg is-primary-font">
@@ -283,7 +283,7 @@ export default function SiteHeader() {
                         </div>
                         <div className="v2-navbar-divider" />
                         <div className="v2-navbar-dropdown-links is-gap-16">
-                          <a className="v2-navbar-dropdown-link w-inline-block" data-wf-element-id="162b5140-9840-3ab9-d243-3a325f9086de" href="/solutions" tabIndex={0}>
+                          <a className="v2-navbar-dropdown-link w-inline-block" data-wf-element-id="162b5140-9840-3ab9-d243-3a325f9086de" href="/cloud-infrastructure" tabIndex={0}>
                             <img alt="" className="v2-navbar-dropdown-icon" loading="lazy" src="/assets/images/Frame-2147254707.svg" />
                             <div className="v2-navbar-dropdown-content">
                               <div className="t-label-1-rg is-primary-font">
@@ -295,7 +295,7 @@ export default function SiteHeader() {
                             </div>
                             {" "}
                           </a>
-                          <a className="v2-navbar-dropdown-link w-inline-block" data-wf-element-id="162b5140-9840-3ab9-d243-3a325f9086e4" href="/solutions" tabIndex={0}>
+                          <a className="v2-navbar-dropdown-link w-inline-block" data-wf-element-id="162b5140-9840-3ab9-d243-3a325f9086e4" href="/aws-consulting" tabIndex={0}>
                             <img alt="" className="v2-navbar-dropdown-icon" loading="lazy" src="/assets/images/Frame-2147254707-1.svg" />
                             <div className="v2-navbar-dropdown-content">
                               <div className="t-label-1-rg is-primary-font">
@@ -307,7 +307,7 @@ export default function SiteHeader() {
                             </div>
                             {" "}
                           </a>
-                          <a className="v2-navbar-dropdown-link w-inline-block" data-wf-element-id="162b5140-9840-3ab9-d243-3a325f9086e7" href="/solutions" tabIndex={0}>
+                          <a className="v2-navbar-dropdown-link w-inline-block" data-wf-element-id="162b5140-9840-3ab9-d243-3a325f9086e7" href="/cloud-migration" tabIndex={0}>
                             <img alt="" className="v2-navbar-dropdown-icon" loading="lazy" src="/assets/images/Frame-2147255166.svg" />
                             <div className="v2-navbar-dropdown-content">
                               <div className="t-label-1-rg is-primary-font">
@@ -319,7 +319,7 @@ export default function SiteHeader() {
                             </div>
                             {" "}
                           </a>
-                          <a className="v2-navbar-dropdown-link w-inline-block" data-wf-element-id="43d6a22c-7e14-4134-bf2c-89ab771c5733" href="/solutions" tabIndex={0}>
+                          <a className="v2-navbar-dropdown-link w-inline-block" data-wf-element-id="43d6a22c-7e14-4134-bf2c-89ab771c5733" href="/managed-hosting" tabIndex={0}>
                             <img alt="" className="v2-navbar-dropdown-icon" loading="lazy" src="/assets/images/Frame-2147255166-1.svg" />
                             <div className="v2-navbar-dropdown-content">
                               <div className="t-label-1-rg is-primary-font">
@@ -338,7 +338,7 @@ export default function SiteHeader() {
                         </div>
                         <div className="v2-navbar-divider" />
                         <div className="v2-navbar-dropdown-links is-gap-16">
-                          <a className="v2-navbar-dropdown-link w-inline-block" data-wf-element-id="162b5140-9840-3ab9-d243-3a325f9086f8" href="/solutions" tabIndex={0}>
+                          <a className="v2-navbar-dropdown-link w-inline-block" data-wf-element-id="162b5140-9840-3ab9-d243-3a325f9086f8" href="/devops" tabIndex={0}>
                             <img alt="" className="v2-navbar-dropdown-icon" loading="lazy" src="/assets/images/updated.svg" />
                             <div className="v2-navbar-dropdown-content">
                               <div className="t-label-1-rg is-primary-font">
@@ -350,7 +350,7 @@ export default function SiteHeader() {
                             </div>
                             {" "}
                           </a>
-                          <a className="v2-navbar-dropdown-link w-inline-block" data-wf-element-id="162b5140-9840-3ab9-d243-3a325f9086fb" href="/solutions" tabIndex={0}>
+                          <a className="v2-navbar-dropdown-link w-inline-block" data-wf-element-id="162b5140-9840-3ab9-d243-3a325f9086fb" href="/cicd-automation" tabIndex={0}>
                             <img alt="" className="v2-navbar-dropdown-icon" loading="lazy" src="/assets/images/updated-1.svg" />
                             <div className="v2-navbar-dropdown-content">
                               <div className="t-label-1-rg is-primary-font">
@@ -362,7 +362,7 @@ export default function SiteHeader() {
                             </div>
                             {" "}
                           </a>
-                          <a className="v2-navbar-dropdown-link w-inline-block" data-wf-element-id="162b5140-9840-3ab9-d243-3a325f9086fe" href="/solutions" tabIndex={0}>
+                          <a className="v2-navbar-dropdown-link w-inline-block" data-wf-element-id="162b5140-9840-3ab9-d243-3a325f9086fe" href="/infrastructure-as-code" tabIndex={0}>
                             <img alt="" className="v2-navbar-dropdown-icon" loading="lazy" src="/assets/images/sandboxes_light_mode-2.svg" />
                             <div className="v2-navbar-dropdown-content">
                               <div className="t-label-1-rg is-primary-font">
@@ -381,7 +381,7 @@ export default function SiteHeader() {
                         </div>
                         <div className="v2-navbar-divider" />
                         <div className="v2-navbar-dropdown-links is-gap-16">
-                          <a className="v2-navbar-dropdown-link w-inline-block" data-wf-element-id="162b5140-9840-3ab9-d243-3a325f908706" href="/solutions" tabIndex={0}>
+                          <a className="v2-navbar-dropdown-link w-inline-block" data-wf-element-id="162b5140-9840-3ab9-d243-3a325f908706" href="/kubernetes" tabIndex={0}>
                             <img alt="" className="v2-navbar-dropdown-icon" loading="lazy" src="/assets/images/Component-12.svg" />
                             <div className="v2-navbar-dropdown-content">
                               <div className="t-label-1-rg is-primary-font">
@@ -393,7 +393,7 @@ export default function SiteHeader() {
                             </div>
                             {" "}
                           </a>
-                          <a className="v2-navbar-dropdown-link w-inline-block" data-wf-element-id="463d3455-81b9-ddfe-c5bb-cd2e74ef35b2" href="/solutions" tabIndex={0}>
+                          <a className="v2-navbar-dropdown-link w-inline-block" data-wf-element-id="463d3455-81b9-ddfe-c5bb-cd2e74ef35b2" href="/infrastructure-monitoring" tabIndex={0}>
                             <img alt="" className="v2-navbar-dropdown-icon" loading="lazy" src="/assets/images/nav-icon-build.svg" />
                             <div className="v2-navbar-dropdown-content">
                               <div className="t-label-1-rg is-primary-font">
@@ -405,7 +405,7 @@ export default function SiteHeader() {
                             </div>
                             {" "}
                           </a>
-                          <a className="v2-navbar-dropdown-link w-inline-block" data-wf-element-id="162b5140-9840-3ab9-d243-3a325f908709" href="/solutions" tabIndex={0}>
+                          <a className="v2-navbar-dropdown-link w-inline-block" data-wf-element-id="162b5140-9840-3ab9-d243-3a325f908709" href="/security-compliance" tabIndex={0}>
                             <img alt="" className="v2-navbar-dropdown-icon" loading="lazy" src="/assets/images/nav-icon-ai.png" />
                             <div className="v2-navbar-dropdown-content">
                               <div className="t-label-1-rg is-primary-font">

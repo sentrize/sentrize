@@ -192,7 +192,7 @@ export default function Page() {
                         </p>
                       </div>
                       <div className="spacer-40 _32-landscape" />
-                      <a className="button-v2-full-width w-variant-f44e612c-d93f-d147-e6a4-fd7888246ef0 w-inline-block" data-wf--button--variant="secondary---arrow" data-wf-ao-click-engagement-tracking="true" data-wf-component-context="%5B%7B%22componentId%22%3A%22cc338c70-b506-f985-732b-95e9d08eb22b%22%2C%22instanceId%22%3A%225f4feb82-ff89-8341-53ab-513c49b3f26b%22%7D%5D" data-wf-element-id="cc338c70-b506-f985-732b-95e9d08eb22b" data-wf-event-ids="157078768-157078769" data-wf-native-id-path="5f4feb82-ff89-8341-53ab-513c49b3f26b:cc338c70-b506-f985-732b-95e9d08eb22b" href="/services">
+                      <a className="button-v2-full-width w-variant-f44e612c-d93f-d147-e6a4-fd7888246ef0 w-inline-block" data-wf--button--variant="secondary---arrow" data-wf-ao-click-engagement-tracking="true" data-wf-component-context="%5B%7B%22componentId%22%3A%22cc338c70-b506-f985-732b-95e9d08eb22b%22%2C%22instanceId%22%3A%225f4feb82-ff89-8341-53ab-513c49b3f26b%22%7D%5D" data-wf-element-id="cc338c70-b506-f985-732b-95e9d08eb22b" data-wf-event-ids="157078768-157078769" data-wf-native-id-path="5f4feb82-ff89-8341-53ab-513c49b3f26b:cc338c70-b506-f985-732b-95e9d08eb22b" href="/software-development">
                         <div className="no-wrap-arrow w-variant-f44e612c-d93f-d147-e6a4-fd7888246ef0">
                           {"\n                          Software Development\n                        "}
                         </div>
@@ -229,7 +229,7 @@ export default function Page() {
                         </p>
                       </div>
                       <div className="spacer-40 _32-landscape" />
-                      <a className="button-v2-full-width w-variant-f44e612c-d93f-d147-e6a4-fd7888246ef0 w-inline-block" data-wf--button--variant="secondary---arrow" data-wf-ao-click-engagement-tracking="true" data-wf-component-context="%5B%7B%22componentId%22%3A%22cc338c70-b506-f985-732b-95e9d08eb22b%22%2C%22instanceId%22%3A%225f4feb82-ff89-8341-53ab-513c49b3f295%22%7D%5D" data-wf-element-id="cc338c70-b506-f985-732b-95e9d08eb22b" data-wf-event-ids="157078768-157078769" data-wf-native-id-path="5f4feb82-ff89-8341-53ab-513c49b3f295:cc338c70-b506-f985-732b-95e9d08eb22b" href="/services">
+                      <a className="button-v2-full-width w-variant-f44e612c-d93f-d147-e6a4-fd7888246ef0 w-inline-block" data-wf--button--variant="secondary---arrow" data-wf-ao-click-engagement-tracking="true" data-wf-component-context="%5B%7B%22componentId%22%3A%22cc338c70-b506-f985-732b-95e9d08eb22b%22%2C%22instanceId%22%3A%225f4feb82-ff89-8341-53ab-513c49b3f295%22%7D%5D" data-wf-element-id="cc338c70-b506-f985-732b-95e9d08eb22b" data-wf-event-ids="157078768-157078769" data-wf-native-id-path="5f4feb82-ff89-8341-53ab-513c49b3f295:cc338c70-b506-f985-732b-95e9d08eb22b" href="/saas-development">
                         <div className="no-wrap-arrow w-variant-f44e612c-d93f-d147-e6a4-fd7888246ef0">
                           {"\n                          SaaS Development\n                        "}
                         </div>
@@ -266,7 +266,7 @@ export default function Page() {
                         </p>
                       </div>
                       <div className="spacer-40 _32-landscape" />
-                      <a className="button-v2-full-width w-variant-f44e612c-d93f-d147-e6a4-fd7888246ef0 w-inline-block" data-wf--button--variant="secondary---arrow" data-wf-ao-click-engagement-tracking="true" data-wf-component-context="%5B%7B%22componentId%22%3A%22cc338c70-b506-f985-732b-95e9d08eb22b%22%2C%22instanceId%22%3A%225f4feb82-ff89-8341-53ab-513c49b3f2b9%22%7D%5D" data-wf-element-id="cc338c70-b506-f985-732b-95e9d08eb22b" data-wf-event-ids="157078768-157078769" data-wf-native-id-path="5f4feb82-ff89-8341-53ab-513c49b3f2b9:cc338c70-b506-f985-732b-95e9d08eb22b" href="/services">
+                      <a className="button-v2-full-width w-variant-f44e612c-d93f-d147-e6a4-fd7888246ef0 w-inline-block" data-wf--button--variant="secondary---arrow" data-wf-ao-click-engagement-tracking="true" data-wf-component-context="%5B%7B%22componentId%22%3A%22cc338c70-b506-f985-732b-95e9d08eb22b%22%2C%22instanceId%22%3A%225f4feb82-ff89-8341-53ab-513c49b3f2b9%22%7D%5D" data-wf-element-id="cc338c70-b506-f985-732b-95e9d08eb22b" data-wf-event-ids="157078768-157078769" data-wf-native-id-path="5f4feb82-ff89-8341-53ab-513c49b3f2b9:cc338c70-b506-f985-732b-95e9d08eb22b" href="/web-applications">
                         <div className="no-wrap-arrow w-variant-f44e612c-d93f-d147-e6a4-fd7888246ef0">
                           {"\n                          Web Applications\n                        "}
                         </div>
@@ -304,7 +304,7 @@ export default function Page() {
                         </p>
                       </div>
                       <div className="spacer-40 _32-landscape" />
-                      <a className="button-v2-full-width w-variant-f44e612c-d93f-d147-e6a4-fd7888246ef0 w-inline-block" data-wf--button--variant="secondary---arrow" data-wf-ao-click-engagement-tracking="true" data-wf-component-context="%5B%7B%22componentId%22%3A%22cc338c70-b506-f985-732b-95e9d08eb22b%22%2C%22instanceId%22%3A%225f4feb82-ff89-8341-53ab-513c49b3f2e4%22%7D%5D" data-wf-element-id="cc338c70-b506-f985-732b-95e9d08eb22b" data-wf-event-ids="157078768-157078769" data-wf-native-id-path="5f4feb82-ff89-8341-53ab-513c49b3f2e4:cc338c70-b506-f985-732b-95e9d08eb22b" href="/services">
+                      <a className="button-v2-full-width w-variant-f44e612c-d93f-d147-e6a4-fd7888246ef0 w-inline-block" data-wf--button--variant="secondary---arrow" data-wf-ao-click-engagement-tracking="true" data-wf-component-context="%5B%7B%22componentId%22%3A%22cc338c70-b506-f985-732b-95e9d08eb22b%22%2C%22instanceId%22%3A%225f4feb82-ff89-8341-53ab-513c49b3f2e4%22%7D%5D" data-wf-element-id="cc338c70-b506-f985-732b-95e9d08eb22b" data-wf-event-ids="157078768-157078769" data-wf-native-id-path="5f4feb82-ff89-8341-53ab-513c49b3f2e4:cc338c70-b506-f985-732b-95e9d08eb22b" href="/mobile-applications">
                         <div className="no-wrap-arrow w-variant-f44e612c-d93f-d147-e6a4-fd7888246ef0">
                           {"\n                          Mobile Applications\n                        "}
                         </div>
@@ -340,7 +340,7 @@ export default function Page() {
                         </p>
                       </div>
                       <div className="spacer-40 _32-landscape" />
-                      <a className="button-v2-full-width w-variant-f44e612c-d93f-d147-e6a4-fd7888246ef0 w-inline-block" data-wf--button--variant="secondary---arrow" data-wf-ao-click-engagement-tracking="true" data-wf-component-context="%5B%7B%22componentId%22%3A%22cc338c70-b506-f985-732b-95e9d08eb22b%22%2C%22instanceId%22%3A%225f4feb82-ff89-8341-53ab-513c49b3f2f7%22%7D%5D" data-wf-element-id="cc338c70-b506-f985-732b-95e9d08eb22b" data-wf-event-ids="157078768-157078769" data-wf-native-id-path="5f4feb82-ff89-8341-53ab-513c49b3f2f7:cc338c70-b506-f985-732b-95e9d08eb22b" href="/services">
+                      <a className="button-v2-full-width w-variant-f44e612c-d93f-d147-e6a4-fd7888246ef0 w-inline-block" data-wf--button--variant="secondary---arrow" data-wf-ao-click-engagement-tracking="true" data-wf-component-context="%5B%7B%22componentId%22%3A%22cc338c70-b506-f985-732b-95e9d08eb22b%22%2C%22instanceId%22%3A%225f4feb82-ff89-8341-53ab-513c49b3f2f7%22%7D%5D" data-wf-element-id="cc338c70-b506-f985-732b-95e9d08eb22b" data-wf-event-ids="157078768-157078769" data-wf-native-id-path="5f4feb82-ff89-8341-53ab-513c49b3f2f7:cc338c70-b506-f985-732b-95e9d08eb22b" href="/api-development">
                         <div className="no-wrap-arrow w-variant-f44e612c-d93f-d147-e6a4-fd7888246ef0">
                           {"\n                          API Development\n                        "}
                         </div>
@@ -376,7 +376,7 @@ export default function Page() {
                         </p>
                       </div>
                       <div className="spacer-40 _32-landscape" />
-                      <a className="button-v2-full-width w-variant-f44e612c-d93f-d147-e6a4-fd7888246ef0 w-inline-block" data-wf--button--variant="secondary---arrow" data-wf-ao-click-engagement-tracking="true" href="/services">
+                      <a className="button-v2-full-width w-variant-f44e612c-d93f-d147-e6a4-fd7888246ef0 w-inline-block" data-wf--button--variant="secondary---arrow" data-wf-ao-click-engagement-tracking="true" href="/ai-automation">
                         <div className="no-wrap-arrow w-variant-f44e612c-d93f-d147-e6a4-fd7888246ef0">
                           {"\n                          AI & Automation\n                        "}
                         </div>
@@ -412,7 +412,7 @@ export default function Page() {
                         </p>
                       </div>
                       <div className="spacer-40 _32-landscape" />
-                      <a className="button-v2-full-width w-variant-f44e612c-d93f-d147-e6a4-fd7888246ef0 w-inline-block" data-wf--button--variant="secondary---arrow" data-wf-ao-click-engagement-tracking="true" href="/services">
+                      <a className="button-v2-full-width w-variant-f44e612c-d93f-d147-e6a4-fd7888246ef0 w-inline-block" data-wf--button--variant="secondary---arrow" data-wf-ao-click-engagement-tracking="true" href="/ui-ux-design">
                         <div className="no-wrap-arrow w-variant-f44e612c-d93f-d147-e6a4-fd7888246ef0">
                           {"\n                          UI/UX Design\n                        "}
                         </div>

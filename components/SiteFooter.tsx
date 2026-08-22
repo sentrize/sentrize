@@ -13,25 +13,25 @@ export default function SiteFooter() {
                     {"Products"}
                   </h6>
                   <div className="v2-footer-links">
-                    <a className="v2-footer-link t-label-1-rg" href="/services">
+                    <a className="v2-footer-link t-label-1-rg" href="/software-development">
                       {"Software Development"}
                     </a>
-                    <a className="v2-footer-link t-label-1-rg" href="/services">
+                    <a className="v2-footer-link t-label-1-rg" href="/saas-development">
                       {"SaaS Development"}
                     </a>
-                    <a className="v2-footer-link t-label-1-rg" href="/services">
+                    <a className="v2-footer-link t-label-1-rg" href="/web-applications">
                       {"Web Applications"}
                     </a>
-                    <a className="v2-footer-link t-label-1-rg" href="/services">
+                    <a className="v2-footer-link t-label-1-rg" href="/mobile-applications">
                       {"Mobile Applications"}
                     </a>
-                    <a className="v2-footer-link t-label-1-rg" href="/services">
+                    <a className="v2-footer-link t-label-1-rg" href="/api-development">
                       {"API Development"}
                     </a>
-                    <a className="v2-footer-link t-label-1-rg" href="/services">
+                    <a className="v2-footer-link t-label-1-rg" href="/ai-automation">
                       {"AI & Automation"}
                     </a>
-                    <a className="v2-footer-link t-label-1-rg" href="/services">
+                    <a className="v2-footer-link t-label-1-rg" href="/ui-ux-design">
                       {"UI/UX Design"}
                     </a>
                     <a className="v2-footer-link t-label-1-rg" href="/mobile-simulator">
@@ -45,22 +45,22 @@ export default function SiteFooter() {
                     {"Solutions"}
                   </h6>
                   <div className="v2-footer-links">
-                    <a className="v2-footer-link t-label-1-rg" href="/solutions">
+                    <a className="v2-footer-link t-label-1-rg" href="/devops">
                       {"DevOps Services"}
                     </a>
-                    <a className="v2-footer-link t-label-1-rg" href="/solutions">
+                    <a className="v2-footer-link t-label-1-rg" href="/cloud-infrastructure">
                       {"Cloud Infrastructure"}
                     </a>
-                    <a className="v2-footer-link t-label-1-rg" href="/solutions">
+                    <a className="v2-footer-link t-label-1-rg" href="/aws-consulting">
                       {"AWS Consulting"}
                     </a>
-                    <a className="v2-footer-link t-label-1-rg" href="/solutions">
+                    <a className="v2-footer-link t-label-1-rg" href="/kubernetes">
                       {"Kubernetes"}
                     </a>
-                    <a className="v2-footer-link t-label-1-rg" href="/solutions">
+                    <a className="v2-footer-link t-label-1-rg" href="/cicd-automation">
                       {"CI/CD Automation"}
                     </a>
-                    <a className="v2-footer-link t-label-1-rg" href="/solutions">
+                    <a className="v2-footer-link t-label-1-rg" href="/security-compliance">
                       {"Security & Compliance"}
                     </a>
                   </div>
@@ -201,7 +201,7 @@ export default function SiteFooter() {
                 </div>
               </div>
               <div className="footer-bottom-wrapper">
-                <a className="footer-system-lin w-inline-block" data-wf-element-id="08562405-8b11-48b6-ab5d-f3b7e924efc6" href="#" data-todo="status-page">
+                <a className="footer-system-lin w-inline-block" data-wf-element-id="08562405-8b11-48b6-ab5d-f3b7e924efc6" href="/service-status">
                   <div className="v2-status-dot" />
                   <div className="t-label-1-rg">
                     {"All systems operational"}

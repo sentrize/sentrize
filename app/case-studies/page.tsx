@@ -231,7 +231,7 @@ export default function Page() {
                         <div className="v2-cs-feautred-video-link">
                           <img alt="Continuous delivery pipeline dashboards for a logistics platform" className="v2-cs-featured-thumbnail" loading="lazy" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&h=640&q=80" />
                         </div>
-                        <a className="v2-cs-feautred-content w-inline-block" data-wf-ao-click-engagement-tracking="true" data-wf-cms-context="%5B%7B%22collectionId%22%3A%22660189f45f9033dd87f82a2a%22%2C%22itemId%22%3A%22683ed62b7e8fcd4239ac13c1%22%7D%5D" data-wf-element-id="0fc03289-5ba3-f204-afe5-b846a8bd8e03" data-wf-native-id-path="0fc03289-5ba3-f204-afe5-b846a8bd8e03_instance-0" data-todo="case-study-detail" href="#">
+                        <a className="v2-cs-feautred-content w-inline-block" data-wf-ao-click-engagement-tracking="true" data-wf-cms-context="%5B%7B%22collectionId%22%3A%22660189f45f9033dd87f82a2a%22%2C%22itemId%22%3A%22683ed62b7e8fcd4239ac13c1%22%7D%5D" data-wf-element-id="0fc03289-5ba3-f204-afe5-b846a8bd8e03" data-wf-native-id-path="0fc03289-5ba3-f204-afe5-b846a8bd8e03_instance-0" href="/case-studies/continuous-delivery-overhaul-for-a-high-volume-logistics-platform">
                           <div className="margin-bottom margin-medium _1-small-landscape">
                             <div className="t-label-1-rg">
                               {"Release lead time"}
@@ -257,7 +257,7 @@ export default function Page() {
                         <div className="v2-cs-feautred-video-link">
                           <img alt="Engineers shipping code through an automated deploy pipeline" className="v2-cs-featured-thumbnail" loading="lazy" src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&h=640&q=80" />
                         </div>
-                        <a className="v2-cs-feautred-content w-inline-block" data-wf-ao-click-engagement-tracking="true" data-wf-cms-context="%5B%7B%22collectionId%22%3A%22660189f45f9033dd87f82a2a%22%2C%22itemId%22%3A%22683ed905c752d7119382d956%22%7D%5D" data-wf-element-id="0fc03289-5ba3-f204-afe5-b846a8bd8e03" data-wf-native-id-path="0fc03289-5ba3-f204-afe5-b846a8bd8e03_instance-1" data-todo="case-study-detail" href="#">
+                        <a className="v2-cs-feautred-content w-inline-block" data-wf-ao-click-engagement-tracking="true" data-wf-cms-context="%5B%7B%22collectionId%22%3A%22660189f45f9033dd87f82a2a%22%2C%22itemId%22%3A%22683ed905c752d7119382d956%22%7D%5D" data-wf-element-id="0fc03289-5ba3-f204-afe5-b846a8bd8e03" data-wf-native-id-path="0fc03289-5ba3-f204-afe5-b846a8bd8e03_instance-1" data-todo="case-study-detail" href="/case-studies/continuous-delivery-overhaul-for-a-high-volume-logistics-platform">
                           <div className="margin-bottom margin-medium _1-small-landscape">
                             <div className="t-label-1-rg">
                               {"Deploy frequency"}
@@ -283,7 +283,7 @@ export default function Page() {
                         <div className="v2-cs-feautred-video-link">
                           <img alt="Release health metrics on an analytics dashboard" className="v2-cs-featured-thumbnail" loading="lazy" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&h=640&q=80" />
                         </div>
-                        <a className="v2-cs-feautred-content w-inline-block" data-wf-ao-click-engagement-tracking="true" data-wf-cms-context="%5B%7B%22collectionId%22%3A%22660189f45f9033dd87f82a2a%22%2C%22itemId%22%3A%22683ed89864900b5713002b35%22%7D%5D" data-wf-element-id="0fc03289-5ba3-f204-afe5-b846a8bd8e03" data-wf-native-id-path="0fc03289-5ba3-f204-afe5-b846a8bd8e03_instance-2" data-todo="case-study-detail" href="#">
+                        <a className="v2-cs-feautred-content w-inline-block" data-wf-ao-click-engagement-tracking="true" data-wf-cms-context="%5B%7B%22collectionId%22%3A%22660189f45f9033dd87f82a2a%22%2C%22itemId%22%3A%22683ed89864900b5713002b35%22%7D%5D" data-wf-element-id="0fc03289-5ba3-f204-afe5-b846a8bd8e03" data-wf-native-id-path="0fc03289-5ba3-f204-afe5-b846a8bd8e03_instance-2" data-todo="case-study-detail" href="/case-studies/continuous-delivery-overhaul-for-a-high-volume-logistics-platform">
                           <div className="margin-bottom margin-medium _1-small-landscape">
                             <div className="t-label-1-rg">
                               {"Change-failure rate"}
@@ -348,7 +348,7 @@ export default function Page() {
                   <div className="v2-cs-list-wrapper w-dyn-list">
                     <div className="v2-cs-list w-dyn-items" fs-list-element="list" role="list">
                       <div className="v2-cs-item w-dyn-item" role="listitem">
-                        <a aria-label="case study link" className="v2-cs-link-absolute w-inline-block" data-todo="case-study-detail" data-wf-ao-click-engagement-tracking="true" data-wf-element-id="0fc03289-5ba3-f204-afe5-b846a8bd8e38" data-wf-native-id-path="0fc03289-5ba3-f204-afe5-b846a8bd8e38_instance-0" href="#" />
+                        <a aria-label="case study link" className="v2-cs-link-absolute w-inline-block" data-wf-ao-click-engagement-tracking="true" data-wf-element-id="0fc03289-5ba3-f204-afe5-b846a8bd8e38" data-wf-native-id-path="0fc03289-5ba3-f204-afe5-b846a8bd8e38_instance-0" href="/case-studies/re-architecting-a-payments-core-for-linear-scale" />
                         <div className="customer-stories_card">
                           <div className="customer-stories_card-image-wrap">
                             <div className="customer-stories_card-image-wrap-inner">
@@ -408,7 +408,7 @@ export default function Page() {
                         </div>
                       </div>
                       <div className="v2-cs-item w-dyn-item" role="listitem">
-                        <a aria-label="case study link" className="v2-cs-link-absolute w-inline-block" data-todo="case-study-detail" data-wf-ao-click-engagement-tracking="true" data-wf-element-id="0fc03289-5ba3-f204-afe5-b846a8bd8e38" data-wf-native-id-path="0fc03289-5ba3-f204-afe5-b846a8bd8e38_instance-1" href="#" />
+                        <a aria-label="case study link" className="v2-cs-link-absolute w-inline-block" data-wf-ao-click-engagement-tracking="true" data-wf-element-id="0fc03289-5ba3-f204-afe5-b846a8bd8e38" data-wf-native-id-path="0fc03289-5ba3-f204-afe5-b846a8bd8e38_instance-1" href="/case-studies/lift-re-platform-and-optimize-for-a-healthcare-data-provider" />
                         <div className="customer-stories_card">
                           <div className="customer-stories_card-image-wrap">
                             <div className="customer-stories_card-image-wrap-inner">
@@ -468,7 +468,7 @@ export default function Page() {
                         </div>
                       </div>
                       <div className="v2-cs-item w-dyn-item" role="listitem">
-                        <a aria-label="case study link" className="v2-cs-link-absolute w-inline-block" data-todo="case-study-detail" data-wf-ao-click-engagement-tracking="true" data-wf-element-id="0fc03289-5ba3-f204-afe5-b846a8bd8e38" data-wf-native-id-path="0fc03289-5ba3-f204-afe5-b846a8bd8e38_instance-2" href="#" />
+                        <a aria-label="case study link" className="v2-cs-link-absolute w-inline-block" data-wf-ao-click-engagement-tracking="true" data-wf-element-id="0fc03289-5ba3-f204-afe5-b846a8bd8e38" data-wf-native-id-path="0fc03289-5ba3-f204-afe5-b846a8bd8e38_instance-2" href="/case-studies/multi-tenant-re-platform-for-a-b2b-collaboration-product" />
                         <div className="customer-stories_card">
                           <div className="customer-stories_card-image-wrap">
                             <div className="customer-stories_card-image-wrap-inner">
@@ -528,7 +528,7 @@ export default function Page() {
                         </div>
                       </div>
                       <div className="v2-cs-item w-dyn-item" role="listitem">
-                        <a aria-label="case study link" className="v2-cs-link-absolute w-inline-block" data-todo="case-study-detail" data-wf-ao-click-engagement-tracking="true" data-wf-element-id="0fc03289-5ba3-f204-afe5-b846a8bd8e38" data-wf-native-id-path="0fc03289-5ba3-f204-afe5-b846a8bd8e38_instance-3" href="#" />
+                        <a aria-label="case study link" className="v2-cs-link-absolute w-inline-block" data-wf-ao-click-engagement-tracking="true" data-wf-element-id="0fc03289-5ba3-f204-afe5-b846a8bd8e38" data-wf-native-id-path="0fc03289-5ba3-f204-afe5-b846a8bd8e38_instance-3" href="/case-studies/multi-tenant-re-platform-for-a-b2b-collaboration-product" />
                         <div className="customer-stories_card">
                           <div className="customer-stories_card-image-wrap">
                             <div className="customer-stories_card-image-wrap-inner">
@@ -588,7 +588,7 @@ export default function Page() {
                         </div>
                       </div>
                       <div className="v2-cs-item w-dyn-item" role="listitem">
-                        <a aria-label="case study link" className="v2-cs-link-absolute w-inline-block" data-todo="case-study-detail" data-wf-ao-click-engagement-tracking="true" data-wf-element-id="0fc03289-5ba3-f204-afe5-b846a8bd8e38" data-wf-native-id-path="0fc03289-5ba3-f204-afe5-b846a8bd8e38_instance-4" href="#" />
+                        <a aria-label="case study link" className="v2-cs-link-absolute w-inline-block" data-wf-ao-click-engagement-tracking="true" data-wf-element-id="0fc03289-5ba3-f204-afe5-b846a8bd8e38" data-wf-native-id-path="0fc03289-5ba3-f204-afe5-b846a8bd8e38_instance-4" href="/case-studies/retrieval-grounded-ai-automation-for-an-enterprise-support-operation" />
                         <div className="customer-stories_card">
                           <div className="customer-stories_card-image-wrap">
                             <div className="customer-stories_card-image-wrap-inner">

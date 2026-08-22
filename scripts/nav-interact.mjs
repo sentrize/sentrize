@@ -25,7 +25,7 @@ await page.goto(BASE + "/", { waitUntil: "load", timeout: 45000 });
 await page.waitForTimeout(3500);
 await checkDropdown("initial load /");
 
-for (const r of ["/about", "/solutions", "/pricing", "/contact", "/blog"]) {
+for (const r of ["/about", "/devops", "/pricing", "/contact", "/blog"]) {
   await page.locator(`footer a[href="${r}"]`).first().scrollIntoViewIfNeeded();
   await page.locator(`footer a[href="${r}"]`).first().click();
   await page.waitForTimeout(2200);
