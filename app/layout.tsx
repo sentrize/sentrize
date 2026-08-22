@@ -3,11 +3,24 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import TemplateScripts from "@/components/TemplateScripts";
 import ClientNav from "@/components/ClientNav";
+import NavProgress from "@/components/NavProgress";
 
 const WF_SHIM = `(function (e) {
   var s = { r: [] };
   e.wf = { r: s.r, ready: (t) => { s.r.push(t); } };
 })(window);`;
+
+// Pre-paint hero-set guarantee: pages with alternating heroes rely on
+// html[data-hero-set]; without it every variant renders stacked. The page's
+// own picker may re-pick, but this ensures the attribute always exists.
+const HERO_SET_GUARD = `(function () {
+  var d = document.documentElement;
+  if (d.hasAttribute("data-hero-set")) return;
+  var sets = ["newton", "einstein", "franklin"];
+  var pick = sets[Math.floor(Math.random() * sets.length)];
+  try { pick = sessionStorage.getItem("heroSet:last") || pick; } catch (e) {}
+  d.setAttribute("data-hero-set", pick);
+})();`;
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.sentrize.com"),
@@ -44,6 +57,7 @@ export default function RootLayout({
         />
         <link rel="stylesheet" href="/assets/css/sentrize.css" />
         <script dangerouslySetInnerHTML={{ __html: WF_SHIM }} />
+        <script dangerouslySetInnerHTML={{ __html: HERO_SET_GUARD }} />
       </head>
       <body className="body-v2" suppressHydrationWarning>
         <div className="page-wrapper">
@@ -52,6 +66,7 @@ export default function RootLayout({
           <SiteFooter />
         </div>
         <ClientNav />
+        <NavProgress />
         <TemplateScripts driver />
       </body>
     </html>

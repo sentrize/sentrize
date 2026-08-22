@@ -219,6 +219,19 @@ export default function TemplateScripts({
         doc.documentElement.classList.remove("hero-js");
       }
 
+      // Self-heal the hero set attribute: dev hot-reload (and anything else
+      // re-rendering <html>) can strip it, which stacks every hero variant.
+      if (!doc.documentElement.hasAttribute("data-hero-set")) {
+        const sets = ["newton", "einstein", "franklin"];
+        let pick = sets[Math.floor(Math.random() * sets.length)];
+        try {
+          pick = sessionStorage.getItem("heroSet:last") ?? pick;
+        } catch {
+          /* private mode */
+        }
+        doc.documentElement.setAttribute("data-hero-set", pick);
+      }
+
       const wfQueue = window.wf?.r;
       const drainedBefore = wfQueue ? wfQueue.length : 0;
 

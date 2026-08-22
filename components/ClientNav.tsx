@@ -35,6 +35,9 @@ export default function ClientNav() {
         document.querySelector(url.hash)?.scrollIntoView({ behavior: "smooth" });
         return;
       }
+      if (url.pathname !== window.location.pathname) {
+        window.dispatchEvent(new CustomEvent("sentrize:nav-start"));
+      }
       router.push(target);
     };
     document.addEventListener("click", onClick);
