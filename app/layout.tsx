@@ -10,6 +10,23 @@ const WF_SHIM = `(function (e) {
   e.wf = { r: s.r, ready: (t) => { s.r.push(t); } };
 })(window);`;
 
+// The template's global reset lives in a per-page style block on converted
+// pages; hand-built pages (service details, articles, legal) need it too,
+// or the stylesheet's default underlined-link rule shows through in the nav.
+const GLOBAL_RESET = `
+a, .w-select, .w-tab-link, .w-nav-link, .w-nav-brand, .w-dropdown-btn,
+.w-slider-arrow-left, .w-slider-arrow-right, .w-dropdown-link {
+  color: inherit;
+  text-decoration: inherit;
+  font-size: inherit;
+}
+*[tabindex]:focus-visible, input[type="file"]:focus-visible {
+  outline: 0.125rem solid #4d65ff;
+  outline-offset: 0.125rem;
+}
+.page-wrapper { overflow: clip; }
+`;
+
 // Pre-paint hero-set guarantee: pages with alternating heroes rely on
 // html[data-hero-set]; without it every variant renders stacked. The page's
 // own picker may re-pick, but this ensures the attribute always exists.
@@ -56,6 +73,7 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css?family=JetBrains+Mono:300,400,500,600,700"
         />
         <link rel="stylesheet" href="/assets/css/sentrize.css" />
+        <style dangerouslySetInnerHTML={{ __html: GLOBAL_RESET }} />
         <script dangerouslySetInnerHTML={{ __html: WF_SHIM }} />
         <script dangerouslySetInnerHTML={{ __html: HERO_SET_GUARD }} />
       </head>
